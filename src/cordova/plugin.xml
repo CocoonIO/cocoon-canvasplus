@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="com.ludei.canvasplus.common" version="1.0.0">
+    <name>Cocoon Canvas+ Common Utils</name>
+    <description>Common utils for Cocoon Canvas+</description>
+    <license>MPL 2.0</license>
+    <keywords>cordova,cocoon,atomic,plugins,cocoonjs,canvas</keywords>
+
+     <js-module src="www/cocoon_canvasplus.js" name="Cocoon">
+        <run />
+    </js-module>
+
+    <dependency id="com.ludei.cocoon.common" />
+
+</plugin>
