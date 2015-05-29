@@ -30,7 +30,10 @@
     * The "Cocoon" object holds all the CocoonJS Extensions and other stuff needed for the CocoonJS environment.
     * @namespace Cocoon
     */
-    Cocoon = window.Cocoon ? window.Cocoon : {};
+    var Cocoon = window.Cocoon;
+    if (!Cocoon && window.cordova && typeof require !== 'undefined') {
+        Cocoon = cordova.require('com.ludei.cocoon.common.Cocoon');
+    }
     
     /**
      * Is the native environment available? true if so.
