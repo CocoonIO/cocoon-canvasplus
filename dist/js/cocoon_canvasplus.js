@@ -1,39 +1,28 @@
 /*jshint loopfunc: true */
 /**
  * @fileOverview
- * Ludei's plugins are multiplatform Javascript APIs, that work in any of the three environments 
- * of CocoonJS: accelerated Canvas+, webview+ and system webview.
+ * Cocoon Canvas+ are multiplatform Javascript APIs, that work in Canvas+.
  * - Select the specific plugin below to open the relevant documentation section.
  <ul>
     <li><a href="Cocoon.html">Cocoon</a></li>
-    <li><a href="Cocoon.Ad.html">Ad</a></li>
     <li><a href="Cocoon.App.html">App</a></li>
-    <li><a href="Cocoon.Camera.html">Camera</a></li>
     <li><a href="Cocoon.Device.html">Device</a></li>
     <li><a href="Cocoon.Dialog.html">Dialog</a></li>
     <li><a href="Cocoon.Motion.html">Motion</a></li>
-    <li><a href="Cocoon.Multiplayer.html">Multiplayer</a></li>
-    <li><a href="Cocoon.Notification.html">Notification</a></li>
     <li><a href="Cocoon.Proxify.html">Proxify</a></li>
-    <li><a href="Cocoon.Social.html">Social</a></li>
-    <li><a href="Cocoon.Store.html">Store</a></li>
     <li><a href="Cocoon.Touch.html">Touch</a></li>
     <li><a href="Cocoon.Utils.html">Utils</a></li>
     <li><a href="Cocoon.WebView.html">WebView</a></li>
     <li><a href="Cocoon.Widget.html">Widget</a></li>
 </ul>
- <br/>The CocoonJS Plugin's library (cocoon.js and cocoon.min.js) can be found at Github. <br/>
- <a href="https://github.com/ludei/CocoonJS-Plugins"><img src="img/download.png" style="width:230px;height:51px;" /></a>
- <br/><br/>In addition to all the previously mentioned, in the following link you'll find an <a href="http://support.ludei.com/hc/en-us/articles/201821276-Extensions-overview">overview of all the avaliable features</a> in which each plugin support and availability are detailed.
- <br/><br/>
+
  * We hope you find everything you need to get going here, but if you stumble on any problems with the docs or the plugins, 
  * just drop us a line at our forum (support.ludei.com) and we'll do our best to help you out.
- * <h3>Tools</h3>
+ <h3>Tools</h3>
  <a href="http://support.ludei.com/hc/communities/public/topics"><img src="img/cocoon-tools-1.png" /></a>
- <a href="http://support.ludei.com/hc"><img src="img/cocoon-tools-2.png" /></a>
- <a href="https://cloud.ludei.com/"><img src="img/cocoon-tools-3.png" /></a>
- <a href="https://www.ludei.com/cocoonjs/how-to-use/"><img src="img/cocoon-tools-4.png" /></a>
- * @version 3.0.5
+ <a href="https://cocoon.io/doc"><img src="img/cocoon-tools-2.png" /></a>
+ <a href="http://cocoon.io/"><img src="img/cocoon-tools-3.png" /></a>
+ * @version 1.0
  */
 (function () {
     
@@ -41,7 +30,10 @@
     * The "Cocoon" object holds all the CocoonJS Extensions and other stuff needed for the CocoonJS environment.
     * @namespace Cocoon
     */
-    Cocoon = window.Cocoon ? window.Cocoon : {};
+    var Cocoon = window.Cocoon;
+    if (!Cocoon && window.cordova && typeof require !== 'undefined') {
+        Cocoon = cordova.require('com.ludei.cocoon.common.Cocoon');
+    }
     
     /**
      * Is the native environment available? true if so.
@@ -411,20 +403,9 @@
             }.bind(this);
         };
     };
-
-
 })();
 /**
  * This namespace represents different methods to control your application.
- *
- * <div class="alert alert-success">
- * <p>Here you will find demos about this namespace: </p> 
- * <ul> <li> <a href="https://github.com/ludei/cocoonjs-demos/tree/master/Rate">Rate demo</a>.</li>
- * <li> <a href="https://github.com/ludei/cocoonjs-demos/tree/Sound">Sound demo</a>.</li>
- * <li> <a href="https://github.com/ludei/cocoonjs-demos/tree/Vibration">Vibration demo</a>.</li>
- * <li> <a href="https://github.com/ludei/cocoonjs-demos/tree/master/Basic%20examples">Basic examples demo</a>.</li></ul>
- * </div>
- *
  * @namespace Cocoon.App
  * @example
  * // Example 1: Closes the application
