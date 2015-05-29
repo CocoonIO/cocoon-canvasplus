@@ -1,11 +1,6 @@
 /*jshint loopfunc: true */
 /**
 * This namespace represents all functionalities available in the WebView environment.
-*
-* <div class="alert alert-success">
-*   Here you will find a demo about this namespace: <a href="https://github.com/ludei/cocoonjs-demos/tree/Webview">Webview demo</a>.
-*</div>
-*
 * @namespace Cocoon.WebView
 * @example
 * Cocoon.WebView.on("load",{
