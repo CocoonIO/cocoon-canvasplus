@@ -1,38 +1,184 @@
-/*jshint loopfunc: true */
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Cocoon Canvas+</title>
+
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+	<script type="text/javascript">
+		if(window.location.pathname.indexOf("index.html") !== -1){
+			document.write('<style>  #toc { display:none; } </style>');
+		}
+	</script>
+	
+	<link type="text/css" rel="stylesheet" href="styles/site.spacelab.css">
+	
+	<style type="text/css">
+		.alert-warning {
+			background-color: #fcf8e3;
+			border-color: #faebcc;
+			color: #8a6d3b;
+		}
+		.alert {
+			padding: 15px;
+			margin-bottom: 20px;
+			border: 1px solid transparent;
+			border-radius: 4px;
+		}
+		.alert a{
+			color: #8a6d3b;
+			font-weight: bold;
+		}
+		.alert-success a {
+			color: #519251;
+			font-weight: bold;
+		}
+		.alert-success a:hover{
+			color: #519251;
+			text-decoration: underline;
+			font-weight: bold;
+		}
+		.alert-warning a:hover{
+			color: #8a6d3b;
+			text-decoration: underline;
+			font-weight: bold;
+		}
+		.page-title{
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html"><img src='img/logo_white2.png' style='width: 145px;height: 35px;'/> <span class='brand-adjust'>Canvas+ JavaScript Documentation</span></a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							
+								<a href="Cocoon.html">Cocoon</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.App.html">App</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.Device.html">Device</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.Dialog.html">Dialog</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.Motion.html">Motion</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.Proxify.html">Proxify</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.Touch.html">Touch</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.Utils.html">Utils</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.WebView.html">WebView</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.Widget.html">Widget</a>
+							
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+			<div class="span12">
+				
+				<div id="main">
+					
+
+
+		<h1 class="page-title">Source: cocoon_legacy.js</h1>
+    
+    <section>
+        <article>
+            <pre class="sunlight-highlight-javascript linenums">/*jshint loopfunc: true */
 /**
  * @fileOverview
  * Cocoon Canvas+ are multiplatform Javascript utils that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project. 
- <p> Select the specific namespace below to open the relevant documentation section:</p>
- <ul>
-    <li><a href="http://ludei.github.io/cocoon-common/dist/doc/js/Cocoon.html">Cocoon</a></li>
-    <li><a href="Cocoon.App.html">App</a></li>
-    <li><a href="Cocoon.Device.html">Device</a></li>
-    <li><a href="Cocoon.Dialog.html">Dialog</a></li>
-    <li><a href="Cocoon.Motion.html">Motion</a></li>
-    <li><a href="Cocoon.Proxify.html">Proxify</a></li>
-    <li><a href="Cocoon.Touch.html">Touch</a></li>
-    <li><a href="Cocoon.Utils.html">Utils</a></li>
-    <li><a href="Cocoon.WebView.html">WebView</a></li>
-    <li><a href="Cocoon.Widget.html">Widget</a></li>
-</ul>
+ &lt;p> Select the specific namespace below to open the relevant documentation section:&lt;/p>
+ &lt;ul>
+    &lt;li>&lt;a href="http://ludei.github.io/cocoon-common/dist/doc/js/Cocoon.html">Cocoon&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="Cocoon.App.html">App&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="Cocoon.Device.html">Device&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="Cocoon.Dialog.html">Dialog&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="Cocoon.Motion.html">Motion&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="Cocoon.Proxify.html">Proxify&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="Cocoon.Touch.html">Touch&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="Cocoon.Utils.html">Utils&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="Cocoon.WebView.html">WebView&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="Cocoon.Widget.html">Widget&lt;/a>&lt;/li>
+&lt;/ul>
  * We hope you find everything you need to get going here, but if you stumble on any problems with the docs or the plugins, 
  * just drop us a line at our forums and we'll do our best to help you out.
- <h3>Tools</h3>
- <a href="http://support.ludei.com/hc/communities/public/topics"><img src="img/cocoon-tools-1.png" /></a>
- <a href="https://cocoon.io/doc"><img src="img/cocoon-tools-2.png" /></a>
- <a href="http://cocoon.io/"><img src="img/cocoon-tools-3.png" /></a>
+ &lt;h3>Tools&lt;/h3>
+ &lt;a href="http://support.ludei.com/hc/communities/public/topics">&lt;img src="img/cocoon-tools-1.png" />&lt;/a>
+ &lt;a href="https://cocoon.io/doc">&lt;img src="img/cocoon-tools-2.png" />&lt;/a>
+ &lt;a href="http://cocoon.io/">&lt;img src="img/cocoon-tools-3.png" />&lt;/a>
  * @version 1.0
  */
 (function () {
     
     /**
     * The "Cocoon" object holds all the Cocoon Canvas+ Extensions and other stuff needed.
-    <p> For more information about this specific namespace, please, visit the following link: </p>
-    <li><a href="http://ludei.github.io/cocoon-common/dist/doc/js/Cocoon.html">Cocoon common documentation</a></li>
+    &lt;p> For more information about this specific namespace, please, visit the following link: &lt;/p>
+    &lt;li>&lt;a href="http://ludei.github.io/cocoon-common/dist/doc/js/Cocoon.html">Cocoon common documentation&lt;/a>&lt;/li>
     * @namespace Cocoon
     */
     var Cocoon = window.Cocoon;
-    if (!Cocoon && window.cordova && typeof require !== 'undefined') {
+    if (!Cocoon &amp;&amp; window.cordova &amp;&amp; typeof require !== 'undefined') {
         Cocoon = cordova.require('com.ludei.cocoon.common.Cocoon');
     }
     
@@ -120,7 +266,7 @@
     Cocoon.getObjectFromPath = function(baseObject, objectPath) {
         var parts = objectPath.split('.');
         var obj = baseObject;
-        for (var i = 0, len = parts.length; i < len; ++i) 
+        for (var i = 0, len = parts.length; i &lt; len; ++i) 
         {
             obj[parts[i]] = obj[parts[i]] || undefined;
             obj = obj[parts[i]];
@@ -167,12 +313,12 @@
             }
 
             var CocoonExtensionObject = Cocoon.getObjectFromPath(Cocoon, CocoonExtensionObjectName);
-            if (CocoonExtensionObject && CocoonExtensionObject.nativeAvailable) {
+            if (CocoonExtensionObject &amp;&amp; CocoonExtensionObject.nativeAvailable) {
                 ext[nativeExtensionObjectName].addEventListener(nativeEventName, listener);
             }
             else {
                 var indexOfListener = this.listeners.indexOf(listener);
-                if (indexOfListener < 0) {
+                if (indexOfListener &lt; 0) {
                     this.listeners.push(listener);
                 }
             }
@@ -200,7 +346,7 @@
             else
             {
                 var indexOfListener = this.listeners.indexOf(listener);
-                if (indexOfListener < 0)
+                if (indexOfListener &lt; 0)
                 {
                     this.listenersOnce.push(listener);
                 }
@@ -260,7 +406,7 @@
 
         this.notifyEventListeners = function() {
             var CocoonExtensionObject = Cocoon.getObjectFromPath(Cocoon, CocoonExtensionObjectName);
-            if (CocoonExtensionObject && CocoonExtensionObject.nativeAvailable) {
+            if (CocoonExtensionObject &amp;&amp; CocoonExtensionObject.nativeAvailable) {
                 ext[nativeExtensionObjectName].notifyEventListeners(nativeEventName);
             } else {
 
@@ -270,10 +416,10 @@
                 var _this = this;
                 // Notify listeners after a while ;) === do not block this thread.
                 setTimeout(function() {
-                    for (var i = 0; i < listeners.length; i++) {
+                    for (var i = 0; i &lt; listeners.length; i++) {
                         listeners[i].apply(_this, argumentsArray);
                     }
-                    for (i = 0; i < listenersOnce.length; i++) {
+                    for (i = 0; i &lt; listenersOnce.length; i++) {
                         listenersOnce[i].apply(_this, argumentsArray);
                     }
                 }, 0);
@@ -313,7 +459,7 @@
         */
         this.register = function(namespace, handle){
 
-            if( (!namespace) && (!handle)) throw new Error("Can't create signal " + (namespace || ""));
+            if( (!namespace) &amp;&amp; (!handle)) throw new Error("Can't create signal " + (namespace || ""));
 
             if(handle.addEventListener){
                 this.signals[namespace] = handle;
@@ -355,7 +501,7 @@
 
                     fnc.prototype.remove = function(functionListener){
                         var handle = that.signals[this.signal];
-                        if(handle && handle.removeEventListener) {
+                        if(handle &amp;&amp; handle.removeEventListener) {
                             handle.removeEventListener.apply(that,[functionListener]);
                             that.signals[this.signal] = undefined;
                         }
@@ -363,7 +509,7 @@
                     return new fnc(signal);
                 }
 
-                if((params) && (params.once)){
+                if((params) &amp;&amp; (params.once)){
                     once = true;
                 }
 
@@ -404,4 +550,88 @@
             }.bind(this);
         };
     };
-})();
+})();</pre>
+        </article>
+    </section>
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="copyright">
+		Cocoon Canvas+ - JavaScript Documentation by Ludei, DocStrap Copyright © 2012-2013 <br/> The contributors to the JSDoc3 and DocStrap projects.
+		</span>
+					<br />
+					
+				</footer>
+			</div>
+
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<script src="scripts/sunlight.js"></script>
+	<script src="scripts/sunlight.javascript.js"></script>
+	<script src="scripts/sunlight-plugin.doclinks.js"></script>
+	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
+	<script src="scripts/sunlight-plugin.menu.js"></script>
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.scrollTo.js"></script>
+	<script src="scripts/jquery.localScroll.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
+
+	<script>
+		$( function () {
+			$( "#toc" ).toc( {
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : 60
+			} );
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+
+			var prefix = $(".toc-h2").text();
+			$($(".toc-h3").nextAll()).each(function(){
+
+				if($(this).attr("class") === "toc-h3")
+					return false;
+				// Mega ugly hack, ask karliky
+				// Replace the "<static>" word
+				var str = prefix + "." + $(this).text().toString().replace("<static> ","");
+				// Replace the "function(args)" string
+
+				str = str.replace(/ /g, "").replace(/\n/g, "");
+				str = str.split("(");
+				str = (str.length == 1) ? str.join("") : str[0] + "(" + ")";
+				$($($(this)[0]).children()[0]).text(str);
+			});
+			$(".toc-h4 a").each(function(){
+				var el 	= $(this);
+				var str = el.text().toString().replace("<static> ","");
+				
+				str = str.split("(");
+				str = (str.length == 1) ? str.join("") : str[0] + "(" + ")";
+				el.text(str);
+			});
+			$(".description p").each(function(){
+				var el = $(this);
+				el.html(el.text());
+			});
+		} );
+	</script>
+
+	
+
+</body>
+</html>

@@ -1,10 +1,10 @@
 /*jshint loopfunc: true */
 /**
  * @fileOverview
- * Cocoon Canvas+ are multiplatform Javascript APIs, that work in Canvas+.
- * - Select the specific plugin below to open the relevant documentation section.
+ * Cocoon Canvas+ are multiplatform Javascript utils that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project. 
+ <p> Select the specific namespace below to open the relevant documentation section:</p>
  <ul>
-    <li><a href="Cocoon.html">Cocoon</a></li>
+    <li><a href="http://ludei.github.io/cocoon-common/dist/doc/js/Cocoon.html">Cocoon</a></li>
     <li><a href="Cocoon.App.html">App</a></li>
     <li><a href="Cocoon.Device.html">Device</a></li>
     <li><a href="Cocoon.Dialog.html">Dialog</a></li>
@@ -15,9 +15,8 @@
     <li><a href="Cocoon.WebView.html">WebView</a></li>
     <li><a href="Cocoon.Widget.html">Widget</a></li>
 </ul>
-
  * We hope you find everything you need to get going here, but if you stumble on any problems with the docs or the plugins, 
- * just drop us a line at our forum (support.ludei.com) and we'll do our best to help you out.
+ * just drop us a line at our forums and we'll do our best to help you out.
  <h3>Tools</h3>
  <a href="http://support.ludei.com/hc/communities/public/topics"><img src="img/cocoon-tools-1.png" /></a>
  <a href="https://cocoon.io/doc"><img src="img/cocoon-tools-2.png" /></a>
@@ -27,7 +26,9 @@
 (function () {
     
     /**
-    * The "Cocoon" object holds all the CocoonJS Extensions and other stuff needed for the CocoonJS environment.
+    * The "Cocoon" object holds all the Cocoon Canvas+ Extensions and other stuff needed.
+    <p> For more information about this specific namespace, please, visit the following link: </p>
+    <li><a href="http://ludei.github.io/cocoon-common/dist/doc/js/Cocoon.html">Cocoon common documentation</a></li>
     * @namespace Cocoon
     */
     var Cocoon = window.Cocoon;

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Cocoon Canvas+</title>
+
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+	<script type="text/javascript">
+		if(window.location.pathname.indexOf("index.html") !== -1){
+			document.write('<style>  #toc { display:none; } </style>');
+		}
+	</script>
+	
+	<link type="text/css" rel="stylesheet" href="styles/site.spacelab.css">
+	
+	<style type="text/css">
+		.alert-warning {
+			background-color: #fcf8e3;
+			border-color: #faebcc;
+			color: #8a6d3b;
+		}
+		.alert {
+			padding: 15px;
+			margin-bottom: 20px;
+			border: 1px solid transparent;
+			border-radius: 4px;
+		}
+		.alert a{
+			color: #8a6d3b;
+			font-weight: bold;
+		}
+		.alert-success a {
+			color: #519251;
+			font-weight: bold;
+		}
+		.alert-success a:hover{
+			color: #519251;
+			text-decoration: underline;
+			font-weight: bold;
+		}
+		.alert-warning a:hover{
+			color: #8a6d3b;
+			text-decoration: underline;
+			font-weight: bold;
+		}
+		.page-title{
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html"><img src='img/logo_white2.png' style='width: 145px;height: 35px;'/> <span class='brand-adjust'>Canvas+ JavaScript Documentation</span></a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							
+								<a href="Cocoon.html">Cocoon</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.App.html">App</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.Device.html">Device</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.Dialog.html">Dialog</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.Motion.html">Motion</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.Proxify.html">Proxify</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.Touch.html">Touch</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.Utils.html">Utils</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.WebView.html">WebView</a>
+							
+						</li>
+						
+						<li>
+							
+								<a href="Cocoon.Widget.html">Widget</a>
+							
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+			<div class="span12">
+				
+				<div id="main">
+					
+
+
+		<h1 class="page-title">Source: cocoon_app.js</h1>
+    
+    <section>
+        <article>
+            <pre class="sunlight-highlight-javascript linenums">/**
+ * This namespace represents different methods to control your application.
+ * @namespace Cocoon.App
+ * @example
+ * // Example 1: Closes the application
+ * Cocoon.App.exit();
+ * // Example 2: Opens a given URL
+ * Cocoon.App.openURL("http://www.ludei.com");
+ * // Example 3: Fired when the application is suspended
+ * Cocoon.App.on("suspended", function(){
+ *  ...
+ * });
+ */
+Cocoon.define("Cocoon.App" , function(extension){
+    
+    extension.nativeAvailable = (!!window.ext) &amp;&amp; (!!window.ext.IDTK_APP);
+
+    extension.isBridgeAvailable = function(){
+        if (Cocoon.App.forward.nativeAvailable === 'boolean') {
+            return Cocoon.App.forward.nativeAvailable;
+        }
+        else {
+            var available = Cocoon.callNative("IDTK_APP", "forwardAvailable", arguments);
+            available = !!available;
+            Cocoon.App.forward.nativeAvailable = available;
+            return available;
+        }
+    };
+
+
+    var cocoonWebviewIFrame = 'CocoonJS_App_ForCocoonJS_WebViewIFrame';
+    /**
+     * Makes a forward call of some javascript code to be executed in a different environment (i.e. from CocoonJS to the WebView and viceversa).
+     * It waits until the code is executed and the result of it is returned === synchronous.
+     * @function forward
+     * @memberof Cocoon.App
+     * @param {string} code Some JavaScript code in a string to be forwarded and executed in a different JavaScript environment (i.e. from CocoonJS to the WebView and viceversa).
+     * @return {string} The result of the execution of the passed JavaScript code in the different JavaScript environment.
+     * @example
+     * Cocoon.App.forward("alert('Ludei!');");
+     */
+    extension.forward = function (javaScriptCode) {
+        /*jshint evil:true */
+        if (Cocoon.App.nativeAvailable &amp;&amp; Cocoon.App.isBridgeAvailable()) {
+            return Cocoon.callNative("IDTK_APP", "forward", arguments);
+        }
+        else if (!navigator.isCocoonJS) {
+            if (window.name === cocoonWebviewIFrame) {
+                return window.parent.eval(javaScriptCode);
+            }
+            else {
+                return window.frames[cocoonWebviewIFrame].window.eval(javaScriptCode);
+            }
+        }
+    };
+
+    /**
+     * Makes a forward call of some javascript code to be executed in a different environment (i.e. from CocoonJS to the WebView and viceversa).
+     * It is asyncrhonous so it does not wait until the code is executed and the result of it is returned. Instead, it calls a callback function when the execution has finished to pass the result.
+     * @function forwardAsync
+     * @memberof Cocoon.App
+     * @param {string} javaScriptCode Some JavaScript code in a string to be forwarded and executed in a different JavaScript environment (i.e. from CocoonJS to the WebView and viceversa).
+     * @param {function} [callback] A function callback (optional) that will be called when the passed JavaScript code is executed in a different thread to pass the result of the execution in the different JavaScript environment.
+     * @example
+     * Cocoon.App.forwardAsync("alert('Ludei!');", function(){
+     * ...
+     * });
+     */
+    extension.forwardAsync = function (javaScriptCode, returnCallback) {
+        if (Cocoon.App.nativeAvailable &amp;&amp; Cocoon.App.isBridgeAvailable()) {
+            if (typeof returnCallback !== 'undefined') {
+                return ext.IDTK_APP.makeCallAsync("forward", javaScriptCode, returnCallback);
+            }
+            else {
+                return ext.IDTK_APP.makeCallAsync("forward", javaScriptCode);
+            }
+        }
+        else {
+            setTimeout(function() {
+                /*jshint evil:true */
+                var res;
+                if (window.name === cocoonWebviewIFrame) {
+                    res = window.parent.eval(javaScriptCode);
+                }
+                else {
+                    res = window.parent.frames[cocoonWebviewIFrame].window.eval(javaScriptCode);
+                }
+
+                if (returnCallback) {
+                    returnCallback(res);
+                }
+    
+            }, 1);
+        }
+    };
+
+    /**
+     * Allows to load a new JavaScript/HTML5 resource that can be loaded either locally (inside the platform/device storage) or using a remote URL.
+     * @function load
+     * @memberof Cocoon.App
+     * @param {string} path A path to a resource stored in the platform or in a URL to a remote resource.
+     * @param {Cocoon.App.StorageType} [storageType] If the path argument represents a locally stored resource, the developer can specify the storage where it is stored. If no value is passes, the {@link Cocoon.App.StorageType.APP_STORAGE} value is used by default.
+     * @example
+     * Cocoon.App.load("index.html");
+     */
+    extension.load = function (path, storageType) {
+        if (Cocoon.App.nativeAvailable) {
+            return Cocoon.callNative("IDTK_APP", "loadPath", arguments);
+        }
+        else if (!navigator.isCocoonJS) {
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function (event) {
+                if (xhr.readyState === 4) {
+                    var jsCode;
+                    if (xhr.status === 200) {
+                        // If there is no webview, it means we are in the webview, so notify the CocoonJS environment
+                        if (!Cocoon.App.EmulatedWebViewIFrame) {
+                            jsCode = "window.Cocoon &amp;&amp; window.Cocoon.App.onLoadInTheWebViewSucceed.notifyEventListeners('" + path + "');";
+                        }
+                        // If there is a webview, it means we are in CocoonJS, so notify the webview environment
+                        else {
+                            jsCode = "window.Cocoon &amp;&amp; window.Cocoon.App.onLoadInCocoonJSSucceed.notifyEventListeners('" + path + "');";
+                        }
+                        Cocoon.App.forwardAsync(jsCode);
+                        window.location.href = path;
+                    }
+                    else if (xhr.status === 404) {
+                        this.onreadystatechange = null;
+                        // If there is no webview, it means we are in the webview, so notify the CocoonJS environment
+                        if (!Cocoon.App.EmulatedWebViewIFrame) {
+                            jsCode = "Cocoon &amp;&amp; Cocoon.App.onLoadInTheWebViewFailed.notifyEventListeners('" + path + "');";
+                        }
+                        // If there is a webview, it means we are in CocoonJS, so notify the webview environment
+                        else {
+                            jsCode = "Cocoon &amp;&amp; Cocoon.App.onLoadInCocoonJSFailed.notifyEventListeners('" + path + "');";
+                        }
+                        Cocoon.App.forwardAsync(jsCode);
+                    }
+                }
+            };
+            xhr.open("GET", path, true);
+            xhr.send();
+        }
+    };
+
+    /**
+     * Reloads the last loaded path in the current context.
+     * @function reload
+     * @memberof Cocoon.App
+     * @example
+     * Cocoon.App.reload();
+     */
+    extension.reload = function () {
+        if (Cocoon.App.nativeAvailable) {
+            return Cocoon.callNative("IDTK_APP", "reload", arguments);
+        }
+        else if (!navigator.isCocoonJS) {
+            if (window.name === cocoonWebviewIFrame) {
+                return window.parent.location.reload();
+            }
+            else {
+                return window.parent.frames[cocoonWebviewIFrame].window.location.reload();
+            }
+        }
+    };
+
+    /**
+     * Opens a given URL using a system service that is able to open it. For example, open a HTTP URL using the system WebBrowser.
+     * @function openURL
+     * @memberof Cocoon.App
+     * @param {string} url The URL to be opened by a system service.
+     * @example
+     * Cocoon.App.openURL("http://www.ludei.com");
+     */
+    extension.openURL = function (url) {
+        if (Cocoon.App.nativeAvailable) {
+            return Cocoon.callNative("IDTK_APP", "openURL", arguments, true);
+        }
+        else if (!navigator.isCocoonJS) {
+            window.open(url, '_blank');
+        }
+    };
+
+    /**
+     * Forces the app to finish.
+     * @function exit
+     * @memberof Cocoon.App
+     * @example
+     * Cocoon.App.exit();
+     */
+    extension.exit = function () {
+        if (Cocoon.App.nativeAvailable) {
+            return Cocoon.callNative("IDTK_APP", "forceToFinish", arguments);
+        }
+        else if (!navigator.isCocoonJS) {
+            window.close();
+        }
+    };
+
+    /**
+     * 
+     * @memberof Cocoon.App
+     * @name Cocoon.App.StorageType
+     * @property {string} Cocoon.App.StorageType - The base object
+     * @property {string} Cocoon.App.StorageType.APP_STORAGE The application storage
+     * @property {string} Cocoon.App.StorageType.INTERNAL_STORAGE Internal Storage
+     * @property {string} Cocoon.App.StorageType.EXTERNAL_STORAGE External Storage
+     * @property {string} Cocoon.App.StorageType.TEMPORARY_STORAGE Temporary Storage
+     */
+    extension.StorageType = {
+        APP_STORAGE:        "APP_STORAGE",
+        INTERNAL_STORAGE:   "INTERNAL_STORAGE",
+        EXTERNAL_STORAGE:   "EXTERNAL_STORAGE",
+        TEMPORARY_STORAGE:  "TEMPORARY_STORAGE"
+    };
+
+    extension.onSuspended = new Cocoon.EventHandler("IDTK_APP", "App", "onsuspended");
+
+    extension.onActivated = new Cocoon.EventHandler("IDTK_APP", "App", "onactivated");
+
+    extension.onSuspending = new Cocoon.EventHandler("IDTK_APP", "App", "onsuspending");
+
+    extension.onMemoryWarning = new Cocoon.EventHandler("IDTK_APP", "App", "onmemorywarning");
+
+    var signal = new Cocoon.createSignal();
+
+    /**
+     * Allows to listen to events called when the application is suspended.
+     * The callback function does not receive any parameter.
+     * @event On application suspended
+     * @memberof Cocoon.App
+     * @example
+     * Cocoon.App.on("suspended", function(){
+     *  ...
+     * });
+     */
+    signal.register("suspended", extension.onSuspended);
+    /**
+     * Allows to listen to events called when the application is activated.
+     * The callback function does not receive any parameter.
+     * @event On application activated
+     * @memberof Cocoon.App
+     * @example
+     * Cocoon.App.on("activated", function(){
+     *  ...
+     * });
+     */
+    signal.register("activated", extension.onActivated);
+
+    /**
+     * Allows to listen to events called when the application is suspending.
+     * The callback function does not receive any parameter.
+     * @event On application suspending
+     * @memberof Cocoon.App
+     * @example
+     * Cocoon.App.on("suspending", function(){
+     *  ...
+     * });
+     */
+    signal.register("suspending", extension.onSuspending);
+
+    /**
+     * Allows to listen to memory warning notifications from the system
+     * It is strongly recommended that you implement this method and free up as much memory as possible by disposing of cached data objects, images on canvases that can be recreated.
+     * @event On memory warning
+     * @memberof Cocoon.App
+     * @example
+     * Cocoon.App.on("memorywarning", function(){
+     *  ...
+     * });
+     */
+     signal.register("memorywarning", extension.onMemoryWarning);
+
+
+    extension.on = signal.expose();
+    
+    return extension;
+});</pre>
+        </article>
+    </section>
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="copyright">
+		Cocoon Canvas+ - JavaScript Documentation by Ludei, DocStrap Copyright © 2012-2013 <br/> The contributors to the JSDoc3 and DocStrap projects.
+		</span>
+					<br />
+					
+				</footer>
+			</div>
+
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<script src="scripts/sunlight.js"></script>
+	<script src="scripts/sunlight.javascript.js"></script>
+	<script src="scripts/sunlight-plugin.doclinks.js"></script>
+	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
+	<script src="scripts/sunlight-plugin.menu.js"></script>
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.scrollTo.js"></script>
+	<script src="scripts/jquery.localScroll.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
+
+	<script>
+		$( function () {
+			$( "#toc" ).toc( {
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : 60
+			} );
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+
+			var prefix = $(".toc-h2").text();
+			$($(".toc-h3").nextAll()).each(function(){
+
+				if($(this).attr("class") === "toc-h3")
+					return false;
+				// Mega ugly hack, ask karliky
+				// Replace the "<static>" word
+				var str = prefix + "." + $(this).text().toString().replace("<static> ","");
+				// Replace the "function(args)" string
+
+				str = str.replace(/ /g, "").replace(/\n/g, "");
+				str = str.split("(");
+				str = (str.length == 1) ? str.join("") : str[0] + "(" + ")";
+				$($($(this)[0]).children()[0]).text(str);
+			});
+			$(".toc-h4 a").each(function(){
+				var el 	= $(this);
+				var str = el.text().toString().replace("<static> ","");
+				
+				str = str.split("(");
+				str = (str.length == 1) ? str.join("") : str[0] + "(" + ")";
+				el.text(str);
+			});
+			$(".description p").each(function(){
+				var el = $(this);
+				el.html(el.text());
+			});
+		} );
+	</script>
+
+	
+
+</body>
+</html>

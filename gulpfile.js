@@ -25,7 +25,7 @@ gulp.task('doc', ["build"], function() {
     var templates = config.templates;
     templates.path = 'doc_template/js';
 
-    return gulp.src("src/js/*.js")
+    return gulp.src(["src/js/*.js","src/js/device/*.js"])
       .pipe(jsdoc.parser(infos))
       .pipe(jsdoc.generator('dist/doc/js', templates));
 
