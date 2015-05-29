@@ -1,7 +1,7 @@
 /*jshint loopfunc: true */
 /**
  * @fileOverview
- * Cocoon Canvas+ are multiplatform Javascript utils that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project. 
+ * Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project. 
  <p> Select the specific namespace below to open the relevant documentation section:</p>
  <ul>
     <li><a href="http://ludei.github.io/cocoon-common/dist/doc/js/Cocoon.html">Cocoon</a></li>

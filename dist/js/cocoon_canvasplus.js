@@ -1,7 +1,7 @@
 /*jshint loopfunc: true */
 /**
  * @fileOverview
- * Cocoon Canvas+ are multiplatform Javascript utils that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project. 
+ * Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project. 
  <p> Select the specific namespace below to open the relevant documentation section:</p>
  <ul>
     <li><a href="http://ludei.github.io/cocoon-common/dist/doc/js/Cocoon.html">Cocoon</a></li>
@@ -1858,12 +1858,6 @@ Cocoon.define("Cocoon.Device" , function(extension){
 });
 /**
 * Dialog functions (prompt / confirm).
-*
-*<div class="alert alert-success">
-* <p>Here you will find demos about this namespace: </p> 
-* <ul> <li> <a href="https://github.com/ludei/cocoonjs-demos/tree/master/Keyboard">Keyboard demo</a>.</li>
-* <li> <a href="https://github.com/ludei/cocoonjs-demos/tree/Vibration">Vibration demo</a>.</li> </ul>
-*</div>
 * @namespace Cocoon.Dialog
 */
 Cocoon.define("Cocoon.Dialog" , function(extension){
@@ -3458,11 +3452,6 @@ Cocoon.define("Cocoon.Utils" , function(extension){
 /*jshint loopfunc: true */
 /**
 * This namespace represents all functionalities available in the WebView environment.
-*
-* <div class="alert alert-success">
-*   Here you will find a demo about this namespace: <a href="https://github.com/ludei/cocoonjs-demos/tree/Webview">Webview demo</a>.
-*</div>
-*
 * @namespace Cocoon.WebView
 * @example
 * Cocoon.WebView.on("load",{
