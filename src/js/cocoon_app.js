@@ -1,14 +1,5 @@
 /**
  * This namespace represents different methods to control your application.
- *
- * <div class="alert alert-success">
- * <p>Here you will find demos about this namespace: </p> 
- * <ul> <li> <a href="https://github.com/ludei/cocoonjs-demos/tree/master/Rate">Rate demo</a>.</li>
- * <li> <a href="https://github.com/ludei/cocoonjs-demos/tree/Sound">Sound demo</a>.</li>
- * <li> <a href="https://github.com/ludei/cocoonjs-demos/tree/Vibration">Vibration demo</a>.</li>
- * <li> <a href="https://github.com/ludei/cocoonjs-demos/tree/master/Basic%20examples">Basic examples demo</a>.</li></ul>
- * </div>
- *
  * @namespace Cocoon.App
  * @example
  * // Example 1: Closes the application

@@ -9,9 +9,9 @@
 		"default"         : {
 			"outputSourceFiles" : true
 		},
-		"systemName"      : "<img src='img/logomini.png' style='width: 100px;height: 35px;'/> <span class='brand-adjust'>Cocoon Common JavaScript Documentation</span>",
+		"systemName"      : "<img src='img/logo_white2.png' style='width: 145px;height: 35px;'/> <span class='brand-adjust'>Canvas+ JavaScript Documentation</span>",
 		"footer"          : "",
-		"copyright"       : "Atomic Plugins Cocoon Common - JavaScript Documentation by Ludei, DocStrap Copyright © 2012-2013 <br/> The contributors to the JSDoc3 and DocStrap projects.",
+		"copyright"       : "Cocoon Canvas+ - JavaScript Documentation by Ludei, DocStrap Copyright © 2012-2013 <br/> The contributors to the JSDoc3 and DocStrap projects.",
 		"navType"         : "vertical",
 		"theme"           : "spacelab",
 		"linenums"        : true,
