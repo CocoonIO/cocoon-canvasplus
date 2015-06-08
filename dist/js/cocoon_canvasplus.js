@@ -404,6 +404,11 @@
             }.bind(this);
         };
     };
+    
+    //properties for old legacy code compatibility
+    window.CocoonJS = window.Cocoon;
+    window.c2cocoonjs = true;
+
 })();
 /**
  * This namespace represents different methods to control your application.

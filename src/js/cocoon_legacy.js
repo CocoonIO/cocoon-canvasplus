@@ -404,4 +404,9 @@
             }.bind(this);
         };
     };
+    
+    //properties for old legacy code compatibility
+    window.CocoonJS = window.Cocoon;
+    window.c2cocoonjs = true;
+
 })();
