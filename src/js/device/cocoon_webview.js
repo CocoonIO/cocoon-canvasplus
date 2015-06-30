@@ -1,6 +1,6 @@
 /*jshint loopfunc: true */
 /**
-* This namespace represents all functionalities available in the WebView environment.
+* This namespace represents all functionalities available in Canvas+ internal WebView.
 * @namespace Cocoon.WebView
 * @example
 * Cocoon.WebView.on("load",{
@@ -50,7 +50,7 @@ Cocoon.define("Cocoon.WebView" , function(extension){
     };
 
     /**
-    * Hides the transparent WebView on top of the Cocoon hardware acceleration environment rendering contect.
+    * Hides the transparent WebView on top of Canvas+.
     * @function hide
     * @memberof Cocoon.WebView
     */
@@ -67,14 +67,14 @@ Cocoon.define("Cocoon.WebView" , function(extension){
     };
 
     /**
-    * Loads a resource in the Cocoon environment from the WebView environment. 
+    * Loads a resource in Canvas+ from the WebView. 
     * @function loadInCocoon
     * @memberof Cocoon.WebView
     * @param {string} path The path to the resource. It can be a remote URL or a path to a local file.
     * @param {callbacks} cb - An object containing two callbacks, { success : callback, error: callback }.
     * @param {Cocoon.App.StorageType} [storageType] An optional parameter to specify at which storage in the device the file path is stored. By default, APP_STORAGE is used.
-    * <br/> success: This callback function allows listening to events called when the Cocoon load has completed successfully.
-    * <br/> error: This callback function allows listening to events called when the Cocoon load fails.
+    * <br/> success: This callback function allows listening to events called when Canvas+ load has completed successfully.
+    * <br/> error: This callback function allows listening to events called when Canvas+ load fails.
     * @example
     * Cocoon.WebView.loadInCocoon("index.html", {
     *   success : function(){ ... },
@@ -121,7 +121,7 @@ Cocoon.define("Cocoon.WebView" , function(extension){
     {
         
 
-        // Only if we are completely outside CocoonJS (or CocoonJS' webview),
+        // Only if we are completely outside Canvas+ (or Canvas+ internal webview),
         // setup event forwarding from the webview (iframe) to Cocoon.
         if (!Cocoon.App.nativeAvailable && window.name == 'CocoonJS_App_ForCocoonJS_WebViewIFrame') {
             Cocoon.App.forwardEventsToCocoonJSEnabled = false;

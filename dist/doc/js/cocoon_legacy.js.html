@@ -147,7 +147,28 @@
             <pre class="sunlight-highlight-javascript linenums">/*jshint loopfunc: true */
 /**
  * @fileOverview
- * Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project. 
+ * &lt;h1>Canvas+ API documentation&lt;/h1>
+ * &lt;p>Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project.&lt;/p> 
+ * &lt;h3>"On devide ready" event&lt;/h3>
+ * &lt;p>Unlike old CocoonJS plugins, Cocoon Canvas+ plugins need to wait for Cordova &lt;a href="https://cordova.apache.org/docs/en/4.0.0/cordova_events_events.md.html#deviceready">"deviceready" event&lt;/a> to start working.&lt;/p>
+ * @example
+ *   document.addEventListener("deviceready", onDeviceReady, false);
+ *   function onDeviceReady() {
+ *       // Cocoon Canvas+ code here
+ *   }  
+ */
+
+ /**
+ * @fileOverview
+ * &lt;h3>Canvas+ internal Webview &lt;/h3>
+ * &lt;p>Canvas+ allows accessing a full DOM environment via Webview. Thus, there are two environments that live together: Canvas+ and WebView. Although both are two different JavaScript environments, Cocoon allows to render a transparent Webview on top of the Canvas+ OpenGL ES rendering context and it also provides a bidirectional communication channel between them. In this way, the final visual result seems to integrate both environments seamlessly.&lt;/p>
+ * &lt;p>However, as Cordova only injects automatically the required clobbers in the main webview engine, it is neccesary to add manually the following files to the content that will be sent and displayed in Canvas+ internal Webview: &lt;/p>
+ &lt;ul>
+    &lt;li>&lt;a href="https://github.com/ludei/cocoon-common/blob/master/src/js/cocoon.js" target="_blank">cocoon.js&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="https://github.com/CocoonIO/cocoon-canvasplus/blob/master/dist/js/cocoon_canvasplus.js" target="_blank">cocoon_canvasplus.js&lt;/a>&lt;/li>
+ &lt;/ul>
+ &lt;br/>
+ &lt;h3>Documentation&lt;/h3>
  &lt;p> Select the specific namespace below to open the relevant documentation section:&lt;/p>
  &lt;ul>
     &lt;li>&lt;a href="http://ludei.github.io/cocoon-common/dist/doc/js/Cocoon.html">Cocoon&lt;/a>&lt;/li>

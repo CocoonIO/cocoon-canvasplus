@@ -1,7 +1,28 @@
 /*jshint loopfunc: true */
 /**
  * @fileOverview
- * Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project. 
+ * <h1>Canvas+ API documentation</h1>
+ * <p>Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project.</p> 
+ * <h3>"On devide ready" event</h3>
+ * <p>Unlike old CocoonJS plugins, Cocoon Canvas+ plugins need to wait for Cordova <a href="https://cordova.apache.org/docs/en/4.0.0/cordova_events_events.md.html#deviceready">"deviceready" event</a> to start working.</p>
+ * @example
+ *   document.addEventListener("deviceready", onDeviceReady, false);
+ *   function onDeviceReady() {
+ *       // Cocoon Canvas+ code here
+ *   }  
+ */
+
+ /**
+ * @fileOverview
+ * <h3>Canvas+ internal Webview </h3>
+ * <p>Canvas+ allows accessing a full DOM environment via Webview. Thus, there are two environments that live together: Canvas+ and WebView. Although both are two different JavaScript environments, Cocoon allows to render a transparent Webview on top of the Canvas+ OpenGL ES rendering context and it also provides a bidirectional communication channel between them. In this way, the final visual result seems to integrate both environments seamlessly.</p>
+ * <p>However, as Cordova only injects automatically the required clobbers in the main webview engine, it is neccesary to add manually the following files to the content that will be sent and displayed in Canvas+ internal Webview: </p>
+ <ul>
+    <li><a href="https://github.com/ludei/cocoon-common/blob/master/src/js/cocoon.js" target="_blank">cocoon.js</a></li>
+    <li><a href="https://github.com/CocoonIO/cocoon-canvasplus/blob/master/dist/js/cocoon_canvasplus.js" target="_blank">cocoon_canvasplus.js</a></li>
+ </ul>
+ <br/>
+ <h3>Documentation</h3>
  <p> Select the specific namespace below to open the relevant documentation section:</p>
  <ul>
     <li><a href="http://ludei.github.io/cocoon-common/dist/doc/js/Cocoon.html">Cocoon</a></li>
@@ -442,11 +463,11 @@ Cocoon.define("Cocoon.App" , function(extension){
 
     var cocoonWebviewIFrame = 'CocoonJS_App_ForCocoonJS_WebViewIFrame';
     /**
-     * Makes a forward call of some javascript code to be executed in a different environment (i.e. from CocoonJS to the WebView and viceversa).
+     * Makes a forward call of some javascript code to be executed in a different environment (i.e. from Canvas+ the WebView and viceversa).
      * It waits until the code is executed and the result of it is returned === synchronous.
      * @function forward
      * @memberof Cocoon.App
-     * @param {string} code Some JavaScript code in a string to be forwarded and executed in a different JavaScript environment (i.e. from CocoonJS to the WebView and viceversa).
+     * @param {string} code Some JavaScript code in a string to be forwarded and executed in a different JavaScript environment (i.e. from Canvas+ to the WebView and viceversa).
      * @return {string} The result of the execution of the passed JavaScript code in the different JavaScript environment.
      * @example
      * Cocoon.App.forward("alert('Ludei!');");
@@ -467,11 +488,11 @@ Cocoon.define("Cocoon.App" , function(extension){
     };
 
     /**
-     * Makes a forward call of some javascript code to be executed in a different environment (i.e. from CocoonJS to the WebView and viceversa).
+     * Makes a forward call of some javascript code to be executed in a different environment (i.e. from Canvas+ to the WebView and viceversa).
      * It is asyncrhonous so it does not wait until the code is executed and the result of it is returned. Instead, it calls a callback function when the execution has finished to pass the result.
      * @function forwardAsync
      * @memberof Cocoon.App
-     * @param {string} javaScriptCode Some JavaScript code in a string to be forwarded and executed in a different JavaScript environment (i.e. from CocoonJS to the WebView and viceversa).
+     * @param {string} javaScriptCode Some JavaScript code in a string to be forwarded and executed in a different JavaScript environment (i.e. from Canvas+ to the WebView and viceversa).
      * @param {function} [callback] A function callback (optional) that will be called when the passed JavaScript code is executed in a different thread to pass the result of the execution in the different JavaScript environment.
      * @example
      * Cocoon.App.forwardAsync("alert('Ludei!');", function(){
@@ -526,7 +547,7 @@ Cocoon.define("Cocoon.App" , function(extension){
                 if (xhr.readyState === 4) {
                     var jsCode;
                     if (xhr.status === 200) {
-                        // If there is no webview, it means we are in the webview, so notify the CocoonJS environment
+                        // If there is no webview, it means we are in the webview, so notify Canvas+
                         if (!Cocoon.App.EmulatedWebViewIFrame) {
                             jsCode = "window.Cocoon && window.Cocoon.App.onLoadInTheWebViewSucceed.notifyEventListeners('" + path + "');";
                         }
@@ -539,11 +560,11 @@ Cocoon.define("Cocoon.App" , function(extension){
                     }
                     else if (xhr.status === 404) {
                         this.onreadystatechange = null;
-                        // If there is no webview, it means we are in the webview, so notify the CocoonJS environment
+                        // If there is no webview, it means we are in the webview, so notify Canvas+
                         if (!Cocoon.App.EmulatedWebViewIFrame) {
                             jsCode = "Cocoon && Cocoon.App.onLoadInTheWebViewFailed.notifyEventListeners('" + path + "');";
                         }
-                        // If there is a webview, it means we are in CocoonJS, so notify the webview environment
+                        // If there is a webview, it means we are in Canvas+, so notify the webview
                         else {
                             jsCode = "Cocoon && Cocoon.App.onLoadInCocoonJSFailed.notifyEventListeners('" + path + "');";
                         }
@@ -1892,7 +1913,7 @@ Cocoon.define("Cocoon.Dialog" , function(extension){
     };
 
      /**
-      * Pops up a text dialog so the user can introduce some text and the application can get it back. It is the first approach CocoonJS has taken to be able to introduce
+      * Pops up a text dialog so the user can introduce some text and the application can get it back. It is the first approach Cocoon has taken to be able to introduce
       * text input in a easy way. The dialog execution events are passed to the application through the {@link Cocoon.Dialog.onTextDialogFinished} and the {@link Cocoon.Dialog.onTextDialogCancelled} event objects.
       * @param {object} param Object information.
       * @param [param.title] {string} The title to be displayed in the dialog.
@@ -2667,7 +2688,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
             };
 
             /**
-             * Deletes a proxy instance from both the CocoonJS environment structures and also deleting it's webview environment counterpart.
+             * Deletes a proxy instance from both the Cocoon environment structures and also deleting it's webview environment counterpart.
              * This function should be manually called whenever a proxy instance won't be accessed anymore.
              * @param {object} object The proxy object to be deleted.
              */
@@ -2781,13 +2802,13 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @private
     * @param {string} typeName The name of the type to be proxified.
     * @param {array} eventHandlerNames An array with al the event handlers to be proxified. Needed in order to be able to create callbacks for all the event handlers
-    * and call to the CocoonJS counterparts accordingly.
+    * and call to the Cocoon counterparts accordingly.
     */
     extension.setupDestinationProxyType = function (typeName, eventHandlerNames) {
         if (Cocoon.App.nativeAvailable) {
             var parentObject = window;
 
-            // Add a cocoonjs structure to the destination proxified type to store some useful information like all the proxy instances that are created, plus the id counter 
+            // Add a Cocoon structure to the destination proxified type to store some useful information like all the proxy instances that are created, plus the id counter 
             // and the names of all the event handlers and some utility functions.
             parentObject[typeName]._cocoonjs_proxy_type_data =
             {
@@ -2959,7 +2980,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
 
     /**
     * Proxifies the XMLHttpRequest type for the environment where this call is made. After calling this function, all the new objects
-    * of XMLHttpRequest that are instantiated, will be proxified objects that will make calls to the counterparts in the other environment (CocoonJS <-> WebView viceversa).
+    * of XMLHttpRequest that are instantiated, will be proxified objects that will make calls to the counterparts in the other environment (Cocoon <-> WebView viceversa).
     * IMPORTANT NOTE: Remember to take down the proxification once you are done or to delete proxy objects whenever they are not needed anymore or memory leaks may occur.
     * @function xhr
     * @memberof Cocoon.Proxify
@@ -3006,7 +3027,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
 
     /**
     * Proxifies the Audio type for the environment where this call is made. After calling this function, all the new objects
-    * of Audio that are instantiated, will be proxified objects that will make calls to the counterparts in the other environment (CocoonJS <-> WebView viceversa).
+    * of Audio that are instantiated, will be proxified objects that will make calls to the counterparts in the other environment (Cocoon <-> WebView viceversa).
     * IMPORTANT NOTE: Remember to take down the proxification once you are done or to delete proxy objects whenever they are not needed anymore or memory leaks may occur.
     * @function audio
     * @memberof Cocoon.Proxify
@@ -3043,7 +3064,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * This function allows to forward console messages from the WebView to the CocoonJS
     * debug console. What it does is to change the console object for a new one
     * with all it's methods (log, error, info, debug and warn) forwarding their
-    * messages to the CocoonJS environment.
+    * messages to the Cocoon environment.
     * The original console object is stored in the Cocoon.originalConsole property.
     * @function console
     * @memberof Cocoon.Proxify
@@ -3244,7 +3265,7 @@ Cocoon.define("Cocoon.Utils" , function(extension){
     * Although the quality of the images may decrease, it can be very useful in low end devices or those with limited amount of memory.
     * The function sets the threshold on image size (width or height) that will be used in order to know if an image should be reduced or not.
     * It also allows to specify a list of strings to identify in which images file paths should be applied (when they meet the size threshold requirement) 
-    * The developer will still think that the image is of the original size. CocoonJS handles all of the internals to be able to show the image correctly.
+    * The developer will still think that the image is of the original size. Cocoon handles all of the internals to be able to show the image correctly.
     * IMPORTANT NOTE: This function should be called when the application is initialized before any image is set to be loaded for obvious reasons ;).
     * and in which sould be forbid (even if they meet the threshold requirement).
     * @function setTextureReduction
@@ -3298,7 +3319,7 @@ Cocoon.define("Cocoon.Utils" , function(extension){
      * @param {Cocoon.App.StorageType} storageType The developer can specify the storage where it is stored. If no value is passed, the {@link Cocoon.Utils.StorageType.TMP_STORAGE} value is used by default.
      * @param {Cocoon.Utils.CaptureType} captureType Optional value to choose capture type. See {@link Cocoon.Utils.CaptureType}.
      * - 0: Captures everything.
-     * - 1: Only captures cocoonjs surface.
+     * - 1: Only captures cocoon surface.
      * - 2: Only captures system views.
      * @param {boolean} saveToGallery Optional value to specify if the capture image should be stored in the device image gallery or not.
      * @throws exception if the image fails to be stored or there is another error.
@@ -3321,12 +3342,12 @@ Cocoon.define("Cocoon.Utils" , function(extension){
      * @param {Cocoon.App.StorageType} storageType The developer can specify the storage where it is stored. If no value is passed, the {@see Cocoon.Utils.StorageType.TMP_STORAGE} value is used by default.
      * @param {Cocoon.Utils.CaptureType} captureType Optional value to choose capture type. See {@link Cocoon.Utils.CaptureType}.
      * - 0: Captures everything.
-     * - 1: Only captures cocoonjs surface.
+     * - 1: Only captures cocoon surface.
      * - 2: Only captures system views.
      * @param {boolean} saveToGallery Optional value to specify if the capture image should be stored in the device image gallery or not.
      * @param {function} callback Response callback, check the error property to monitor errors. Check the 'url' property to get the URL of the saved Image
      * @example
-     * Cocoon.Utils.captureScreenAsync("myScreenshot.png", Cocoon.Utils.StorageType.TMP_STORAGE, false, Cocoon.Utils.CaptureType.EVERYTHING, function(){
+     * Cocoon.Utils.captureScreenAsync("myScreenshot.png", Cocoon.Utils.StorageType.TMP_STORAGE, false, Cocoon.Utils.CaptureType.EVERYTHING, function(url, error){
      * ...
      * });
      */
@@ -3385,8 +3406,8 @@ Cocoon.define("Cocoon.Utils" , function(extension){
 
     /**
      * Sets a max memory threshold in Canvas+ for canvas2D contexts.
-     * If the maxMemory is enabled, CocoonJS checks the total amount of texture sizes (images and canvases). 
-     * When the memory size reaches the max memory threshold CocoonJS disposes least recently used textures until the memory fits the threshold. 
+     * If the maxMemory is enabled, Cocoon checks the total amount of texture sizes (images and canvases). 
+     * When the memory size reaches the max memory threshold Cocoon disposes least recently used textures until the memory fits the threshold. 
      * It disposes textures used for JS Image objects (which can be reloaded later if needed).
      * It doesn't dispose canvas objects because they cannot be reconstructed if they are used again in a render operation.
      * @function setMaxMemory
@@ -3406,8 +3427,8 @@ Cocoon.define("Cocoon.Utils" , function(extension){
     * @memberof Cocoon.Utils
     * @name Cocoon.Utils.CaptureType
     * @property {string} Cocoon.Utils.CaptureType - The base object
-    * @property {string} Cocoon.Utils.CaptureType.EVERYTHING - Captures everything, both the CocoonJS GL hardware accelerated surface and the system views (like the WebView).
-    * @property {string} Cocoon.Utils.CaptureType.COCOONJS_GL_SURFACE - Captures just the CocoonJS GL hardware accelerated surface.
+    * @property {string} Cocoon.Utils.CaptureType.EVERYTHING - Captures everything, both the Cocoon GL hardware accelerated surface and the system views (like the WebView).
+    * @property {string} Cocoon.Utils.CaptureType.COCOONJS_GL_SURFACE - Captures just the Cocoon GL hardware accelerated surface.
     * @property {string} Cocoon.Utils.CaptureType.JUST_SYSTEM_VIEWS - Captures just the sustem views (like the webview)
     */
     extension.CaptureType = {
@@ -3456,7 +3477,7 @@ Cocoon.define("Cocoon.Utils" , function(extension){
 });
 /*jshint loopfunc: true */
 /**
-* This namespace represents all functionalities available in the WebView environment.
+* This namespace represents all functionalities available in Canvas+ internal WebView.
 * @namespace Cocoon.WebView
 * @example
 * Cocoon.WebView.on("load",{
@@ -3506,7 +3527,7 @@ Cocoon.define("Cocoon.WebView" , function(extension){
     };
 
     /**
-    * Hides the transparent WebView on top of the Cocoon hardware acceleration environment rendering contect.
+    * Hides the transparent WebView on top of Canvas+.
     * @function hide
     * @memberof Cocoon.WebView
     */
@@ -3523,14 +3544,14 @@ Cocoon.define("Cocoon.WebView" , function(extension){
     };
 
     /**
-    * Loads a resource in the Cocoon environment from the WebView environment. 
+    * Loads a resource in Canvas+ from the WebView. 
     * @function loadInCocoon
     * @memberof Cocoon.WebView
     * @param {string} path The path to the resource. It can be a remote URL or a path to a local file.
     * @param {callbacks} cb - An object containing two callbacks, { success : callback, error: callback }.
     * @param {Cocoon.App.StorageType} [storageType] An optional parameter to specify at which storage in the device the file path is stored. By default, APP_STORAGE is used.
-    * <br/> success: This callback function allows listening to events called when the Cocoon load has completed successfully.
-    * <br/> error: This callback function allows listening to events called when the Cocoon load fails.
+    * <br/> success: This callback function allows listening to events called when Canvas+ load has completed successfully.
+    * <br/> error: This callback function allows listening to events called when Canvas+ load fails.
     * @example
     * Cocoon.WebView.loadInCocoon("index.html", {
     *   success : function(){ ... },
@@ -3577,7 +3598,7 @@ Cocoon.define("Cocoon.WebView" , function(extension){
     {
         
 
-        // Only if we are completely outside CocoonJS (or CocoonJS' webview),
+        // Only if we are completely outside Canvas+ (or Canvas+ internal webview),
         // setup event forwarding from the webview (iframe) to Cocoon.
         if (!Cocoon.App.nativeAvailable && window.name == 'CocoonJS_App_ForCocoonJS_WebViewIFrame') {
             Cocoon.App.forwardEventsToCocoonJSEnabled = false;
@@ -3614,7 +3635,7 @@ Cocoon.define("Cocoon.WebView" , function(extension){
     return extension;
 });
 /** 
-* This namespace holds the WebDialog widget, which essentially shows a Webview on top of the CocoonJS layer.
+* This namespace holds the WebDialog widget, which essentially shows a Webview on top of the Cocoon layer.
 * @namespace Cocoon.Widget
 */
 Cocoon.define("Cocoon.Widget" , function(extension){

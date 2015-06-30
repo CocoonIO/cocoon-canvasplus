@@ -171,7 +171,7 @@ Cocoon.define("Cocoon.Utils" , function(extension){
     * Although the quality of the images may decrease, it can be very useful in low end devices or those with limited amount of memory.
     * The function sets the threshold on image size (width or height) that will be used in order to know if an image should be reduced or not.
     * It also allows to specify a list of strings to identify in which images file paths should be applied (when they meet the size threshold requirement) 
-    * The developer will still think that the image is of the original size. CocoonJS handles all of the internals to be able to show the image correctly.
+    * The developer will still think that the image is of the original size. Cocoon handles all of the internals to be able to show the image correctly.
     * IMPORTANT NOTE: This function should be called when the application is initialized before any image is set to be loaded for obvious reasons ;).
     * and in which sould be forbid (even if they meet the threshold requirement).
     * @function setTextureReduction
@@ -225,7 +225,7 @@ Cocoon.define("Cocoon.Utils" , function(extension){
      * @param {Cocoon.App.StorageType} storageType The developer can specify the storage where it is stored. If no value is passed, the {@link Cocoon.Utils.StorageType.TMP_STORAGE} value is used by default.
      * @param {Cocoon.Utils.CaptureType} captureType Optional value to choose capture type. See {@link Cocoon.Utils.CaptureType}.
      * - 0: Captures everything.
-     * - 1: Only captures cocoonjs surface.
+     * - 1: Only captures cocoon surface.
      * - 2: Only captures system views.
      * @param {boolean} saveToGallery Optional value to specify if the capture image should be stored in the device image gallery or not.
      * @throws exception if the image fails to be stored or there is another error.
@@ -248,12 +248,12 @@ Cocoon.define("Cocoon.Utils" , function(extension){
      * @param {Cocoon.App.StorageType} storageType The developer can specify the storage where it is stored. If no value is passed, the {@see Cocoon.Utils.StorageType.TMP_STORAGE} value is used by default.
      * @param {Cocoon.Utils.CaptureType} captureType Optional value to choose capture type. See {@link Cocoon.Utils.CaptureType}.
      * - 0: Captures everything.
-     * - 1: Only captures cocoonjs surface.
+     * - 1: Only captures cocoon surface.
      * - 2: Only captures system views.
      * @param {boolean} saveToGallery Optional value to specify if the capture image should be stored in the device image gallery or not.
      * @param {function} callback Response callback, check the error property to monitor errors. Check the 'url' property to get the URL of the saved Image
      * @example
-     * Cocoon.Utils.captureScreenAsync("myScreenshot.png", Cocoon.Utils.StorageType.TMP_STORAGE, false, Cocoon.Utils.CaptureType.EVERYTHING, function(){
+     * Cocoon.Utils.captureScreenAsync("myScreenshot.png", Cocoon.Utils.StorageType.TMP_STORAGE, false, Cocoon.Utils.CaptureType.EVERYTHING, function(url, error){
      * ...
      * });
      */
@@ -312,8 +312,8 @@ Cocoon.define("Cocoon.Utils" , function(extension){
 
     /**
      * Sets a max memory threshold in Canvas+ for canvas2D contexts.
-     * If the maxMemory is enabled, CocoonJS checks the total amount of texture sizes (images and canvases). 
-     * When the memory size reaches the max memory threshold CocoonJS disposes least recently used textures until the memory fits the threshold. 
+     * If the maxMemory is enabled, Cocoon checks the total amount of texture sizes (images and canvases). 
+     * When the memory size reaches the max memory threshold Cocoon disposes least recently used textures until the memory fits the threshold. 
      * It disposes textures used for JS Image objects (which can be reloaded later if needed).
      * It doesn't dispose canvas objects because they cannot be reconstructed if they are used again in a render operation.
      * @function setMaxMemory
@@ -333,8 +333,8 @@ Cocoon.define("Cocoon.Utils" , function(extension){
     * @memberof Cocoon.Utils
     * @name Cocoon.Utils.CaptureType
     * @property {string} Cocoon.Utils.CaptureType - The base object
-    * @property {string} Cocoon.Utils.CaptureType.EVERYTHING - Captures everything, both the CocoonJS GL hardware accelerated surface and the system views (like the WebView).
-    * @property {string} Cocoon.Utils.CaptureType.COCOONJS_GL_SURFACE - Captures just the CocoonJS GL hardware accelerated surface.
+    * @property {string} Cocoon.Utils.CaptureType.EVERYTHING - Captures everything, both the Cocoon GL hardware accelerated surface and the system views (like the WebView).
+    * @property {string} Cocoon.Utils.CaptureType.COCOONJS_GL_SURFACE - Captures just the Cocoon GL hardware accelerated surface.
     * @property {string} Cocoon.Utils.CaptureType.JUST_SYSTEM_VIEWS - Captures just the sustem views (like the webview)
     */
     extension.CaptureType = {

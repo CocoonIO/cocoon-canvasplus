@@ -178,7 +178,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
             };
 
             /**
-             * Deletes a proxy instance from both the CocoonJS environment structures and also deleting it's webview environment counterpart.
+             * Deletes a proxy instance from both the Cocoon environment structures and also deleting it's webview environment counterpart.
              * This function should be manually called whenever a proxy instance won't be accessed anymore.
              * @param {object} object The proxy object to be deleted.
              */
@@ -292,13 +292,13 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @private
     * @param {string} typeName The name of the type to be proxified.
     * @param {array} eventHandlerNames An array with al the event handlers to be proxified. Needed in order to be able to create callbacks for all the event handlers
-    * and call to the CocoonJS counterparts accordingly.
+    * and call to the Cocoon counterparts accordingly.
     */
     extension.setupDestinationProxyType = function (typeName, eventHandlerNames) {
         if (Cocoon.App.nativeAvailable) {
             var parentObject = window;
 
-            // Add a cocoonjs structure to the destination proxified type to store some useful information like all the proxy instances that are created, plus the id counter 
+            // Add a Cocoon structure to the destination proxified type to store some useful information like all the proxy instances that are created, plus the id counter 
             // and the names of all the event handlers and some utility functions.
             parentObject[typeName]._cocoonjs_proxy_type_data =
             {
@@ -470,7 +470,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
 
     /**
     * Proxifies the XMLHttpRequest type for the environment where this call is made. After calling this function, all the new objects
-    * of XMLHttpRequest that are instantiated, will be proxified objects that will make calls to the counterparts in the other environment (CocoonJS <-> WebView viceversa).
+    * of XMLHttpRequest that are instantiated, will be proxified objects that will make calls to the counterparts in the other environment (Cocoon <-> WebView viceversa).
     * IMPORTANT NOTE: Remember to take down the proxification once you are done or to delete proxy objects whenever they are not needed anymore or memory leaks may occur.
     * @function xhr
     * @memberof Cocoon.Proxify
@@ -517,7 +517,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
 
     /**
     * Proxifies the Audio type for the environment where this call is made. After calling this function, all the new objects
-    * of Audio that are instantiated, will be proxified objects that will make calls to the counterparts in the other environment (CocoonJS <-> WebView viceversa).
+    * of Audio that are instantiated, will be proxified objects that will make calls to the counterparts in the other environment (Cocoon <-> WebView viceversa).
     * IMPORTANT NOTE: Remember to take down the proxification once you are done or to delete proxy objects whenever they are not needed anymore or memory leaks may occur.
     * @function audio
     * @memberof Cocoon.Proxify
@@ -554,7 +554,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * This function allows to forward console messages from the WebView to the CocoonJS
     * debug console. What it does is to change the console object for a new one
     * with all it's methods (log, error, info, debug and warn) forwarding their
-    * messages to the CocoonJS environment.
+    * messages to the Cocoon environment.
     * The original console object is stored in the Cocoon.originalConsole property.
     * @function console
     * @memberof Cocoon.Proxify

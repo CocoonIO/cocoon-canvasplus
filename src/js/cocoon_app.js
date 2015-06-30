@@ -30,11 +30,11 @@ Cocoon.define("Cocoon.App" , function(extension){
 
     var cocoonWebviewIFrame = 'CocoonJS_App_ForCocoonJS_WebViewIFrame';
     /**
-     * Makes a forward call of some javascript code to be executed in a different environment (i.e. from CocoonJS to the WebView and viceversa).
+     * Makes a forward call of some javascript code to be executed in a different environment (i.e. from Canvas+ the WebView and viceversa).
      * It waits until the code is executed and the result of it is returned === synchronous.
      * @function forward
      * @memberof Cocoon.App
-     * @param {string} code Some JavaScript code in a string to be forwarded and executed in a different JavaScript environment (i.e. from CocoonJS to the WebView and viceversa).
+     * @param {string} code Some JavaScript code in a string to be forwarded and executed in a different JavaScript environment (i.e. from Canvas+ to the WebView and viceversa).
      * @return {string} The result of the execution of the passed JavaScript code in the different JavaScript environment.
      * @example
      * Cocoon.App.forward("alert('Ludei!');");
@@ -55,11 +55,11 @@ Cocoon.define("Cocoon.App" , function(extension){
     };
 
     /**
-     * Makes a forward call of some javascript code to be executed in a different environment (i.e. from CocoonJS to the WebView and viceversa).
+     * Makes a forward call of some javascript code to be executed in a different environment (i.e. from Canvas+ to the WebView and viceversa).
      * It is asyncrhonous so it does not wait until the code is executed and the result of it is returned. Instead, it calls a callback function when the execution has finished to pass the result.
      * @function forwardAsync
      * @memberof Cocoon.App
-     * @param {string} javaScriptCode Some JavaScript code in a string to be forwarded and executed in a different JavaScript environment (i.e. from CocoonJS to the WebView and viceversa).
+     * @param {string} javaScriptCode Some JavaScript code in a string to be forwarded and executed in a different JavaScript environment (i.e. from Canvas+ to the WebView and viceversa).
      * @param {function} [callback] A function callback (optional) that will be called when the passed JavaScript code is executed in a different thread to pass the result of the execution in the different JavaScript environment.
      * @example
      * Cocoon.App.forwardAsync("alert('Ludei!');", function(){
@@ -114,7 +114,7 @@ Cocoon.define("Cocoon.App" , function(extension){
                 if (xhr.readyState === 4) {
                     var jsCode;
                     if (xhr.status === 200) {
-                        // If there is no webview, it means we are in the webview, so notify the CocoonJS environment
+                        // If there is no webview, it means we are in the webview, so notify Canvas+
                         if (!Cocoon.App.EmulatedWebViewIFrame) {
                             jsCode = "window.Cocoon && window.Cocoon.App.onLoadInTheWebViewSucceed.notifyEventListeners('" + path + "');";
                         }
@@ -127,11 +127,11 @@ Cocoon.define("Cocoon.App" , function(extension){
                     }
                     else if (xhr.status === 404) {
                         this.onreadystatechange = null;
-                        // If there is no webview, it means we are in the webview, so notify the CocoonJS environment
+                        // If there is no webview, it means we are in the webview, so notify Canvas+
                         if (!Cocoon.App.EmulatedWebViewIFrame) {
                             jsCode = "Cocoon && Cocoon.App.onLoadInTheWebViewFailed.notifyEventListeners('" + path + "');";
                         }
-                        // If there is a webview, it means we are in CocoonJS, so notify the webview environment
+                        // If there is a webview, it means we are in Canvas+, so notify the webview
                         else {
                             jsCode = "Cocoon && Cocoon.App.onLoadInCocoonJSFailed.notifyEventListeners('" + path + "');";
                         }

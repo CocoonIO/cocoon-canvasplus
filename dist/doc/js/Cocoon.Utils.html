@@ -319,7 +319,7 @@
             <td class="description last"><p>Optional value to choose capture type. See <a href="Cocoon.Utils.html#CaptureType">Cocoon.Utils.CaptureType</a>.</p>
 <ul>
 <li>0: Captures everything.</li>
-<li>1: Only captures cocoonjs surface.</li>
+<li>1: Only captures cocoon surface.</li>
 <li>2: Only captures system views.</li>
 </ul></td>
         </tr>
@@ -534,7 +534,7 @@ Async mode captures a final frame as soon as possible.</p>
             <td class="description last"><p>Optional value to choose capture type. See <a href="Cocoon.Utils.html#CaptureType">Cocoon.Utils.CaptureType</a>.</p>
 <ul>
 <li>0: Captures everything.</li>
-<li>1: Only captures cocoonjs surface.</li>
+<li>1: Only captures cocoon surface.</li>
 <li>2: Only captures system views.</li>
 </ul></td>
         </tr>
@@ -632,7 +632,7 @@ Async mode captures a final frame as soon as possible.</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">Cocoon.Utils.captureScreenAsync("myScreenshot.png", Cocoon.Utils.StorageType.TMP_STORAGE, false, Cocoon.Utils.CaptureType.EVERYTHING, function(){
+    <pre class="sunlight-highlight-javascript">Cocoon.Utils.captureScreenAsync("myScreenshot.png", Cocoon.Utils.StorageType.TMP_STORAGE, false, Cocoon.Utils.CaptureType.EVERYTHING, function(url, error){
 ...
 });</pre>
 
@@ -1100,8 +1100,8 @@ to be music.</p>
     
     <div class="description">
         <p>Sets a max memory threshold in Canvas+ for canvas2D contexts.
-If the maxMemory is enabled, CocoonJS checks the total amount of texture sizes (images and canvases). 
-When the memory size reaches the max memory threshold CocoonJS disposes least recently used textures until the memory fits the threshold. 
+If the maxMemory is enabled, Cocoon checks the total amount of texture sizes (images and canvases). 
+When the memory size reaches the max memory threshold Cocoon disposes least recently used textures until the memory fits the threshold. 
 It disposes textures used for JS Image objects (which can be reloaded later if needed).
 It doesn't dispose canvas objects because they cannot be reconstructed if they are used again in a render operation.</p>
     </div>
@@ -1464,7 +1464,7 @@ will be used.</p>
 Although the quality of the images may decrease, it can be very useful in low end devices or those with limited amount of memory.
 The function sets the threshold on image size (width or height) that will be used in order to know if an image should be reduced or not.
 It also allows to specify a list of strings to identify in which images file paths should be applied (when they meet the size threshold requirement) 
-The developer will still think that the image is of the original size. CocoonJS handles all of the internals to be able to show the image correctly.
+The developer will still think that the image is of the original size. Cocoon handles all of the internals to be able to show the image correctly.
 IMPORTANT NOTE: This function should be called when the application is initialized before any image is set to be loaded for obvious reasons ;).
 and in which sould be forbid (even if they meet the threshold requirement).</p>
     </div>
@@ -1855,7 +1855,7 @@ quality of some images even they meet the size threshold requirement.</p></td>
 
             
 
-            <td class="description last"><p>Captures everything, both the CocoonJS GL hardware accelerated surface and the system views (like the WebView).</p></td>
+            <td class="description last"><p>Captures everything, both the Cocoon GL hardware accelerated surface and the system views (like the WebView).</p></td>
         </tr>
 
 	
@@ -1878,7 +1878,7 @@ quality of some images even they meet the size threshold requirement.</p></td>
 
             
 
-            <td class="description last"><p>Captures just the CocoonJS GL hardware accelerated surface.</p></td>
+            <td class="description last"><p>Captures just the Cocoon GL hardware accelerated surface.</p></td>
         </tr>
 
 	

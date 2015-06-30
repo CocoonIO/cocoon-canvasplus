@@ -29,7 +29,7 @@ Cocoon.define("Cocoon.Dialog" , function(extension){
     };
 
      /**
-      * Pops up a text dialog so the user can introduce some text and the application can get it back. It is the first approach CocoonJS has taken to be able to introduce
+      * Pops up a text dialog so the user can introduce some text and the application can get it back. It is the first approach Cocoon has taken to be able to introduce
       * text input in a easy way. The dialog execution events are passed to the application through the {@link Cocoon.Dialog.onTextDialogFinished} and the {@link Cocoon.Dialog.onTextDialogCancelled} event objects.
       * @param {object} param Object information.
       * @param [param.title] {string} The title to be displayed in the dialog.
