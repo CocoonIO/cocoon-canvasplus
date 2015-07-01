@@ -3,7 +3,7 @@
  * @fileOverview
  * <h1>Canvas+ API documentation</h1>
  * <p>Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project.</p> 
- * <h3>"On devide ready" event</h3>
+ * <h3>Important note</h3>
  * <p>Unlike old CocoonJS plugins, Cocoon Canvas+ plugins need to wait for Cordova <a href="https://cordova.apache.org/docs/en/4.0.0/cordova_events_events.md.html#deviceready">"deviceready" event</a> to start working.</p>
  * @example
  *   document.addEventListener("deviceready", onDeviceReady, false);
