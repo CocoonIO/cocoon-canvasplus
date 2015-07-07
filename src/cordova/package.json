@@ -1,0 +1,28 @@
+{
+  "name": "cocoon-plugin-canvasplus-common",
+  "version": "1.0.0",
+  "description": "Common utils for Cocoon Canvas+",
+  "cordova": {
+    "id": "cocoon-plugin-canvasplus-common",
+    "platforms": []
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CocoonIO/cocoon-canvasplus"
+  },
+  "keywords": [
+    "cordova",
+    "cocoon",
+    "atomic",
+    "plugins",
+    "cocoonjs",
+    "canvas",
+    "ecosystem:cordova"
+  ],
+  "author": "ludei",
+  "license": "MPL 2.0",
+  "bugs": {
+    "url": "https://github.com/CocoonIO/cocoon-canvasplus/issues"
+  },
+  "homepage": "https://github.com/CocoonIO/cocoon-canvasplus#readme"
+}

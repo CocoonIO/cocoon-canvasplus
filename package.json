@@ -1,5 +1,5 @@
 {
-  "name": "plugins-ads",
+  "name": "cocoon-canvasplus",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,10 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@bitbucket.org/ludei/cocoon-common.git"
+    "url": "https://github.com/CocoonIO/cocoon-canvasplus"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "ludei",
+  "license": "MPL 2.0",
   "devDependencies": {
     "gulp": "^3.8.10",
     "gulp-concat": "^2.5.2",
