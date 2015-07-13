@@ -193,36 +193,6 @@ Cocoon.define("Cocoon.App" , function(extension){
     };
 
     /**
-    * Sets a callback function that will be called whenever the system tries to finish the app.
-    * The developer can specify how the system will react to the finish of the app by returning a
-    * boolean value in the callback function: true means, close the app, false means that the developer
-    * will handle the app close.
-    * A common example of this is the back button in Android devices. When the back button is pressed, this
-    * callback will be called and the system will react depending on the developers choice finishing, or not,
-    * the application.
-    * @function exitCallback
-    * @memberOf Cocoon.App
-    * @param {function} callback A function object that will be called when the system
-    * determines that the app should be finished. This function must return a true or a false value
-    * depending on what the developer wants: true === finish the app, false === do not close the app.
-    * @example
-    * Cocoon.App.exitCallback(function(){
-    *   if(true){
-    *       return true; // Finish the app
-    *   }else{
-    *       return false; // Do not close the app
-    *   }  
-    * });
-    */
-    extension.exitCallback = function(appShouldFinishCallback)
-    {
-        if (navigator.isCocoonJS && Cocoon.App.nativeAvailable)
-        {
-            window.onidtkappfinish = appShouldFinishCallback;
-        }
-    };
-
-    /**
     * @private
     * @function forwardedEventFromTheWebView
     * @memberOf Cocoon.App
