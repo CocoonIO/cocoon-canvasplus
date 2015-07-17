@@ -1,16 +1,4 @@
 /*jshint loopfunc: true */
-/**
- * @fileOverview
- * <h1>Canvas+ API documentation</h1>
- * <p>Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project.</p> 
- * <h3>Important note</h3>
- * <p>Unlike old CocoonJS plugins, Cocoon Canvas+ plugins need to wait for Cordova <a href="https://cordova.apache.org/docs/en/4.0.0/cordova_events_events.md.html#deviceready">"deviceready" event</a> to start working.</p>
- * @example
- *   document.addEventListener("deviceready", onDeviceReady, false);
- *   function onDeviceReady() {
- *       // Cocoon Canvas+ code here
- *   }  
- */
 
  /**
  * @fileOverview
@@ -39,11 +27,25 @@
  * We hope you find everything you need to get going here, but if you stumble on any problems with the docs or the plugins, 
  * just drop us a line at our forums and we'll do our best to help you out.
  <h3>Tools</h3>
- <a href="http://support.ludei.com/hc/communities/public/topics"><img src="img/cocoon-tools-1.png" /></a>
+ <a href="https://forums.cocoon.io/"><img src="img/cocoon-tools-1.png" /></a>
  <a href="https://cocoon.io/doc"><img src="img/cocoon-tools-2.png" /></a>
  <a href="http://cocoon.io/"><img src="img/cocoon-tools-3.png" /></a>
  * @version 1.0
  */
+
+ /**
+ * @fileOverview
+ * <h1>Canvas+ API documentation</h1>
+ * <p>Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project.</p> 
+ * <h3>Important note</h3>
+ * <p>Unlike old CocoonJS plugins, Cocoon Canvas+ plugins need to wait for Cordova <a href="https://cordova.apache.org/docs/en/4.0.0/cordova_events_events.md.html#deviceready">"deviceready" event</a> to start working.</p>
+ * @example
+ *   document.addEventListener("deviceready", onDeviceReady, false);
+ *   function onDeviceReady() {
+ *       // Cocoon Canvas+ code here
+ *   }  
+ */
+
 (function () {
     
     /**

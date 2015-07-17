@@ -145,18 +145,6 @@
     <section>
         <article>
             <pre class="sunlight-highlight-javascript linenums">/*jshint loopfunc: true */
-/**
- * @fileOverview
- * &lt;h1>Canvas+ API documentation&lt;/h1>
- * &lt;p>Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project.&lt;/p> 
- * &lt;h3>Important note&lt;/h3>
- * &lt;p>Unlike old CocoonJS plugins, Cocoon Canvas+ plugins need to wait for Cordova &lt;a href="https://cordova.apache.org/docs/en/4.0.0/cordova_events_events.md.html#deviceready">"deviceready" event&lt;/a> to start working.&lt;/p>
- * @example
- *   document.addEventListener("deviceready", onDeviceReady, false);
- *   function onDeviceReady() {
- *       // Cocoon Canvas+ code here
- *   }  
- */
 
  /**
  * @fileOverview
@@ -185,11 +173,25 @@
  * We hope you find everything you need to get going here, but if you stumble on any problems with the docs or the plugins, 
  * just drop us a line at our forums and we'll do our best to help you out.
  &lt;h3>Tools&lt;/h3>
- &lt;a href="http://support.ludei.com/hc/communities/public/topics">&lt;img src="img/cocoon-tools-1.png" />&lt;/a>
+ &lt;a href="https://forums.cocoon.io/">&lt;img src="img/cocoon-tools-1.png" />&lt;/a>
  &lt;a href="https://cocoon.io/doc">&lt;img src="img/cocoon-tools-2.png" />&lt;/a>
  &lt;a href="http://cocoon.io/">&lt;img src="img/cocoon-tools-3.png" />&lt;/a>
  * @version 1.0
  */
+
+ /**
+ * @fileOverview
+ * &lt;h1>Canvas+ API documentation&lt;/h1>
+ * &lt;p>Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project.&lt;/p> 
+ * &lt;h3>Important note&lt;/h3>
+ * &lt;p>Unlike old CocoonJS plugins, Cocoon Canvas+ plugins need to wait for Cordova &lt;a href="https://cordova.apache.org/docs/en/4.0.0/cordova_events_events.md.html#deviceready">"deviceready" event&lt;/a> to start working.&lt;/p>
+ * @example
+ *   document.addEventListener("deviceready", onDeviceReady, false);
+ *   function onDeviceReady() {
+ *       // Cocoon Canvas+ code here
+ *   }  
+ */
+
 (function () {
     
     /**
@@ -200,7 +202,7 @@
     */
     var Cocoon = window.Cocoon;
     if (!Cocoon &amp;&amp; window.cordova &amp;&amp; typeof require !== 'undefined') {
-        Cocoon = cordova.require('com.ludei.cocoon.common.Cocoon');
+        require('cocoon-plugin-common.Cocoon');
     }
     
     /**
