@@ -1,8 +1,12 @@
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, indent:4, maxerr:50 */
 
-if ( !window.ext || typeof window.ext.IDTK_SRV_BOX2D === 'undefined' ){
+if (window.Box2D && window.Box2D.HEAP32) {
+    console.log("The CocoonJS binding for Box2D has been ignored because Box2D Emscripten have been found");
+}
+else if ( !window.ext || typeof window.ext.IDTK_SRV_BOX2D === 'undefined' ){
     console.log("The CocoonJS binding for Box2D has been ignored because ext.IDTK_SRV_BOX2D is not available");   
-}else{
+}
+else{
     // Load our binding
     window.Box2D                  = {};
     window.Box2D.Dynamics         = {};
