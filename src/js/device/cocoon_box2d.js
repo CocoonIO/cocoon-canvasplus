@@ -3,12 +3,16 @@
 if (window.Box2D && window.Box2D.HEAP32) {
     console.log("The CocoonJS binding for Box2D has been ignored because Box2D Emscripten have been found");
 }
+else if (window.Box2D) {
+    console.log("The CocoonJS binding for Box2D has been ignored another Box2D have been found");
+}
 else if ( !window.ext || typeof window.ext.IDTK_SRV_BOX2D === 'undefined' ){
     console.log("The CocoonJS binding for Box2D has been ignored because ext.IDTK_SRV_BOX2D is not available");   
 }
 else{
     // Load our binding
     window.Box2D                  = {};
+    window.CocoonBox2D =   window.Box2D; //Duplicate object to avoid window.Box2D override in some engines
     window.Box2D.Dynamics         = {};
     window.Box2D.Dynamics.Joints  = {};
     window.Box2D.Common           = {};
