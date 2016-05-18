@@ -107,7 +107,7 @@ Cocoon.define("Cocoon.Utils" , function(extension){
      * @param {boolean} saveToGallery Optional value to specify if the capture image should be stored in the device image gallery or not.
      * @param {function} callback Response callback, check the error property to monitor errors. Check the 'url' property to get the URL of the saved Image
      * @example
-     * Cocoon.Utils.captureScreenAsync("myScreenshot.png", Cocoon.Utils.StorageType.TMP_STORAGE, false, Cocoon.Utils.CaptureType.EVERYTHING, function(url, error){
+     * Cocoon.Utils.captureScreenAsync("myScreenshot.png", Cocoon.Utils.StorageType.TMP_STORAGE, Cocoon.Utils.CaptureType.EVERYTHING, false, function(url, error) {
      * ...
      * });
      */
