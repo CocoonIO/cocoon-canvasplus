@@ -1,53 +1,53 @@
 /*jshint loopfunc: true */
 
- /**
- * @fileOverview
- * <h3>Canvas+ internal Webview </h3>
- * <p>Canvas+ allows accessing a full DOM environment via Webview. Thus, there are two environments that live together: Canvas+ and WebView. Although both are two different JavaScript environments, Cocoon allows to render a transparent Webview on top of the Canvas+ OpenGL ES rendering context and it also provides a bidirectional communication channel between them. In this way, the final visual result seems to integrate both environments seamlessly.</p>
- * <p>However, as Cordova only injects automatically the required clobbers in the main webview engine, it is neccesary to add manually the following files to the content that will be sent and displayed in Canvas+ internal Webview: </p>
- <ul>
-    <li><a href="https://github.com/ludei/cocoon-common/blob/master/src/js/cocoon.js" target="_blank">cocoon.js</a></li>
-    <li><a href="https://github.com/CocoonIO/cocoon-canvasplus/blob/master/dist/js/cocoon_canvasplus.js" target="_blank">cocoon_canvasplus.js</a></li>
- </ul>
- <br/>
- <h3>Documentation</h3>
- <p> Select the specific namespace below to open the relevant documentation section:</p>
- <ul>
-    <li><a href="http://ludei.github.io/cocoon-common/dist/doc/js/Cocoon.html">Cocoon</a></li>
-    <li><a href="Cocoon.App.html">App</a></li>
-    <li><a href="Cocoon.Device.html">Device</a></li>
-    <li><a href="Cocoon.Dialog.html">Dialog</a></li>
-    <li><a href="Cocoon.Motion.html">Motion</a></li>
-    <li><a href="Cocoon.Proxify.html">Proxify</a></li>
-    <li><a href="Cocoon.Touch.html">Touch</a></li>
-    <li><a href="Cocoon.Utils.html">Utils</a></li>
-    <li><a href="Cocoon.WebView.html">WebView</a></li>
-    <li><a href="Cocoon.Widget.html">Widget</a></li>
+/**
+* @fileOverview
+* <h3>Canvas+ internal Webview </h3>
+* <p>Canvas+ allows accessing a full DOM environment via Webview. Thus, there are two environments that live together: Canvas+ and WebView. Although both are two different JavaScript environments, Cocoon allows to render a transparent Webview on top of the Canvas+ OpenGL ES rendering context and it also provides a bidirectional communication channel between them. In this way, the final visual result seems to integrate both environments seamlessly.</p>
+* <p>However, as Cordova only injects automatically the required clobbers in the main webview engine, it is neccesary to add manually the following files to the content that will be sent and displayed in Canvas+ internal Webview: </p>
+<ul>
+   <li><a href="https://github.com/ludei/cocoon-common/blob/master/src/js/cocoon.js" target="_blank">cocoon.js</a></li>
+   <li><a href="https://github.com/CocoonIO/cocoon-canvasplus/blob/master/dist/js/cocoon_canvasplus.js" target="_blank">cocoon_canvasplus.js</a></li>
 </ul>
- * We hope you find everything you need to get going here, but if you stumble on any problems with the docs or the plugins, 
- * just drop us a line at our forums and we'll do our best to help you out.
- <h3>Tools</h3>
- <a href="https://forums.cocoon.io/"><img src="img/cocoon-tools-1.png" /></a>
- <a href="https://cocoon.io/doc"><img src="img/cocoon-tools-2.png" /></a>
- <a href="http://cocoon.io/"><img src="img/cocoon-tools-3.png" /></a>
- * @version 1.0
- */
+<br/>
+<h3>Documentation</h3>
+<p> Select the specific namespace below to open the relevant documentation section:</p>
+<ul>
+   <li><a href="http://ludei.github.io/cocoon-common/dist/doc/js/Cocoon.html">Cocoon</a></li>
+   <li><a href="Cocoon.App.html">App</a></li>
+   <li><a href="Cocoon.Device.html">Device</a></li>
+   <li><a href="Cocoon.Dialog.html">Dialog</a></li>
+   <li><a href="Cocoon.Motion.html">Motion</a></li>
+   <li><a href="Cocoon.Proxify.html">Proxify</a></li>
+   <li><a href="Cocoon.Touch.html">Touch</a></li>
+   <li><a href="Cocoon.Utils.html">Utils</a></li>
+   <li><a href="Cocoon.WebView.html">WebView</a></li>
+   <li><a href="Cocoon.Widget.html">Widget</a></li>
+</ul>
+* We hope you find everything you need to get going here, but if you stumble on any problems with the docs or the plugins, 
+* just drop us a line at our forums and we'll do our best to help you out.
+<h3>Tools</h3>
+<a href="https://forums.cocoon.io/"><img src="img/cocoon-tools-1.png" /></a>
+<a href="https://cocoon.io/doc"><img src="img/cocoon-tools-2.png" /></a>
+<a href="http://cocoon.io/"><img src="img/cocoon-tools-3.png" /></a>
+* @version 1.0
+*/
 
- /**
- * @fileOverview
- * <h1>Canvas+ API documentation</h1>
- * <p>Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project.</p> 
- * <h3>Important note</h3>
- * <p>Unlike old CocoonJS plugins, Cocoon Canvas+ plugins need to wait for Cordova <a href="https://cordova.apache.org/docs/en/4.0.0/cordova_events_events.md.html#deviceready">"deviceready" event</a> to start working.</p>
- * @example
- *   document.addEventListener("deviceready", onDeviceReady, false);
- *   function onDeviceReady() {
- *       // Cocoon Canvas+ code here
- *   }  
- */
+/**
+* @fileOverview
+* <h1>Canvas+ API documentation</h1>
+* <p>Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project.</p> 
+* <h3>Important note</h3>
+* <p>Unlike old CocoonJS plugins, Cocoon Canvas+ plugins need to wait for Cordova <a href="https://cordova.apache.org/docs/en/4.0.0/cordova_events_events.md.html#deviceready">"deviceready" event</a> to start working.</p>
+* @example
+*   document.addEventListener("deviceready", onDeviceReady, false);
+*   function onDeviceReady() {
+*       // Cocoon Canvas+ code here
+*   }  
+*/
 
 (function () {
-    
+
     /**
     * The "Cocoon" object holds all the Cocoon Canvas+ Extensions and other stuff needed.
     <p> For more information about this specific namespace, please, visit the following link: </p>
@@ -58,7 +58,7 @@
     if (!Cocoon && window.cordova && typeof require !== 'undefined') {
         require('cocoon-plugin-common.Cocoon');
     }
-    
+
     /**
      * Is the native environment available? true if so.
      * @property {bool} version
@@ -68,7 +68,9 @@
      * if(Cocoon.nativeAvailable) { ... do native stuff here ... }
      */
 
-    Cocoon.nativeAvailable = (!!window.ext);
+    Cocoon.nativeAvailable = function () {
+        return (!!window.ext);
+    };
 
     /**
     * This utility function copies the properties from one object to a new object array, the result object array can be used as arguments when calling Cocoon.callNative()
@@ -78,13 +80,13 @@
     * @param {function} obj The base object that contains all properties defined.
     * @param {function} copy The object that user has defined.
     */
-    Cocoon.clone = function(obj,copy){
+    Cocoon.clone = function (obj, copy) {
         if (null === obj || "object" !== typeof obj) return obj;
         var arr = [];
         for (var attr in obj) {
-            if ( copy.hasOwnProperty(attr) ) { 
+            if (copy.hasOwnProperty(attr)) {
                 arr.push(copy[attr]);
-            }else{
+            } else {
                 arr.push(obj[attr]);
             }
         }
@@ -108,8 +110,8 @@
     * @param {boolean} [async] A flag to indicate if the makeCall (false or undefined) or the makeCallAsync function should be used to perform the native call.
     * @returns Whatever the native function call returns.
     */
-    Cocoon.callNative = function(nativeExtensionObjectName, nativeFunctionName, args, async) {
-        if (Cocoon.nativeAvailable) {
+    Cocoon.callNative = function (nativeExtensionObjectName, nativeFunctionName, args, async) {
+        if (Cocoon.nativeAvailable()) {
             var argumentsArray = Array.prototype.slice.call(args);
             argumentsArray.unshift(nativeFunctionName);
             var nativeExtensionObject = ext[nativeExtensionObjectName];
@@ -120,7 +122,7 @@
                 try {
                     finalRet = JSON.parse(ret);
                 }
-                catch(error) {
+                catch (error) {
                     console.log(error);
                 }
             }
@@ -140,11 +142,10 @@
     * For example:
     * var body = Cocoon.getObjectFromPath(window, "document.body");
     */
-    Cocoon.getObjectFromPath = function(baseObject, objectPath) {
+    Cocoon.getObjectFromPath = function (baseObject, objectPath) {
         var parts = objectPath.split('.');
         var obj = baseObject;
-        for (var i = 0, len = parts.length; i < len; ++i) 
-        {
+        for (var i = 0, len = parts.length; i < len; ++i) {
             obj[parts[i]] = obj[parts[i]] || undefined;
             obj = obj[parts[i]];
         }
@@ -167,7 +168,7 @@
     * @private
     * @static
     */
-    Cocoon.EventHandler = function(nativeExtensionObjectName, CocoonExtensionObjectName, nativeEventName, chainFunction) {
+    Cocoon.EventHandler = function (nativeExtensionObjectName, CocoonExtensionObjectName, nativeEventName, chainFunction) {
         this.listeners = [];
         this.listenersOnce = [];
         this.chainFunction = chainFunction;
@@ -179,10 +180,10 @@
         * @private
         * @static
         */
-        this.addEventListener = function(listener) {
+        this.addEventListener = function (listener) {
             if (chainFunction) {
-                var f = function() {
-                    chainFunction.call(this, arguments.callee.sourceListener, Array.prototype.slice.call(arguments)); 
+                var f = function () {
+                    chainFunction.call(this, arguments.callee.sourceListener, Array.prototype.slice.call(arguments));
                 };
                 listener.CocoonEventHandlerChainFunction = f;
                 f.sourceListener = listener;
@@ -208,10 +209,9 @@
         * @static
         */
 
-        this.addEventListenerOnce = function(listener)
-        {
+        this.addEventListenerOnce = function (listener) {
             if (chainFunction) {
-                var f = function() { chainFunction(arguments.callee.sourceListener,Array.prototype.slice.call(arguments)); };
+                var f = function () { chainFunction(arguments.callee.sourceListener, Array.prototype.slice.call(arguments)); };
                 f.sourceListener = listener;
                 listener = f;
             }
@@ -220,11 +220,9 @@
             if (CocoonExtensionObject.nativeAvailable) {
                 ext[nativeExtensionObjectName].addEventListenerOnce(nativeEventName, listener);
             }
-            else
-            {
+            else {
                 var indexOfListener = this.listeners.indexOf(listener);
-                if (indexOfListener < 0)
-                {
+                if (indexOfListener < 0) {
                     this.listenersOnce.push(listener);
                 }
             }
@@ -281,18 +279,18 @@
         * @static
         */
 
-        this.notifyEventListeners = function() {
+        this.notifyEventListeners = function () {
             var CocoonExtensionObject = Cocoon.getObjectFromPath(Cocoon, CocoonExtensionObjectName);
             if (CocoonExtensionObject && CocoonExtensionObject.nativeAvailable) {
                 ext[nativeExtensionObjectName].notifyEventListeners(nativeEventName);
             } else {
 
-                var argumentsArray= Array.prototype.slice.call(arguments);
-                var listeners =     Array.prototype.slice.call(this.listeners);
+                var argumentsArray = Array.prototype.slice.call(arguments);
+                var listeners = Array.prototype.slice.call(this.listeners);
                 var listenersOnce = Array.prototype.slice.call(this.listenersOnce);
                 var _this = this;
                 // Notify listeners after a while ;) === do not block this thread.
-                setTimeout(function() {
+                setTimeout(function () {
                     for (var i = 0; i < listeners.length; i++) {
                         listeners[i].apply(_this, argumentsArray);
                     }
@@ -301,7 +299,7 @@
                     }
                 }, 0);
 
-                _this.listenersOnce= [];
+                _this.listenersOnce = [];
             }
         };
         return this;
@@ -320,11 +318,11 @@
     * @private
     * @constructs createSignal
     */
-    Cocoon.createSignal = function(){
+    Cocoon.createSignal = function () {
         /** @lends Cocoon.Signal.prototype */
         this.handle = null;
         this.signals = {};
-        
+
         /**
         * Registers a new Signal.
         * @param {string} namespace The name of the signal which will be emitted.
@@ -334,25 +332,25 @@
         * @example
         * signal.register("banner.ready", new Cocoon.EventHandler);
         */
-        this.register = function(namespace, handle){
+        this.register = function (namespace, handle) {
 
-            if( (!namespace) && (!handle)) throw new Error("Can't create signal " + (namespace || ""));
+            if ((!namespace) && (!handle)) throw new Error("Can't create signal " + (namespace || ""));
 
-            if(handle.addEventListener){
+            if (handle.addEventListener) {
                 this.signals[namespace] = handle;
                 return true;
             }
 
-            if(!handle.addEventListener){
+            if (!handle.addEventListener) {
                 this.signals[namespace] = {};
                 for (var prop in handle) {
-                    if(handle.hasOwnProperty(prop)){
+                    if (handle.hasOwnProperty(prop)) {
                         this.signals[namespace][prop] = handle[prop];
                     }
                 }
                 return true;
             }
-            
+
             throw new Error("Can't create handler for " + namespace + " signal.");
         };
 
@@ -366,59 +364,59 @@
         * @example
         * Cocoon.namespace.on("event",function(){});
         */
-        this.expose = function(){
-            return function(signal, callback, params){
+        this.expose = function () {
+            return function (signal, callback, params) {
                 var once = false;
 
-                if(arguments.length === 1){
+                if (arguments.length === 1) {
                     var that = this;
-                    var fnc = function(signal){
+                    var fnc = function (signal) {
                         this.signal = signal;
                     };
 
-                    fnc.prototype.remove = function(functionListener){
+                    fnc.prototype.remove = function (functionListener) {
                         var handle = that.signals[this.signal];
-                        if(handle && handle.removeEventListener) {
-                            handle.removeEventListener.apply(that,[functionListener]);
+                        if (handle && handle.removeEventListener) {
+                            handle.removeEventListener.apply(that, [functionListener]);
                             that.signals[this.signal] = undefined;
                         }
                     };
                     return new fnc(signal);
                 }
 
-                if((params) && (params.once)){
+                if ((params) && (params.once)) {
                     once = true;
                 }
 
-                if(!this.signals[signal]) throw new Error("The signal " + signal + " does not exists.");
+                if (!this.signals[signal]) throw new Error("The signal " + signal + " does not exists.");
                 var handle = this.signals[signal];
-                if(handle.addEventListener){
-                    if(once){
-                        handle.addEventListenerOnce(function(){
-                            callback.apply( this || window , arguments);
+                if (handle.addEventListener) {
+                    if (once) {
+                        handle.addEventListenerOnce(function () {
+                            callback.apply(this || window, arguments);
                         });
-                    }else{
-                        handle.addEventListener(function(){
-                            callback.apply( this || window , arguments);
+                    } else {
+                        handle.addEventListener(function () {
+                            callback.apply(this || window, arguments);
                         });
                     }
                 }
 
-                if(!this.signals[signal].addEventListener){
+                if (!this.signals[signal].addEventListener) {
                     for (var prop in this.signals[signal]) {
 
-                        if(!this.signals[signal].hasOwnProperty(prop)) continue;
+                        if (!this.signals[signal].hasOwnProperty(prop)) continue;
 
                         handle = this.signals[signal][prop];
 
-                        if(once){
-                            handle.addEventListenerOnce(function(){
-                                this.clbk[this.name].apply( this || window , arguments);
-                            }.bind({ name : prop , clbk : callback }));
-                        }else{
-                            handle.addEventListener(function(){
-                                this.clbk[this.name].apply( this || window , arguments);
-                            }.bind({ name : prop , clbk : callback }));
+                        if (once) {
+                            handle.addEventListenerOnce(function () {
+                                this.clbk[this.name].apply(this || window, arguments);
+                            }.bind({ name: prop, clbk: callback }));
+                        } else {
+                            handle.addEventListener(function () {
+                                this.clbk[this.name].apply(this || window, arguments);
+                            }.bind({ name: prop, clbk: callback }));
                         }
 
                     }
@@ -427,7 +425,7 @@
             }.bind(this);
         };
     };
-    
+
     //properties for old legacy code compatibility
     window.CocoonJS = window.Cocoon;
     window.c2cocoonjs = true;
@@ -446,11 +444,13 @@
  *  ...
  * });
  */
-Cocoon.define("Cocoon.App" , function(extension){
-    
-    extension.nativeAvailable = (!!window.ext) && (!!window.ext.IDTK_APP);
+Cocoon.define("Cocoon.App", function (extension) {
 
-    extension.isBridgeAvailable = function(){
+    extension.nativeAvailable = function () {
+        return (!!window.ext) && (!!window.ext.IDTK_APP);
+    };
+
+    extension.isBridgeAvailable = function () {
         if (Cocoon.App.forward.nativeAvailable === 'boolean') {
             return Cocoon.App.forward.nativeAvailable;
         }
@@ -476,7 +476,7 @@ Cocoon.define("Cocoon.App" , function(extension){
      */
     extension.forward = function (javaScriptCode) {
         /*jshint evil:true */
-        if (Cocoon.App.nativeAvailable && Cocoon.App.isBridgeAvailable()) {
+        if (Cocoon.App.nativeAvailable() && Cocoon.App.isBridgeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "forward", arguments);
         }
         else if (!navigator.isCocoonJS) {
@@ -502,7 +502,7 @@ Cocoon.define("Cocoon.App" , function(extension){
      * });
      */
     extension.forwardAsync = function (javaScriptCode, returnCallback) {
-        if (Cocoon.App.nativeAvailable && Cocoon.App.isBridgeAvailable()) {
+        if (Cocoon.App.nativeAvailable() && Cocoon.App.isBridgeAvailable()) {
             if (typeof returnCallback !== 'undefined') {
                 return ext.IDTK_APP.makeCallAsync("forward", javaScriptCode, returnCallback);
             }
@@ -511,7 +511,7 @@ Cocoon.define("Cocoon.App" , function(extension){
             }
         }
         else {
-            setTimeout(function() {
+            setTimeout(function () {
                 /*jshint evil:true */
                 var res;
                 if (window.name === cocoonWebviewIFrame) {
@@ -524,7 +524,7 @@ Cocoon.define("Cocoon.App" , function(extension){
                 if (returnCallback) {
                     returnCallback(res);
                 }
-    
+
             }, 1);
         }
     };
@@ -539,7 +539,7 @@ Cocoon.define("Cocoon.App" , function(extension){
      * Cocoon.App.load("index.html");
      */
     extension.load = function (path, storageType) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "loadPath", arguments);
         }
         else if (!navigator.isCocoonJS) {
@@ -587,7 +587,7 @@ Cocoon.define("Cocoon.App" , function(extension){
      * Cocoon.App.reload();
      */
     extension.reload = function () {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "reload", arguments);
         }
         else if (!navigator.isCocoonJS) {
@@ -609,7 +609,7 @@ Cocoon.define("Cocoon.App" , function(extension){
      * Cocoon.App.openURL("http://www.ludei.com");
      */
     extension.openURL = function (url) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "openURL", arguments, true);
         }
         else if (!navigator.isCocoonJS) {
@@ -625,7 +625,7 @@ Cocoon.define("Cocoon.App" , function(extension){
      * Cocoon.App.exit();
      */
     extension.exit = function () {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "forceToFinish", arguments);
         }
         else if (!navigator.isCocoonJS) {
@@ -644,10 +644,10 @@ Cocoon.define("Cocoon.App" , function(extension){
      * @property {string} Cocoon.App.StorageType.TEMPORARY_STORAGE Temporary Storage
      */
     extension.StorageType = {
-        APP_STORAGE:        "APP_STORAGE",
-        INTERNAL_STORAGE:   "INTERNAL_STORAGE",
-        EXTERNAL_STORAGE:   "EXTERNAL_STORAGE",
-        TEMPORARY_STORAGE:  "TEMPORARY_STORAGE"
+        APP_STORAGE: "APP_STORAGE",
+        INTERNAL_STORAGE: "INTERNAL_STORAGE",
+        EXTERNAL_STORAGE: "EXTERNAL_STORAGE",
+        TEMPORARY_STORAGE: "TEMPORARY_STORAGE"
     };
 
     extension.onSuspended = new Cocoon.EventHandler("IDTK_APP", "App", "onsuspended");
@@ -705,11 +705,11 @@ Cocoon.define("Cocoon.App" , function(extension){
      *  ...
      * });
      */
-     signal.register("memorywarning", extension.onMemoryWarning);
+    signal.register("memorywarning", extension.onMemoryWarning);
 
 
     extension.on = signal.expose();
-    
+
     return extension;
 });
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, indent:4, maxerr:50 */
@@ -1896,110 +1896,110 @@ Cocoon.define("Cocoon.Device" , function(extension){
 * Dialog functions (prompt / confirm).
 * @namespace Cocoon.Dialog
 */
-Cocoon.define("Cocoon.Dialog" , function(extension){
+Cocoon.define("Cocoon.Dialog", function (extension) {
     "use strict";
 
-   	/**
-     * @property {object} Cocoon.Dialog.keyboardType Types of input keyboard.
-     * @property {string} Cocoon.Dialog.keyboardType.TEXT Represents a generic text input keyboard.
-     * @property {string} Cocoon.Dialog.keyboardType.NUMBER Represents a number like input keyboard.
-     * @property {string} Cocoon.Dialog.keyboardType.PHONE Represents a phone like input keyboard.
-     * @property {string} Cocoon.Dialog.keyboardType.EMAIL Represents an email like input keyboard.
-     * @property {string} Cocoon.Dialog.keyboardType.URL Represents an URL like input keyboard.
-     * @memberOf Cocoon.Dialog
-     * @name Cocoon.Dialog.keyboardType
-     */
+    /**
+* @property {object} Cocoon.Dialog.keyboardType Types of input keyboard.
+* @property {string} Cocoon.Dialog.keyboardType.TEXT Represents a generic text input keyboard.
+* @property {string} Cocoon.Dialog.keyboardType.NUMBER Represents a number like input keyboard.
+* @property {string} Cocoon.Dialog.keyboardType.PHONE Represents a phone like input keyboard.
+* @property {string} Cocoon.Dialog.keyboardType.EMAIL Represents an email like input keyboard.
+* @property {string} Cocoon.Dialog.keyboardType.URL Represents an URL like input keyboard.
+* @memberOf Cocoon.Dialog
+* @name Cocoon.Dialog.keyboardType
+*/
     extension.keyboardType = {
 
-        TEXT:"text",
+        TEXT: "text",
 
-        NUMBER:"num",
+        NUMBER: "num",
 
-        PHONE:"phone",
+        PHONE: "phone",
 
-        EMAIL:"email",
+        EMAIL: "email",
 
-        URL:"url"
+        URL: "url"
     };
 
-     /**
-      * Pops up a text dialog so the user can introduce some text and the application can get it back. It is the first approach Cocoon has taken to be able to introduce
-      * text input in a easy way. The dialog execution events are passed to the application through the {@link Cocoon.Dialog.onTextDialogFinished} and the {@link Cocoon.Dialog.onTextDialogCancelled} event objects.
-      * @param {object} param Object information.
-      * @param [param.title] {string} The title to be displayed in the dialog.
-      * @param [param.message] {string} The message to be displayed in the dialog, next to the text input field.
-      * @param [param.text] {string} The initial text to be introduced in the text input field.
-      * @param [param.type] {Cocoon.Dialog.keyboardType} Default value is Cocoon.Dialog.keyboardType.TEXT. The keyboard type to be used when the text has to be introduced.
-      * @param [param.cancelText] {string} Default value is "Cancel". The text to be displayed in the cancel button of the dialog.
-      * @param [param.confirmText] {string} Default value is "Ok". The text to be displayed in the ok button of the dialog.
-      * @param [param.secureText] {boolean} Default value is "false". The text to be displayed as secure (password-like).
-      * @param {callback} callbacks - <i>success</i> and <i>cancel</i> callbacks called when the user confirms or cancel the dialog.
-      * @memberOf Cocoon.Dialog
-      * @function prompt
-      * @example 
-      * Cocoon.Dialog.prompt({ 
-      *     title : "title",
-      *     message : "message"
-      * },{
-      *     success : function(text){ ... },
-      *     cancel : function(){ ... }
-      * });
-      */
+    /**
+     * Pops up a text dialog so the user can introduce some text and the application can get it back. It is the first approach Cocoon has taken to be able to introduce
+     * text input in a easy way. The dialog execution events are passed to the application through the {@link Cocoon.Dialog.onTextDialogFinished} and the {@link Cocoon.Dialog.onTextDialogCancelled} event objects.
+     * @param {object} param Object information.
+     * @param [param.title] {string} The title to be displayed in the dialog.
+     * @param [param.message] {string} The message to be displayed in the dialog, next to the text input field.
+     * @param [param.text] {string} The initial text to be introduced in the text input field.
+     * @param [param.type] {Cocoon.Dialog.keyboardType} Default value is Cocoon.Dialog.keyboardType.TEXT. The keyboard type to be used when the text has to be introduced.
+     * @param [param.cancelText] {string} Default value is "Cancel". The text to be displayed in the cancel button of the dialog.
+     * @param [param.confirmText] {string} Default value is "Ok". The text to be displayed in the ok button of the dialog.
+     * @param [param.secureText] {boolean} Default value is "false". The text to be displayed as secure (password-like).
+     * @param {callback} callbacks - <i>success</i> and <i>cancel</i> callbacks called when the user confirms or cancel the dialog.
+     * @memberOf Cocoon.Dialog
+     * @function prompt
+     * @example 
+     * Cocoon.Dialog.prompt({ 
+     *     title : "title",
+     *     message : "message"
+     * },{
+     *     success : function(text){ ... },
+     *     cancel : function(){ ... }
+     * });
+     */
 
     extension.prompt = function (params, callbacks) {
-        
-        if(!callbacks)  throw("Callback missing for Cocoon.Dialog.prompt();");
+
+        if (!callbacks) throw ("Callback missing for Cocoon.Dialog.prompt();");
         var defaultKeyboard = Cocoon.Dialog.keyboardType.TEXT;
-        
-        switch (params.type){
+
+        switch (params.type) {
             case Cocoon.Dialog.keyboardType.TEXT:
                 defaultKeyboard = Cocoon.Dialog.keyboardType.TEXT;
-            break;
+                break;
             case Cocoon.Dialog.keyboardType.NUMBER:
                 defaultKeyboard = Cocoon.Dialog.keyboardType.NUMBER;
-            break;
+                break;
             case Cocoon.Dialog.keyboardType.PHONE:
                 defaultKeyboard = Cocoon.Dialog.keyboardType.PHONE;
-            break;
+                break;
             case Cocoon.Dialog.keyboardType.EMAIL:
                 defaultKeyboard = Cocoon.Dialog.keyboardType.EMAIL;
-            break;
+                break;
             case Cocoon.Dialog.keyboardType.URL:
                 defaultKeyboard = Cocoon.Dialog.keyboardType.URL;
-            break;
+                break;
         }
 
         var properties = {
-            title : "",
-            message : "",
-            text : "",
-            type : defaultKeyboard,
-            cancelText : "Cancel",
-            confirmText : "Ok",
-            secureText : false
+            title: "",
+            message: "",
+            text: "",
+            type: defaultKeyboard,
+            cancelText: "Cancel",
+            confirmText: "Ok",
+            secureText: false
         };
 
-        var args = Cocoon.clone(properties,params);
+        var args = Cocoon.clone(properties, params);
 
-        var succedListener = function(){
+        var succedListener = function () {
             Cocoon.Dialog.onTextDialogCancelled.removeEventListener(errorListener);
             Cocoon.Dialog.onTextDialogFinished.removeEventListener(succedListener);
-            callbacks.success.apply(window , Array.prototype.slice.call(arguments));
+            callbacks.success.apply(window, Array.prototype.slice.call(arguments));
         };
-  
-        var errorListener = function(){
+
+        var errorListener = function () {
             Cocoon.Dialog.onTextDialogCancelled.removeEventListener(errorListener);
             Cocoon.Dialog.onTextDialogFinished.removeEventListener(succedListener);
-            callbacks.cancel.apply(window , Array.prototype.slice.call(arguments));
+            callbacks.cancel.apply(window, Array.prototype.slice.call(arguments));
         };
 
         Cocoon.Dialog.onTextDialogCancelled.addEventListener(errorListener);
         Cocoon.Dialog.onTextDialogFinished.addEventListener(succedListener);
 
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "showTextDialog", args, true);
-        }else{
-            setTimeout(function() {
+        } else {
+            setTimeout(function () {
                 var result = prompt(properties.message, properties.text);
                 var eventObject = result ? Cocoon.Dialog.onTextDialogFinished : Cocoon.Dialog.onTextDialogCancelled;
                 eventObject.notifyEventListeners(result);
@@ -2032,23 +2032,23 @@ Cocoon.define("Cocoon.Dialog" , function(extension){
      */
     extension.confirm = function (params, callback) {
 
-        if(!callback) throw("Callback missing for Cocoon.Dialog.confirm();");
+        if (!callback) throw ("Callback missing for Cocoon.Dialog.confirm();");
 
         var properties = {
-            title : "", 
-            message : "", 
-            cancelText : "Cancel",
-            confirmText : "Ok"
+            title: "",
+            message: "",
+            cancelText: "Cancel",
+            confirmText: "Ok"
         };
 
-        var args = Cocoon.clone(properties,params);
+        var args = Cocoon.clone(properties, params);
 
-        var succedListener = function(){
+        var succedListener = function () {
             Cocoon.Dialog.onMessageBoxDenied.removeEventListenerOnce(errorListener);
             callback(true);
         };
-        
-        var errorListener = function(){
+
+        var errorListener = function () {
             Cocoon.Dialog.onMessageBoxConfirmed.removeEventListenerOnce(succedListener);
             callback(false);
         };
@@ -2056,10 +2056,10 @@ Cocoon.define("Cocoon.Dialog" , function(extension){
         Cocoon.Dialog.onMessageBoxDenied.addEventListenerOnce(errorListener);
         Cocoon.Dialog.onMessageBoxConfirmed.addEventListenerOnce(succedListener);
 
-        if (Cocoon.nativeAvailable) {
+        if (Cocoon.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "showMessageBox", args, true);
-        }else{
-            setTimeout(function() {
+        } else {
+            setTimeout(function () {
                 var result = confirm(properties.message);
                 var eventObject = result ? Cocoon.Dialog.onMessageBoxConfirmed : Cocoon.Dialog.onMessageBoxDenied;
                 eventObject.notifyEventListeners();
@@ -2095,16 +2095,16 @@ Cocoon.define("Cocoon.Dialog" , function(extension){
       *     }
       * });
       */
-    extension.showKeyboard = function(params, callbacks) {
+    extension.showKeyboard = function (params, callbacks) {
         params = params || {};
         params.type = params.type || Cocoon.Dialog.keyboardType.TEXT;
         var insertCallback = callbacks && callbacks.insertText;
         var deleteCallback = callbacks && callbacks.deleteBackward;
         var doneCallback = callbacks && callbacks.done;
-        var cancelCallback =  callbacks && callbacks.cancel;
+        var cancelCallback = callbacks && callbacks.cancel;
 
-        if (Cocoon.nativeAvailable) {
-            Cocoon.callNative("IDTK_APP", "showKeyboard", 
+        if (Cocoon.nativeAvailable()) {
+            Cocoon.callNative("IDTK_APP", "showKeyboard",
                 [params, insertCallback, deleteCallback, doneCallback, cancelCallback], true);
         }
     };
@@ -2138,8 +2138,8 @@ Cocoon.define("Cocoon.Dialog" , function(extension){
       *     }
       * });
       */
-    extension.dismissKeyboard = function() {
-        if (Cocoon.nativeAvailable) {
+    extension.dismissKeyboard = function () {
+        if (Cocoon.nativeAvailable()) {
             Cocoon.callNative("IDTK_APP", "dismissKeyboard", [], true);
         }
     };
@@ -2188,13 +2188,15 @@ Cocoon.define("Cocoon.Dialog" , function(extension){
 
 });
 
-Cocoon.define("Cocoon.Motion" , function(extension){
+Cocoon.define("Cocoon.Motion", function (extension) {
     "use strict";
     /**
     * All functions related to the Accelerometer and Gyroscope.
     * @namespace Cocoon.Motion
     */
-    extension.nativeAvailable = Cocoon.nativeAvailable;
+    extension.nativeAvailable = function () {
+        return Cocoon.nativeAvailable;
+    };
 
     /**
      * Setups the update interval in seconds (1 second / X frames) to receive the accelerometer updates.
@@ -2206,7 +2208,7 @@ Cocoon.define("Cocoon.Motion" , function(extension){
      * Cocoon.Motion.setAccelerometerInterval(2);
      */
     extension.setAccelerometerInterval = function (updateIntervalInSeconds) {
-        if (Cocoon.Motion.nativeAvailable) {
+        if (Cocoon.Motion.nativeAvailable()) {
             return window.ext.IDTK_APP.makeCall("setAccelerometerUpdateIntervalInSeconds", updateIntervalInSeconds);
         }
     };
@@ -2220,7 +2222,7 @@ Cocoon.define("Cocoon.Motion" , function(extension){
      * console.log(Cocoon.Motion.getAccelerometerInterval());
      */
     extension.getAccelerometerInterval = function () {
-        if (Cocoon.Motion.nativeAvailable) {
+        if (Cocoon.Motion.nativeAvailable()) {
             return window.ext.IDTK_APP.makeCall("getAccelerometerUpdateIntervalInSeconds");
         }
     };
@@ -2235,7 +2237,7 @@ Cocoon.define("Cocoon.Motion" , function(extension){
      * Cocoon.Motion.setGyroscopeInterval(2);
      */
     extension.setGyroscopeInterval = function (updateIntervalInSeconds) {
-        if (Cocoon.Motion.nativeAvailable) {
+        if (Cocoon.Motion.nativeAvailable()) {
             return window.ext.IDTK_APP.makeCall("setGyroscopeUpdateIntervalInSeconds", updateIntervalInSeconds);
         }
     };
@@ -2249,7 +2251,7 @@ Cocoon.define("Cocoon.Motion" , function(extension){
      * console.log(Cocoon.Motion.getGyroscopeInterval());
      */
     extension.getGyroscopeInterval = function () {
-        if (Cocoon.Motion.nativeAvailable) {
+        if (Cocoon.Motion.nativeAvailable()) {
             window.ext.IDTK_APP.makeCall("getGyroscopeUpdateIntervalInSeconds");
         }
     };
@@ -2257,7 +2259,7 @@ Cocoon.define("Cocoon.Motion" , function(extension){
     return extension;
 
 });
-Cocoon.define("Cocoon.App" , function(extension){
+Cocoon.define("Cocoon.App", function (extension) {
 
     function checkEmulatedWebViewReady() {
         var emulatedWB = Cocoon.App.EmulatedWebView;
@@ -2265,21 +2267,21 @@ Cocoon.define("Cocoon.App" , function(extension){
             return; //ready
         }
 
-        emulatedWB = document.createElement('div'); 
-        emulatedWB.setAttribute('id', 'CocoonJS_App_ForCocoonJS_WebViewDiv'); 
-        emulatedWB.style.width = 0; 
-        emulatedWB.style.height = 0; 
-        emulatedWB.style.position = "absolute"; 
-        emulatedWB.style.left = 0; 
+        emulatedWB = document.createElement('div');
+        emulatedWB.setAttribute('id', 'CocoonJS_App_ForCocoonJS_WebViewDiv');
+        emulatedWB.style.width = 0;
+        emulatedWB.style.height = 0;
+        emulatedWB.style.position = "absolute";
+        emulatedWB.style.left = 0;
         emulatedWB.style.top = 0;
         emulatedWB.style.backgroundColor = 'transparent';
-        emulatedWB.style.border = "0px solid #000"; 
+        emulatedWB.style.border = "0px solid #000";
 
         var frame = document.createElement("IFRAME");
         frame.setAttribute('id', 'CocoonJS_App_ForCocoonJS_WebViewIFrame');
         frame.setAttribute('name', 'CocoonJS_App_ForCocoonJS_WebViewIFrame');
-        frame.style.width = 0; 
-        frame.style.height = 0; 
+        frame.style.width = 0;
+        frame.style.height = 0;
         frame.frameBorder = 0;
         frame.allowtransparency = true;
 
@@ -2287,7 +2289,7 @@ Cocoon.define("Cocoon.App" , function(extension){
         Cocoon.App.EmulatedWebView = emulatedWB;
         Cocoon.App.EmulatedWebViewIFrame = frame;
 
-        if(!document.body) {
+        if (!document.body) {
             document.body = document.createElement("body");
         }
         document.body.appendChild(Cocoon.App.EmulatedWebView);
@@ -2301,10 +2303,8 @@ Cocoon.define("Cocoon.App" , function(extension){
      * @example
      * Cocoon.App.pause();
      */
-    extension.pause = function()
-    {
-        if (Cocoon.App.nativeAvailable)
-        {
+    extension.pause = function () {
+        if (Cocoon.App.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "pause", arguments);
         }
     };
@@ -2316,10 +2316,8 @@ Cocoon.define("Cocoon.App" , function(extension){
      * Cocoon.App.resume();
      */
 
-    extension.resume = function()
-    {
-        if (Cocoon.App.nativeAvailable)
-        {
+    extension.resume = function () {
+        if (Cocoon.App.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "resume", arguments);
         }
     };
@@ -2342,36 +2340,30 @@ Cocoon.define("Cocoon.App" , function(extension){
     * });
     * Cocoon.App.loadInTheWebView("wv.html");
     */
-    extension.loadInTheWebView = function(path, storageType)
-    {
-        if (navigator.isCocoonJS && Cocoon.App.nativeAvailable)
-        {
+    extension.loadInTheWebView = function (path, storageType) {
+        if (navigator.isCocoonJS && Cocoon.App.nativeAvailable()) {
             Cocoon.callNative("IDTK_APP", "loadInTheWebView", arguments);
         }
-        else
-        {
+        else {
             var xhr = new XMLHttpRequest();
 
-            xhr.onreadystatechange = function(event) {
-                if (xhr.readyState === 4)
-                {
-                    if ((xhr.status >= 200 && xhr.status <=299) || xhr.status === 0)
-                    {
+            xhr.onreadystatechange = function (event) {
+                if (xhr.readyState === 4) {
+                    if ((xhr.status >= 200 && xhr.status <= 299) || xhr.status === 0) {
 
                         checkEmulatedWebViewReady();
-                        var callback= function(event){
+                        var callback = function (event) {
                             Cocoon.App.onLoadInTheWebViewSucceed.notifyEventListeners(path);
                             Cocoon.App.EmulatedWebViewIFrame.removeEventListener("load", callback);
                         };
 
                         Cocoon.App.EmulatedWebViewIFrame.addEventListener(
-                            "load", 
+                            "load",
                             callback
                         );
-                        Cocoon.App.EmulatedWebViewIFrame.contentWindow.location.href= path;
+                        Cocoon.App.EmulatedWebViewIFrame.contentWindow.location.href = path;
                     }
-                    else
-                    {
+                    else {
                         this.onreadystatechange = null;
                         Cocoon.App.onLoadInTheWebViewFailed.notifyEventListeners(path);
                     }
@@ -2389,14 +2381,11 @@ Cocoon.define("Cocoon.App" , function(extension){
      * @example
      * Cocoon.App.reloadWebView();
      */
-    extension.reloadWebView = function()
-    {
-        if (Cocoon.App.nativeAvailable && navigator.isCocoonJS)
-        {
+    extension.reloadWebView = function () {
+        if (Cocoon.App.nativeAvailable() && navigator.isCocoonJS) {
             Cocoon.callNative("IDTK_APP", "reloadWebView", arguments);
         }
-        else
-        {
+        else {
             checkEmulatedWebViewReady();
             Cocoon.App.EmulatedWebViewIFrame.contentWindow.location.reload();
         }
@@ -2413,21 +2402,18 @@ Cocoon.define("Cocoon.App" , function(extension){
     * @example
     * Cocoon.App.showTheWebView(0 , 0 , window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
     */
-    extension.showTheWebView = function(x, y, width, height)
-    {
-        if (Cocoon.App.nativeAvailable && navigator.isCocoonJS)
-        {
+    extension.showTheWebView = function (x, y, width, height) {
+        if (Cocoon.App.nativeAvailable() && navigator.isCocoonJS) {
             Cocoon.callNative("IDTK_APP", "showTheWebView", arguments);
         }
-        else
-        {
+        else {
             checkEmulatedWebViewReady();
-            Cocoon.App.EmulatedWebViewIFrame.style.width = (width ? width/window.devicePixelRatio : window.innerWidth)+'px';
-            Cocoon.App.EmulatedWebViewIFrame.style.height = (height ? height/window.devicePixelRatio : window.innerHeight)+'px';
-            Cocoon.App.EmulatedWebView.style.left = (x ? x : 0)+'px';
-            Cocoon.App.EmulatedWebView.style.top = (y ? y : 0)+'px';
-            Cocoon.App.EmulatedWebView.style.width = (width ? width/window.devicePixelRatio : window.innerWidth)+'px';
-            Cocoon.App.EmulatedWebView.style.height = (height ? height/window.devicePixelRatio : window.innerHeight)+'px';
+            Cocoon.App.EmulatedWebViewIFrame.style.width = (width ? width / window.devicePixelRatio : window.innerWidth) + 'px';
+            Cocoon.App.EmulatedWebViewIFrame.style.height = (height ? height / window.devicePixelRatio : window.innerHeight) + 'px';
+            Cocoon.App.EmulatedWebView.style.left = (x ? x : 0) + 'px';
+            Cocoon.App.EmulatedWebView.style.top = (y ? y : 0) + 'px';
+            Cocoon.App.EmulatedWebView.style.width = (width ? width / window.devicePixelRatio : window.innerWidth) + 'px';
+            Cocoon.App.EmulatedWebView.style.height = (height ? height / window.devicePixelRatio : window.innerHeight) + 'px';
             Cocoon.App.EmulatedWebView.style.display = "block";
 
         }
@@ -2440,8 +2426,8 @@ Cocoon.define("Cocoon.App" , function(extension){
     * @example
     * Cocoon.App.hideTheWebView();
     */
-    extension.hideTheWebView = function() {
-        if (Cocoon.App.nativeAvailable && navigator.isCocoonJS) {
+    extension.hideTheWebView = function () {
+        if (Cocoon.App.nativeAvailable() && navigator.isCocoonJS) {
             var javaScriptCodeToForward = "ext.IDTK_APP.makeCall('hide');";
             return Cocoon.App.forwardAsync(javaScriptCodeToForward);
         }
@@ -2456,7 +2442,7 @@ Cocoon.define("Cocoon.App" , function(extension){
     * @function forwardedEventFromTheWebView
     * @memberOf Cocoon.App
     */
-    extension.forwardedEventFromTheWebView = function(eventName, eventDataString) {
+    extension.forwardedEventFromTheWebView = function (eventName, eventDataString) {
         var eventData = JSON.parse(eventDataString);
         eventData.target = window;
         var event = new Event(eventName);
@@ -2479,10 +2465,10 @@ Cocoon.define("Cocoon.App" , function(extension){
     var signal = new Cocoon.createSignal();
 
     signal.register("load", {
-        success : extension.onLoadInTheWebViewSucceed,
-        error : extension.onLoadInTheWebViewFailed
+        success: extension.onLoadInTheWebViewSucceed,
+        error: extension.onLoadInTheWebViewFailed
     });
-    
+
     extension.WebView = Cocoon.WebView || {};
     extension.WebView.on = signal.expose();
 
@@ -2490,7 +2476,7 @@ Cocoon.define("Cocoon.App" , function(extension){
 });
 /*jshint loopfunc: true */
 
-Cocoon.define("Cocoon.Proxify" , function(extension){
+Cocoon.define("Cocoon.Proxify", function (extension) {
     "use strict";
     /**
     * Proxies different functions of the WebView environment, like Audio objects and XHR.
@@ -2502,10 +2488,10 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @memberof Cocoon.WebView
     * @private
     */
-    extension.getKeyForValueInDictionary = function(dictionary, value) {
+    extension.getKeyForValueInDictionary = function (dictionary, value) {
         var finalKey = null;
         for (var key in dictionary) {
-            if (dictionary[key] === value){
+            if (dictionary[key] === value) {
                 finalKey = key;
                 break;
             }
@@ -2529,7 +2515,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * A valid typeName and at least one valid array for attribute, function or event handler names is mandatory.
     */
     extension.setupOriginProxyType = function (typeName, attributeNames, functionNames, eventHandlerNames) {
-        if (Cocoon.nativeAvailable){
+        if (Cocoon.nativeAvailable()) {
             // Control the parameters.
             if (!typeName) throw "The given typeName must be valid.";
             if (!attributeNames && !functionNames && !eventHandlerNames) throw "There is no point on setting up a proxy for no attributes, functions nor eventHandlers.";
@@ -2662,10 +2648,10 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
 
             // The type will contain a proxy data structure to store all the instances that are created so they are available when the destination environment calls back. 
             parentObject[typeName]._cocoonjs_proxy_type_data =
-            {
-                originalType:originalType,
-                proxyObjects:[]
-            };
+                {
+                    originalType: originalType,
+                    proxyObjects: []
+                };
 
             /**
              * Deletes a proxy instance from both the Cocoon environment structures and also deleting it's webview environment counterpart.
@@ -2695,7 +2681,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
                 var object = this.proxyObjects[id];
                 var eventHandler = object._cocoonjs_proxy_object_data.eventHandlers[eventHandlerName];
                 if (eventHandler) {
-                    eventHandler({ target:object });
+                    eventHandler({ target: object });
                 }
             };
 
@@ -2703,7 +2689,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
                 var object = this.proxyObjects[id];
                 var eventListeners = object._cocoonjs_proxy_object_data.eventListeners[eventTypeName].slice();
                 for (var i = 0; i < eventListeners.length; i++) {
-                    eventListeners[i]({ target:object });
+                    eventListeners[i]({ target: object });
                 }
             };
         }
@@ -2718,7 +2704,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @param {string} typeName The name of the type to be deproxified (take down the proxification and restore the type to it's original state)
     */
     extension.takedownOriginProxyType = function (typeName) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             if (parentObject[typeName] && parentObject[typeName]._cocoonjs_proxy_type_data) {
                 parentObject[typeName] = parentObject[typeName]._cocoonjs_proxy_type_data.originalType;
@@ -2735,7 +2721,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @param {object} object The proxified object to be deleted.
     */
     extension.deleteOriginProxyObject = function (object) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             if (object && object._cocoonjs_proxy_object_data) {
                 parentObject[object._cocoonjs_proxy_object_data.typeName]._cocoonjs_proxy_type_data.deleteProxyObject(object);
@@ -2753,7 +2739,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @param {string} eventHandlerName The name of the event handler to be called.
     */
     extension.callOriginProxyObjectEventHandler = function (typeName, id, eventHandlerName) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             parentObject[typeName]._cocoonjs_proxy_type_data.callProxyObjectEventHandler(id, eventHandlerName);
         }
@@ -2769,7 +2755,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @param {string} eventTypeName The name of the event type to call the listeners related to it.
     */
     extension.callOriginProxyObjectEventListeners = function (typeName, id, eventTypeName) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             parentObject[typeName]._cocoonjs_proxy_type_data.callProxyObjectEventListeners(id, eventTypeName);
         }
@@ -2785,17 +2771,17 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * and call to the Cocoon counterparts accordingly.
     */
     extension.setupDestinationProxyType = function (typeName, eventHandlerNames) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
 
             // Add a Cocoon structure to the destination proxified type to store some useful information like all the proxy instances that are created, plus the id counter 
             // and the names of all the event handlers and some utility functions.
             parentObject[typeName]._cocoonjs_proxy_type_data =
-            {
-                nextId:0,
-                proxyObjects:{},
-                eventHandlerNames:eventHandlerNames
-            };
+                {
+                    nextId: 0,
+                    proxyObjects: {},
+                    eventHandlerNames: eventHandlerNames
+                };
         }
     };
 
@@ -2807,7 +2793,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @param {string} typeName The name of the type to take the proxification down.
     */
     extension.takedownDestinationProxyType = function (typeName) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             if (parent[typeName] && parentObject[typeName]._cocoonjs_proxy_type_data) {
                 delete parentObject[typeName]._cocoonjs_proxy_type_data;
@@ -2824,7 +2810,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @return The id to be used from the original environment to identify the corresponding destination object instance.
     */
     extension.newDestinationProxyObject = function (typeName) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
 
             var proxyObject = new parentObject[typeName]();
@@ -2871,7 +2857,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @return Whatever the function call returns.
     */
     extension.callDestinationProxyObjectFunction = function (typeName, id, functionName) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             var argumentsArray = Array.prototype.slice.call(arguments);
             argumentsArray.splice(0, 3);
@@ -2892,7 +2878,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @param {unknown} attributeValue The value to be set to the attribute.
     */
     extension.setDestinationProxyObjectAttribute = function (typeName, id, attributeName, attributeValue) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             var proxyObject = parentObject[typeName]._cocoonjs_proxy_type_data.proxyObjects[id];
             proxyObject[attributeName] = attributeValue;
@@ -2909,7 +2895,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @param {string} attributeName The name of the attribute to be retrieved.
     */
     extension.getDestinationProxyObjectAttribute = function (typeName, id, attributeName) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             var proxyObject = parentObject[typeName]._cocoonjs_proxy_type_data.proxyObjects[id];
             return proxyObject[attributeName];
@@ -2926,7 +2912,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @param {number} id The id of the proxy object.
     */
     extension.deleteDestinationProxyObject = function (typeName, id) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             delete parentObject[typeName]._cocoonjs_proxy_type_data.proxyObjects[id];
         }
@@ -2938,7 +2924,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @private
     */
     extension.addDestinationProxyObjectEventListener = function (typeName, id, eventTypeName) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             // Look for the proxy object
             var proxyObject = parentObject[typeName]._cocoonjs_proxy_type_data.proxyObjects[id];
@@ -3051,28 +3037,23 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @example
     * Cocoon.Proxify.console();
     */
-    extension.console = function() 
-    {
-        if (!Cocoon.nativeAvailable) return;
+    extension.console = function () {
+        if (!Cocoon.nativeAvailable()) return;
 
-        if (typeof Cocoon.originalConsole === 'undefined')
-        {
+        if (typeof Cocoon.originalConsole === 'undefined') {
             Cocoon.originalConsole = window.console;
         }
         var functions = ["log", "error", "info", "debug", "warn"];
 
         var newConsole = {};
-        for (var i = 0; i < functions.length; i++)
-        {
-            newConsole[functions[i]] = function(functionName)
-            {
-                return function(message)
-                {
-                    try{
+        for (var i = 0; i < functions.length; i++) {
+            newConsole[functions[i]] = function (functionName) {
+                return function (message) {
+                    try {
                         var jsCode = "Proxified log: " + JSON.stringify(message);
                         Cocoon.originalConsole.log(jsCode);
                         ext.IDTK_APP.makeCallAsync("forward", jsCode);
-                    }catch(e){
+                    } catch (e) {
                         console.log("Proxified log: " + e);
                     }
                 };
@@ -3085,7 +3066,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
                     newConsole.error(str);
                 }
             };
-        }        
+        }
         window.console = newConsole;
     };
 
@@ -3096,11 +3077,9 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @example
     * Cocoon.Proxify.deproxifyConsole();
     */
-    extension.deproxifyConsole = function()
-    {
-        if (window.navigator.isCocoonJS || !Cocoon.nativeAvailable) return;
-        if (typeof Cocoon.originalConsole !== 'undefined')
-        {
+    extension.deproxifyConsole = function () {
+        if (window.navigator.isCocoonJS || !Cocoon.nativeAvailable()) return;
+        if (typeof Cocoon.originalConsole !== 'undefined') {
             window.console = Cocoon.originalConsole;
             Cocoon.originalConsole = undefined;
         }
@@ -3113,9 +3092,9 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
 * The "Cocoon.Touch" object holds some functions to handle the touch events in both surfaces ( Cocoon & WebView )
 * @namespace Cocoon.Touch
 */
-Cocoon.define("Cocoon.Touch" , function(extension){
+Cocoon.define("Cocoon.Touch", function (extension) {
 
-    extension.addADivToDisableInput = function() {
+    extension.addADivToDisableInput = function () {
         var div = document.createElement("div");
         div.id = "CocoonJSInputBlockingDiv";
         div.style.left = 0;
@@ -3124,12 +3103,12 @@ Cocoon.define("Cocoon.Touch" , function(extension){
         div.style.height = "100%";
         div.style.position = "absolute";
         div.style.backgroundColor = 'transparent';
-        div.style.border = "0px solid #000"; 
+        div.style.border = "0px solid #000";
         div.style.zIndex = 999999999;
         document.body.appendChild(div);
     };
 
-    extension.removeTheDivToEnableInput = function() {
+    extension.removeTheDivToEnableInput = function () {
         var div = document.getElementById("CocoonJSInputBlockingDiv");
         if (div) document.body.removeChild(div);
     };
@@ -3142,7 +3121,7 @@ Cocoon.define("Cocoon.Touch" , function(extension){
      * Cocoon.Touch.disable();
      */
     extension.disable = function () {
-        if (Cocoon.nativeAvailable) {
+        if (Cocoon.nativeAvailable()) {
             window.ext.IDTK_APP.makeCall("disableTouchLayer", "CocoonJSView");
         }
         else if (!navigator.isCocoonJS) {
@@ -3161,7 +3140,7 @@ Cocoon.define("Cocoon.Touch" , function(extension){
      * Cocoon.Touch.enable();
      */
     extension.enable = function () {
-        if (Cocoon.nativeAvailable) {
+        if (Cocoon.nativeAvailable()) {
             window.ext.IDTK_APP.makeCall("enableTouchLayer", "CocoonJSView");
         }
         else if (!navigator.isCocoonJS) {
@@ -3181,7 +3160,7 @@ Cocoon.define("Cocoon.Touch" , function(extension){
      * Cocoon.Touch.disableInWebView();
      */
     extension.disableInWebView = function () {
-        if (Cocoon.nativeAvailable) {
+        if (Cocoon.nativeAvailable()) {
             window.ext.IDTK_APP.makeCall("disableTouchLayer", "WebView");
         }
         else if (!navigator.isCocoonJS) {
@@ -3202,7 +3181,7 @@ Cocoon.define("Cocoon.Touch" , function(extension){
      * Cocoon.Touch.enableInWebView();
      */
     extension.enableInWebView = function () {
-        if (Cocoon.nativeAvailable) {
+        if (Cocoon.nativeAvailable()) {
             window.ext.IDTK_APP.makeCall("enableTouchLayer", "WebView");
         }
         else if (!navigator.isCocoonJS) {
@@ -3214,7 +3193,7 @@ Cocoon.define("Cocoon.Touch" , function(extension){
             }
         }
     };
-    
+
     return extension;
 
 });
@@ -3222,7 +3201,7 @@ Cocoon.define("Cocoon.Touch" , function(extension){
  * This namespace holds different utilities.
  * @namespace Cocoon.Utils
  */
-Cocoon.define("Cocoon.Utils" , function(extension){
+Cocoon.define("Cocoon.Utils", function (extension) {
     "use strict";
 
     /**
@@ -3232,10 +3211,8 @@ Cocoon.define("Cocoon.Utils" , function(extension){
     * @example
     * Cocoon.Utils.logMemoryInfo();
     */
-    extension.logMemoryInfo = function()
-    {
-        if (Cocoon.nativeAvailable && navigator.isCocoonJS)
-        {
+    extension.logMemoryInfo = function () {
+        if (Cocoon.nativeAvailable() && navigator.isCocoonJS) {
             return Cocoon.callNative("IDTK_APP", "logMemoryInfo", arguments);
         }
     };
@@ -3261,10 +3238,8 @@ Cocoon.define("Cocoon.Utils" , function(extension){
     * @example
     * Cocoon.Utils.textureReduction(64);
     */
-    extension.textureReduction = function(sizeThreshold, applyTo, forbidFor)
-    {
-        if (Cocoon.nativeAvailable && navigator.isCocoonJS)
-        {
+    extension.textureReduction = function (sizeThreshold, applyTo, forbidFor) {
+        if (Cocoon.nativeAvailable() && navigator.isCocoonJS) {
             return Cocoon.callNative("IDTK_APP", "setDefaultTextureReducerThreshold", arguments);
         }
     };
@@ -3283,11 +3258,9 @@ Cocoon.define("Cocoon.Utils" , function(extension){
     * @example
     * Cocoon.Utils.markAsMusic("path/to/file.mp3");
     */
-    extension.markAsMusic = function(audioFilePath)
-    {
-        if (Cocoon.nativeAvailable)
-        {
-           return Cocoon.callNative("IDTK_APP", "addForceMusic", arguments);
+    extension.markAsMusic = function (audioFilePath) {
+        if (Cocoon.nativeAvailable()) {
+            return Cocoon.callNative("IDTK_APP", "addForceMusic", arguments);
         }
     };
 
@@ -3308,31 +3281,31 @@ Cocoon.define("Cocoon.Utils" , function(extension){
      * Cocoon.Utils.captureScreen("myScreenshot.png");
      */
     extension.captureScreen = function (fileName, storageType, captureType, saveToGallery) {
-        if (Cocoon.nativeAvailable) {
+        if (Cocoon.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "captureScreen", arguments);
         }
     };
 
-     /**
-     * Captures a image of the screen asynchronously and saves it to a file.
-     * Async mode captures a final frame as soon as possible.
-     * @function captureScreenAsync
-     * @memberof Cocoon.Utils
-     * @param {string} fileName Desired file name and format (png or jpg). If no value is passed, "capture.png" value is used by default
-     * @param {Cocoon.App.StorageType} storageType The developer can specify the storage where it is stored. If no value is passed, the {@see Cocoon.Utils.StorageType.TMP_STORAGE} value is used by default.
-     * @param {Cocoon.Utils.CaptureType} captureType Optional value to choose capture type. See {@link Cocoon.Utils.CaptureType}.
-     * - 0: Captures everything.
-     * - 1: Only captures cocoon surface.
-     * - 2: Only captures system views.
-     * @param {boolean} saveToGallery Optional value to specify if the capture image should be stored in the device image gallery or not.
-     * @param {function} callback Response callback, check the error property to monitor errors. Check the 'url' property to get the URL of the saved Image
-     * @example
-     * Cocoon.Utils.captureScreenAsync("myScreenshot.png", Cocoon.Utils.StorageType.TMP_STORAGE, false, Cocoon.Utils.CaptureType.EVERYTHING, function(url, error){
-     * ...
-     * });
-     */
+    /**
+    * Captures a image of the screen asynchronously and saves it to a file.
+    * Async mode captures a final frame as soon as possible.
+    * @function captureScreenAsync
+    * @memberof Cocoon.Utils
+    * @param {string} fileName Desired file name and format (png or jpg). If no value is passed, "capture.png" value is used by default
+    * @param {Cocoon.App.StorageType} storageType The developer can specify the storage where it is stored. If no value is passed, the {@see Cocoon.Utils.StorageType.TMP_STORAGE} value is used by default.
+    * @param {Cocoon.Utils.CaptureType} captureType Optional value to choose capture type. See {@link Cocoon.Utils.CaptureType}.
+    * - 0: Captures everything.
+    * - 1: Only captures cocoon surface.
+    * - 2: Only captures system views.
+    * @param {boolean} saveToGallery Optional value to specify if the capture image should be stored in the device image gallery or not.
+    * @param {function} callback Response callback, check the error property to monitor errors. Check the 'url' property to get the URL of the saved Image
+    * @example
+    * Cocoon.Utils.captureScreenAsync("myScreenshot.png", Cocoon.Utils.StorageType.TMP_STORAGE, false, Cocoon.Utils.CaptureType.EVERYTHING, function(url, error){
+    * ...
+    * });
+    */
     extension.captureScreenAsync = function (fileName, storageType, captureType, saveToGallery, callback) {
-        if (Cocoon.nativeAvailable) {
+        if (Cocoon.nativeAvailable()) {
             Cocoon.callNative("IDTK_APP", "captureScreen", arguments, true);
         }
     };
@@ -3345,11 +3318,9 @@ Cocoon.define("Cocoon.Utils" , function(extension){
     * @example
     * Cocoon.Utils.setAntialias(true);
     */
-    extension.setAntialias = function(enable)
-    {
-        if (Cocoon.nativeAvailable && navigator.isCocoonJS)
-        {
-           return Cocoon.callNative("IDTK_APP", "setDefaultAntialias", arguments);
+    extension.setAntialias = function (enable) {
+        if (Cocoon.nativeAvailable() && navigator.isCocoonJS) {
+            return Cocoon.callNative("IDTK_APP", "setDefaultAntialias", arguments);
         }
     };
 
@@ -3361,11 +3332,21 @@ Cocoon.define("Cocoon.Utils" , function(extension){
     * @example
     * Cocoon.Utils.setWebGLEnabled(true);
     */
-    extension.setWebGLEnabled = function(enabled)
-    {
-        if (Cocoon.nativeAvailable)
-        {
-           return Cocoon.callNative("IDTK_APP", "setDefaultAntialias", arguments);
+    extension.setWebGLEnabled = function (enabled) {
+        if (Cocoon.nativeAvailable()) {
+            return Cocoon.callNative("IDTK_APP", "setWebGLEnabled", arguments, false);
+        }
+    };
+
+    /**
+    * Checks if WebGL is enabled in Canvas+
+    * @function isWebGLEnabled
+    * @example
+    * var enabled = Cocoon.Utils.isWebGLEnabled();
+    */
+    extension.isWebGLEnabled = function () {
+        if (Cocoon.nativeAvailable()) {
+            return Cocoon.callNative("IDTK_APP", "isWebGLEnabled", arguments, false);
         }
     };
 
@@ -3379,7 +3360,7 @@ Cocoon.define("Cocoon.Utils" , function(extension){
      * Cocoon.Utils.setNPOTEnabled(true);
      */
     extension.setNPOTEnabled = function (enabled) {
-        if (Cocoon.nativeAvailable && navigator.isCocoonJS) {
+        if (Cocoon.nativeAvailable() && navigator.isCocoonJS) {
             return window.ext.IDTK_APP.makeCall("setNPOTEnabled", enabled);
         }
     };
@@ -3397,7 +3378,7 @@ Cocoon.define("Cocoon.Utils" , function(extension){
      * Cocoon.Utils.setMaxMemory(75);
      */
     extension.setMaxMemory = function (memoryInMBs) {
-        if (Cocoon.nativeAvailable && navigator.isCocoonJS) {
+        if (Cocoon.nativeAvailable() && navigator.isCocoonJS) {
             return window.ext.IDTK_APP.makeCall("setMaxMemory", memoryInMBs);
         }
     };
@@ -3412,9 +3393,9 @@ Cocoon.define("Cocoon.Utils" , function(extension){
     * @property {string} Cocoon.Utils.CaptureType.JUST_SYSTEM_VIEWS - Captures just the sustem views (like the webview)
     */
     extension.CaptureType = {
-        EVERYTHING:0,
-        COCOONJS_GL_SURFACE:1,
-        JUST_SYSTEM_VIEWS:2
+        EVERYTHING: 0,
+        COCOONJS_GL_SURFACE: 1,
+        JUST_SYSTEM_VIEWS: 2
     };
 
     /**
@@ -3426,8 +3407,8 @@ Cocoon.define("Cocoon.Utils" , function(extension){
     * @example
     * console.log(Cocoon.Utils.existsPath("file.txt"));
     */
-    extension.existsPath = function(path, storageType) {
-        if (Cocoon.nativeAvailable){
+    extension.existsPath = function (path, storageType) {
+        if (Cocoon.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "existsPath", arguments);
         }
         return false;
@@ -3447,7 +3428,7 @@ Cocoon.define("Cocoon.Utils" , function(extension){
     * Cocoon.Utils.setTextCacheSize(32);
     */
     extension.setTextCacheSize = function (size) {
-        if (Cocoon.nativeAvailable && navigator.isCocoonJS) {
+        if (Cocoon.nativeAvailable() && navigator.isCocoonJS) {
             return Cocoon.callNative("IDTK_APP", "setTextCacheSize", arguments);
         }
     };
@@ -3471,10 +3452,10 @@ Cocoon.define("Cocoon.Utils" , function(extension){
 * Cocoon.App.loadInTheWebView("WV.html");
 */
 
-Cocoon.define("Cocoon.WebView" , function(extension){
+Cocoon.define("Cocoon.WebView", function (extension) {
 
     if (typeof Cocoon === 'undefined' || Cocoon === null) return extension;
-    if (typeof Cocoon.App === 'undefined' || Cocoon.App  === null) return extension;
+    if (typeof Cocoon.App === 'undefined' || Cocoon.App === null) return extension;
     if (navigator.isCocoonJS) return extension;
 
     /**
@@ -3486,23 +3467,20 @@ Cocoon.define("Cocoon.WebView" , function(extension){
     * @param {number} [width] The horitonzal size of the WebView.
     * @param {number} [height] the vertical size of the WebView.
     */
-    extension.show = function(x, y, width, height)
-    {
-        if (Cocoon.App.nativeAvailable)
-        {
-           return Cocoon.callNative("IDTK_APP", "show", arguments);
+    extension.show = function (x, y, width, height) {
+        if (Cocoon.App.nativeAvailable()) {
+            return Cocoon.callNative("IDTK_APP", "show", arguments);
         }
-        else
-        {
+        else {
             var div = window.parent.document.getElementById('CocoonJS_App_ForCocoonJS_WebViewDiv');
-            div.style.left = (x ? x : div.style.left)+'px';
-            div.style.top = (y ? y : div.style.top)+'px';
-            div.style.width = (width ? width/window.devicePixelRatio : window.parent.innerWidth)+'px';
-            div.style.height = (height ? height/window.devicePixelRatio : window.parent.innerHeight)+'px';
+            div.style.left = (x ? x : div.style.left) + 'px';
+            div.style.top = (y ? y : div.style.top) + 'px';
+            div.style.width = (width ? width / window.devicePixelRatio : window.parent.innerWidth) + 'px';
+            div.style.height = (height ? height / window.devicePixelRatio : window.parent.innerHeight) + 'px';
             div.style.display = "block";
             var iframe = window.parent.document.getElementById('CocoonJS_App_ForCocoonJS_WebViewIFrame');
-            iframe.style.width = (width ? width/window.devicePixelRatio : window.parent.innerWidth)+'px';
-            iframe.style.height = (height ? height/window.devicePixelRatio : window.parent.innerHeight)+'px';
+            iframe.style.width = (width ? width / window.devicePixelRatio : window.parent.innerWidth) + 'px';
+            iframe.style.height = (height ? height / window.devicePixelRatio : window.parent.innerHeight) + 'px';
         }
     };
 
@@ -3511,14 +3489,11 @@ Cocoon.define("Cocoon.WebView" , function(extension){
     * @function hide
     * @memberof Cocoon.WebView
     */
-    extension.hide = function()
-    {
-        if (Cocoon.App.nativeAvailable)
-        {
-           return Cocoon.callNative("IDTK_APP", "hide", arguments);
+    extension.hide = function () {
+        if (Cocoon.App.nativeAvailable()) {
+            return Cocoon.callNative("IDTK_APP", "hide", arguments);
         }
-        else
-        {
+        else {
             window.parent.document.getElementById('CocoonJS_App_ForCocoonJS_WebViewDiv').style.display = "none";
         }
     };
@@ -3538,16 +3513,12 @@ Cocoon.define("Cocoon.WebView" , function(extension){
     *   error : function(){ ... }
     * });
     */
-    extension.loadInCocoon = function(path, callbacks, storageType)
-    {
-        if (Cocoon.App.nativeAvailable)
-        {
+    extension.loadInCocoon = function (path, callbacks, storageType) {
+        if (Cocoon.App.nativeAvailable()) {
             var javaScriptCodeToForward = "ext.IDTK_APP.makeCall('loadPath'";
-            if (typeof path !== 'undefined')
-            {
+            if (typeof path !== 'undefined') {
                 javaScriptCodeToForward += ", '" + path + "'";
-                if (typeof storageType !== 'undefined')
-                {
+                if (typeof storageType !== 'undefined') {
                     javaScriptCodeToForward += ", '" + storageType + "'";
                 }
             }
@@ -3555,36 +3526,31 @@ Cocoon.define("Cocoon.WebView" , function(extension){
 
             return Cocoon.App.forwardAsync(javaScriptCodeToForward);
         }
-        else
-        {
+        else {
             Cocoon.App.forwardAsync("Cocoon.App.load('" + path + "');");
         }
     };
 
-    extension.reloadCocoonJS = function()
-    {
-        if (Cocoon.App.nativeAvailable)
-        {
+    extension.reloadCocoonJS = function () {
+        if (Cocoon.App.nativeAvailable()) {
             return Cocoon.App.forwardAsync("ext.IDTK_APP.makeCall('reload');");
         }
-        else if (!navigator.isCocoonJS)
-        {
+        else if (!navigator.isCocoonJS) {
             window.parent.location.reload();
         }
     };
 
 
-    window.addEventListener("load", function()
-    {
-        
+    window.addEventListener("load", function () {
+
 
         // Only if we are completely outside Canvas+ (or Canvas+ internal webview),
         // setup event forwarding from the webview (iframe) to Cocoon.
-        if (!Cocoon.App.nativeAvailable && window.name == 'CocoonJS_App_ForCocoonJS_WebViewIFrame') {
+        if (!Cocoon.App.nativeAvailable() && window.name == 'CocoonJS_App_ForCocoonJS_WebViewIFrame') {
             Cocoon.App.forwardEventsToCocoonJSEnabled = false;
-            var EVENT_ATTRIBUTES = [ 'timeStamp', 'button', 'type', 'x', 'y', 'pageX', 'pageY', 'clientX', 'clientY', 'offsetX', 'offsetY'];
-            var EVENTS = [ "dblclick", "touchmove", "mousemove", "touchend", "touchcancel", "mouseup", "touchstart", "mousedown", "release", "dragleft", "dragright", "swipeleft", "swiperight" ];
-            var forwardEventToCocoonJS = function(eventName, event) {
+            var EVENT_ATTRIBUTES = ['timeStamp', 'button', 'type', 'x', 'y', 'pageX', 'pageY', 'clientX', 'clientY', 'offsetX', 'offsetY'];
+            var EVENTS = ["dblclick", "touchmove", "mousemove", "touchend", "touchcancel", "mouseup", "touchstart", "mousedown", "release", "dragleft", "dragright", "swipeleft", "swiperight"];
+            var forwardEventToCocoonJS = function (eventName, event) {
                 var eventData = {};
                 for (var att in event) {
                     var i = EVENT_ATTRIBUTES.indexOf(att);
@@ -3596,8 +3562,8 @@ Cocoon.define("Cocoon.WebView" , function(extension){
                 Cocoon.App.forward(jsCode);
             };
             for (var i = 0; i < EVENTS.length; i++) {
-                window.addEventListener(EVENTS[i], (function(eventName) {
-                    return function(event) {
+                window.addEventListener(EVENTS[i], (function (eventName) {
+                    return function (event) {
                         if (Cocoon.App.forwardEventsToCocoonJSEnabled) {
                             forwardEventToCocoonJS(eventName, event);
                         }
@@ -3628,7 +3594,7 @@ Cocoon.define("Cocoon.Widget" , function(extension){
     */
     extension.WebDialog = function() {
         
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             this.webDialogID = window.ext.IDTK_APP.makeCall("createWebDialog");
         }
         else {
@@ -3681,7 +3647,7 @@ Cocoon.define("Cocoon.Widget" , function(extension){
                 if (callback)
                     callback();
             };
-            if (Cocoon.App.nativeAvailable) {
+            if (Cocoon.App.nativeAvailable()) {
                 Cocoon.Touch.disable();
                 return window.ext.IDTK_APP.makeCallAsync("showWebDialog", this.webDialogID, url, this.closeCallback);
             }
@@ -3705,7 +3671,7 @@ Cocoon.define("Cocoon.Widget" , function(extension){
         * }, 15000);
         */
         close: function() {
-            if (Cocoon.App.nativeAvailable) {
+            if (Cocoon.App.nativeAvailable()) {
                 return window.ext.IDTK_APP.makeCallAsync("closeWebDialog", this.webDialogID);
             }
             else {
@@ -3730,7 +3696,7 @@ Cocoon.define("Cocoon.Widget" , function(extension){
         * dialog.eval("alert('Michael Jackson is the king of pop')");
         */
         eval: function(js) {
-            if (Cocoon.App.nativeAvailable) {
+            if (Cocoon.App.nativeAvailable()) {
                 return window.ext.IDTK_APP.makeCallAsync("evalWebDialog", this.webDialogID, js);
             }
             else {
