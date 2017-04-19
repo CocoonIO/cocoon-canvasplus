@@ -1,6 +1,6 @@
 {
   "name": "cocoon-plugin-canvasplus-common",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Common utils for Cocoon Canvas+",
   "cordova": {
     "id": "cocoon-plugin-canvasplus-common",
