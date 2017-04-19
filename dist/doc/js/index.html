@@ -188,16 +188,43 @@
 
     
         
-            <div class="description"><p><h1>Canvas+ API documentation</h1></p>
-<p>Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project.</p> 
-<h3>Important note</h3>
-<p>Unlike old CocoonJS plugins, Cocoon Canvas+ plugins need to wait for Cordova <a href="https://cordova.apache.org/docs/en/4.0.0/cordova_events_events.md.html#deviceready">&quot;deviceready&quot; event</a> to start working.</p></div>
+            <div class="description"><p><h3>Canvas+ internal Webview </h3></p>
+<p><p>Canvas+ allows accessing a full DOM environment via Webview. Thus, there are two environments that live together: Canvas+ and WebView. Although both are two different JavaScript environments, Cocoon allows to render a transparent Webview on top of the Canvas+ OpenGL ES rendering context and it also provides a bidirectional communication channel between them. In this way, the final visual result seems to integrate both environments seamlessly.</p></p>
+<p><p>However, as Cordova only injects automatically the required clobbers in the main webview engine, it is neccesary to add manually the following files to the content that will be sent and displayed in Canvas+ internal Webview: </p></p>
+<p><ul>
+   <li><a href="https://github.com/ludei/cocoon-common/blob/master/src/js/cocoon.js" target="_blank">cocoon.js</a></li>
+   <li><a href="https://github.com/CocoonIO/cocoon-canvasplus/blob/master/dist/js/cocoon_canvasplus.js" target="_blank">cocoon_canvasplus.js</a></li>
+</ul>
+<br/></p>
+<p><h3>Documentation</h3></p>
+<p><p> Select the specific namespace below to open the relevant documentation section:</p></p>
+<p><ul>
+   <li><a href="http://ludei.github.io/cocoon-common/dist/doc/js/Cocoon.html">Cocoon</a></li>
+   <li><a href="Cocoon.App.html">App</a></li>
+   <li><a href="Cocoon.Device.html">Device</a></li>
+   <li><a href="Cocoon.Dialog.html">Dialog</a></li>
+   <li><a href="Cocoon.Motion.html">Motion</a></li>
+   <li><a href="Cocoon.Proxify.html">Proxify</a></li>
+   <li><a href="Cocoon.Touch.html">Touch</a></li>
+   <li><a href="Cocoon.Utils.html">Utils</a></li>
+   <li><a href="Cocoon.WebView.html">WebView</a></li>
+   <li><a href="Cocoon.Widget.html">Widget</a></li>
+</ul>
+We hope you find everything you need to get going here, but if you stumble on any problems with the docs or the plugins, 
+just drop us a line at our forums and we'll do our best to help you out.</p>
+<p><h3>Tools</h3>
+<a href="https://forums.cocoon.io/"><img src="img/cocoon-tools-1.png" /></a>
+<a href="https://cocoon.io/doc"><img src="img/cocoon-tools-2.png" /></a>
+<a href="http://cocoon.io/"><img src="img/cocoon-tools-3.png" /></a></p></div>
         
 
         
 <dl class="details">
     
 
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0</li></ul></dd>
     
 
     
@@ -220,15 +247,6 @@
 
     
 </dl>
-
-
-        
-            <h3>Example</h3>
-            
-    <pre class="sunlight-highlight-javascript">document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {
-    // Cocoon Canvas+ code here
-}  </pre>
 
 
         
@@ -278,43 +296,16 @@ function onDeviceReady() {
 
     
         
-            <div class="description"><p><h3>Canvas+ internal Webview </h3></p>
-<p><p>Canvas+ allows accessing a full DOM environment via Webview. Thus, there are two environments that live together: Canvas+ and WebView. Although both are two different JavaScript environments, Cocoon allows to render a transparent Webview on top of the Canvas+ OpenGL ES rendering context and it also provides a bidirectional communication channel between them. In this way, the final visual result seems to integrate both environments seamlessly.</p></p>
-<p><p>However, as Cordova only injects automatically the required clobbers in the main webview engine, it is neccesary to add manually the following files to the content that will be sent and displayed in Canvas+ internal Webview: </p>
- <ul>
-    <li><a href="https://github.com/ludei/cocoon-common/blob/master/src/js/cocoon.js" target="_blank">cocoon.js</a></li>
-    <li><a href="https://github.com/CocoonIO/cocoon-canvasplus/blob/master/dist/js/cocoon_canvasplus.js" target="_blank">cocoon_canvasplus.js</a></li>
- </ul>
- <br/>
- <h3>Documentation</h3>
- <p> Select the specific namespace below to open the relevant documentation section:</p>
- <ul>
-    <li><a href="http://ludei.github.io/cocoon-common/dist/doc/js/Cocoon.html">Cocoon</a></li>
-    <li><a href="Cocoon.App.html">App</a></li>
-    <li><a href="Cocoon.Device.html">Device</a></li>
-    <li><a href="Cocoon.Dialog.html">Dialog</a></li>
-    <li><a href="Cocoon.Motion.html">Motion</a></li>
-    <li><a href="Cocoon.Proxify.html">Proxify</a></li>
-    <li><a href="Cocoon.Touch.html">Touch</a></li>
-    <li><a href="Cocoon.Utils.html">Utils</a></li>
-    <li><a href="Cocoon.WebView.html">WebView</a></li>
-    <li><a href="Cocoon.Widget.html">Widget</a></li>
-</ul>
-We hope you find everything you need to get going here, but if you stumble on any problems with the docs or the plugins, 
-just drop us a line at our forums and we'll do our best to help you out.
- <h3>Tools</h3>
- <a href="https://forums.cocoon.io/"><img src="img/cocoon-tools-1.png" /></a>
- <a href="https://cocoon.io/doc"><img src="img/cocoon-tools-2.png" /></a>
- <a href="http://cocoon.io/"><img src="img/cocoon-tools-3.png" /></a></p></div>
+            <div class="description"><p><h1>Canvas+ API documentation</h1></p>
+<p>Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project.</p> 
+<h3>Important note</h3>
+<p>Unlike old CocoonJS plugins, Cocoon Canvas+ plugins need to wait for Cordova <a href="https://cordova.apache.org/docs/en/4.0.0/cordova_events_events.md.html#deviceready">&quot;deviceready&quot; event</a> to start working.</p></div>
         
 
         
 <dl class="details">
     
 
-    
-    <dt class="tag-version">Version:</dt>
-    <dd class="tag-version"><ul class="dummy"><li>1.0</li></ul></dd>
     
 
     
@@ -337,6 +328,15 @@ just drop us a line at our forums and we'll do our best to help you out.
 
     
 </dl>
+
+
+        
+            <h3>Example</h3>
+            
+    <pre class="sunlight-highlight-javascript">document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    // Cocoon Canvas+ code here
+}  </pre>
 
 
         
