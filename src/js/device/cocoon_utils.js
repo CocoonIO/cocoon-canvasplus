@@ -140,8 +140,9 @@ Cocoon.define("Cocoon.Utils", function (extension) {
     };
 
     /**
-    * Checks if WebGL is enabled in Canvas+
+    * Checks if WebGL is enabled in Canvas+.
     * @function isWebGLEnabled
+    * @memberOf Cocoon.Utils
     * @example
     * var enabled = Cocoon.Utils.isWebGLEnabled();
     */
