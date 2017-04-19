@@ -135,9 +135,21 @@ Cocoon.define("Cocoon.Utils", function (extension) {
     */
     extension.setWebGLEnabled = function (enabled) {
         if (Cocoon.nativeAvailable()) {
-            return Cocoon.callNative("IDTK_APP", "setDefaultAntialias", arguments);
+            return Cocoon.callNative("IDTK_APP", "setWebGLEnabled", arguments, false);
         }
     };
+
+    /**
+    * Checks if WebGL is enabled in Canvas+
+    * @function isWebGLEnabled
+    * @example
+    * var enabled = Cocoon.Utils.isWebGLEnabled();
+    */
+    extension.isWebGLEnabled = function () {
+        if (Cocoon.nativeAvailable()) {
+            return Cocoon.callNative("IDTK_APP", "isWebGLEnabled", arguments, false);
+        }
+    }
 
     /**
      * Enables NPOT (not power of two) textures in Canvas+. 
