@@ -149,7 +149,7 @@ Cocoon.define("Cocoon.Utils", function (extension) {
         if (Cocoon.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "isWebGLEnabled", arguments, false);
         }
-    }
+    };
 
     /**
      * Enables NPOT (not power of two) textures in Canvas+. 
