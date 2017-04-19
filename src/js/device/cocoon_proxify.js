@@ -1,6 +1,6 @@
 /*jshint loopfunc: true */
 
-Cocoon.define("Cocoon.Proxify" , function(extension){
+Cocoon.define("Cocoon.Proxify", function (extension) {
     "use strict";
     /**
     * Proxies different functions of the WebView environment, like Audio objects and XHR.
@@ -12,10 +12,10 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @memberof Cocoon.WebView
     * @private
     */
-    extension.getKeyForValueInDictionary = function(dictionary, value) {
+    extension.getKeyForValueInDictionary = function (dictionary, value) {
         var finalKey = null;
         for (var key in dictionary) {
-            if (dictionary[key] === value){
+            if (dictionary[key] === value) {
                 finalKey = key;
                 break;
             }
@@ -39,7 +39,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * A valid typeName and at least one valid array for attribute, function or event handler names is mandatory.
     */
     extension.setupOriginProxyType = function (typeName, attributeNames, functionNames, eventHandlerNames) {
-        if (Cocoon.nativeAvailable){
+        if (Cocoon.nativeAvailable()) {
             // Control the parameters.
             if (!typeName) throw "The given typeName must be valid.";
             if (!attributeNames && !functionNames && !eventHandlerNames) throw "There is no point on setting up a proxy for no attributes, functions nor eventHandlers.";
@@ -172,10 +172,10 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
 
             // The type will contain a proxy data structure to store all the instances that are created so they are available when the destination environment calls back. 
             parentObject[typeName]._cocoonjs_proxy_type_data =
-            {
-                originalType:originalType,
-                proxyObjects:[]
-            };
+                {
+                    originalType: originalType,
+                    proxyObjects: []
+                };
 
             /**
              * Deletes a proxy instance from both the Cocoon environment structures and also deleting it's webview environment counterpart.
@@ -205,7 +205,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
                 var object = this.proxyObjects[id];
                 var eventHandler = object._cocoonjs_proxy_object_data.eventHandlers[eventHandlerName];
                 if (eventHandler) {
-                    eventHandler({ target:object });
+                    eventHandler({ target: object });
                 }
             };
 
@@ -213,7 +213,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
                 var object = this.proxyObjects[id];
                 var eventListeners = object._cocoonjs_proxy_object_data.eventListeners[eventTypeName].slice();
                 for (var i = 0; i < eventListeners.length; i++) {
-                    eventListeners[i]({ target:object });
+                    eventListeners[i]({ target: object });
                 }
             };
         }
@@ -228,7 +228,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @param {string} typeName The name of the type to be deproxified (take down the proxification and restore the type to it's original state)
     */
     extension.takedownOriginProxyType = function (typeName) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             if (parentObject[typeName] && parentObject[typeName]._cocoonjs_proxy_type_data) {
                 parentObject[typeName] = parentObject[typeName]._cocoonjs_proxy_type_data.originalType;
@@ -245,7 +245,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @param {object} object The proxified object to be deleted.
     */
     extension.deleteOriginProxyObject = function (object) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             if (object && object._cocoonjs_proxy_object_data) {
                 parentObject[object._cocoonjs_proxy_object_data.typeName]._cocoonjs_proxy_type_data.deleteProxyObject(object);
@@ -263,7 +263,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @param {string} eventHandlerName The name of the event handler to be called.
     */
     extension.callOriginProxyObjectEventHandler = function (typeName, id, eventHandlerName) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             parentObject[typeName]._cocoonjs_proxy_type_data.callProxyObjectEventHandler(id, eventHandlerName);
         }
@@ -279,7 +279,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @param {string} eventTypeName The name of the event type to call the listeners related to it.
     */
     extension.callOriginProxyObjectEventListeners = function (typeName, id, eventTypeName) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             parentObject[typeName]._cocoonjs_proxy_type_data.callProxyObjectEventListeners(id, eventTypeName);
         }
@@ -295,17 +295,17 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * and call to the Cocoon counterparts accordingly.
     */
     extension.setupDestinationProxyType = function (typeName, eventHandlerNames) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
 
             // Add a Cocoon structure to the destination proxified type to store some useful information like all the proxy instances that are created, plus the id counter 
             // and the names of all the event handlers and some utility functions.
             parentObject[typeName]._cocoonjs_proxy_type_data =
-            {
-                nextId:0,
-                proxyObjects:{},
-                eventHandlerNames:eventHandlerNames
-            };
+                {
+                    nextId: 0,
+                    proxyObjects: {},
+                    eventHandlerNames: eventHandlerNames
+                };
         }
     };
 
@@ -317,7 +317,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @param {string} typeName The name of the type to take the proxification down.
     */
     extension.takedownDestinationProxyType = function (typeName) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             if (parent[typeName] && parentObject[typeName]._cocoonjs_proxy_type_data) {
                 delete parentObject[typeName]._cocoonjs_proxy_type_data;
@@ -334,7 +334,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @return The id to be used from the original environment to identify the corresponding destination object instance.
     */
     extension.newDestinationProxyObject = function (typeName) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
 
             var proxyObject = new parentObject[typeName]();
@@ -381,7 +381,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @return Whatever the function call returns.
     */
     extension.callDestinationProxyObjectFunction = function (typeName, id, functionName) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             var argumentsArray = Array.prototype.slice.call(arguments);
             argumentsArray.splice(0, 3);
@@ -402,7 +402,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @param {unknown} attributeValue The value to be set to the attribute.
     */
     extension.setDestinationProxyObjectAttribute = function (typeName, id, attributeName, attributeValue) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             var proxyObject = parentObject[typeName]._cocoonjs_proxy_type_data.proxyObjects[id];
             proxyObject[attributeName] = attributeValue;
@@ -419,7 +419,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @param {string} attributeName The name of the attribute to be retrieved.
     */
     extension.getDestinationProxyObjectAttribute = function (typeName, id, attributeName) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             var proxyObject = parentObject[typeName]._cocoonjs_proxy_type_data.proxyObjects[id];
             return proxyObject[attributeName];
@@ -436,7 +436,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @param {number} id The id of the proxy object.
     */
     extension.deleteDestinationProxyObject = function (typeName, id) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             delete parentObject[typeName]._cocoonjs_proxy_type_data.proxyObjects[id];
         }
@@ -448,7 +448,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @private
     */
     extension.addDestinationProxyObjectEventListener = function (typeName, id, eventTypeName) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             var parentObject = window;
             // Look for the proxy object
             var proxyObject = parentObject[typeName]._cocoonjs_proxy_type_data.proxyObjects[id];
@@ -561,28 +561,23 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @example
     * Cocoon.Proxify.console();
     */
-    extension.console = function() 
-    {
-        if (!Cocoon.nativeAvailable) return;
+    extension.console = function () {
+        if (!Cocoon.nativeAvailable()) return;
 
-        if (typeof Cocoon.originalConsole === 'undefined')
-        {
+        if (typeof Cocoon.originalConsole === 'undefined') {
             Cocoon.originalConsole = window.console;
         }
         var functions = ["log", "error", "info", "debug", "warn"];
 
         var newConsole = {};
-        for (var i = 0; i < functions.length; i++)
-        {
-            newConsole[functions[i]] = function(functionName)
-            {
-                return function(message)
-                {
-                    try{
+        for (var i = 0; i < functions.length; i++) {
+            newConsole[functions[i]] = function (functionName) {
+                return function (message) {
+                    try {
                         var jsCode = "Proxified log: " + JSON.stringify(message);
                         Cocoon.originalConsole.log(jsCode);
                         ext.IDTK_APP.makeCallAsync("forward", jsCode);
-                    }catch(e){
+                    } catch (e) {
                         console.log("Proxified log: " + e);
                     }
                 };
@@ -595,7 +590,7 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
                     newConsole.error(str);
                 }
             };
-        }        
+        }
         window.console = newConsole;
     };
 
@@ -606,11 +601,9 @@ Cocoon.define("Cocoon.Proxify" , function(extension){
     * @example
     * Cocoon.Proxify.deproxifyConsole();
     */
-    extension.deproxifyConsole = function()
-    {
-        if (window.navigator.isCocoonJS || !Cocoon.nativeAvailable) return;
-        if (typeof Cocoon.originalConsole !== 'undefined')
-        {
+    extension.deproxifyConsole = function () {
+        if (window.navigator.isCocoonJS || !Cocoon.nativeAvailable()) return;
+        if (typeof Cocoon.originalConsole !== 'undefined') {
             window.console = Cocoon.originalConsole;
             Cocoon.originalConsole = undefined;
         }

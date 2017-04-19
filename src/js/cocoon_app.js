@@ -11,11 +11,13 @@
  *  ...
  * });
  */
-Cocoon.define("Cocoon.App" , function(extension){
-    
-    extension.nativeAvailable = (!!window.ext) && (!!window.ext.IDTK_APP);
+Cocoon.define("Cocoon.App", function (extension) {
 
-    extension.isBridgeAvailable = function(){
+    extension.nativeAvailable = function () {
+        return (!!window.ext) && (!!window.ext.IDTK_APP);
+    };
+
+    extension.isBridgeAvailable = function () {
         if (Cocoon.App.forward.nativeAvailable === 'boolean') {
             return Cocoon.App.forward.nativeAvailable;
         }
@@ -41,7 +43,7 @@ Cocoon.define("Cocoon.App" , function(extension){
      */
     extension.forward = function (javaScriptCode) {
         /*jshint evil:true */
-        if (Cocoon.App.nativeAvailable && Cocoon.App.isBridgeAvailable()) {
+        if (Cocoon.App.nativeAvailable() && Cocoon.App.isBridgeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "forward", arguments);
         }
         else if (!navigator.isCocoonJS) {
@@ -67,7 +69,7 @@ Cocoon.define("Cocoon.App" , function(extension){
      * });
      */
     extension.forwardAsync = function (javaScriptCode, returnCallback) {
-        if (Cocoon.App.nativeAvailable && Cocoon.App.isBridgeAvailable()) {
+        if (Cocoon.App.nativeAvailable() && Cocoon.App.isBridgeAvailable()) {
             if (typeof returnCallback !== 'undefined') {
                 return ext.IDTK_APP.makeCallAsync("forward", javaScriptCode, returnCallback);
             }
@@ -76,7 +78,7 @@ Cocoon.define("Cocoon.App" , function(extension){
             }
         }
         else {
-            setTimeout(function() {
+            setTimeout(function () {
                 /*jshint evil:true */
                 var res;
                 if (window.name === cocoonWebviewIFrame) {
@@ -89,7 +91,7 @@ Cocoon.define("Cocoon.App" , function(extension){
                 if (returnCallback) {
                     returnCallback(res);
                 }
-    
+
             }, 1);
         }
     };
@@ -104,7 +106,7 @@ Cocoon.define("Cocoon.App" , function(extension){
      * Cocoon.App.load("index.html");
      */
     extension.load = function (path, storageType) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "loadPath", arguments);
         }
         else if (!navigator.isCocoonJS) {
@@ -152,7 +154,7 @@ Cocoon.define("Cocoon.App" , function(extension){
      * Cocoon.App.reload();
      */
     extension.reload = function () {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "reload", arguments);
         }
         else if (!navigator.isCocoonJS) {
@@ -174,7 +176,7 @@ Cocoon.define("Cocoon.App" , function(extension){
      * Cocoon.App.openURL("http://www.ludei.com");
      */
     extension.openURL = function (url) {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "openURL", arguments, true);
         }
         else if (!navigator.isCocoonJS) {
@@ -190,7 +192,7 @@ Cocoon.define("Cocoon.App" , function(extension){
      * Cocoon.App.exit();
      */
     extension.exit = function () {
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "forceToFinish", arguments);
         }
         else if (!navigator.isCocoonJS) {
@@ -209,10 +211,10 @@ Cocoon.define("Cocoon.App" , function(extension){
      * @property {string} Cocoon.App.StorageType.TEMPORARY_STORAGE Temporary Storage
      */
     extension.StorageType = {
-        APP_STORAGE:        "APP_STORAGE",
-        INTERNAL_STORAGE:   "INTERNAL_STORAGE",
-        EXTERNAL_STORAGE:   "EXTERNAL_STORAGE",
-        TEMPORARY_STORAGE:  "TEMPORARY_STORAGE"
+        APP_STORAGE: "APP_STORAGE",
+        INTERNAL_STORAGE: "INTERNAL_STORAGE",
+        EXTERNAL_STORAGE: "EXTERNAL_STORAGE",
+        TEMPORARY_STORAGE: "TEMPORARY_STORAGE"
     };
 
     extension.onSuspended = new Cocoon.EventHandler("IDTK_APP", "App", "onsuspended");
@@ -270,10 +272,10 @@ Cocoon.define("Cocoon.App" , function(extension){
      *  ...
      * });
      */
-     signal.register("memorywarning", extension.onMemoryWarning);
+    signal.register("memorywarning", extension.onMemoryWarning);
 
 
     extension.on = signal.expose();
-    
+
     return extension;
 });

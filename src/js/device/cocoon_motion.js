@@ -1,10 +1,12 @@
-Cocoon.define("Cocoon.Motion" , function(extension){
+Cocoon.define("Cocoon.Motion", function (extension) {
     "use strict";
     /**
     * All functions related to the Accelerometer and Gyroscope.
     * @namespace Cocoon.Motion
     */
-    extension.nativeAvailable = Cocoon.nativeAvailable;
+    extension.nativeAvailable = function () {
+        return Cocoon.nativeAvailable;
+    };
 
     /**
      * Setups the update interval in seconds (1 second / X frames) to receive the accelerometer updates.
@@ -16,7 +18,7 @@ Cocoon.define("Cocoon.Motion" , function(extension){
      * Cocoon.Motion.setAccelerometerInterval(2);
      */
     extension.setAccelerometerInterval = function (updateIntervalInSeconds) {
-        if (Cocoon.Motion.nativeAvailable) {
+        if (Cocoon.Motion.nativeAvailable()) {
             return window.ext.IDTK_APP.makeCall("setAccelerometerUpdateIntervalInSeconds", updateIntervalInSeconds);
         }
     };
@@ -30,7 +32,7 @@ Cocoon.define("Cocoon.Motion" , function(extension){
      * console.log(Cocoon.Motion.getAccelerometerInterval());
      */
     extension.getAccelerometerInterval = function () {
-        if (Cocoon.Motion.nativeAvailable) {
+        if (Cocoon.Motion.nativeAvailable()) {
             return window.ext.IDTK_APP.makeCall("getAccelerometerUpdateIntervalInSeconds");
         }
     };
@@ -45,7 +47,7 @@ Cocoon.define("Cocoon.Motion" , function(extension){
      * Cocoon.Motion.setGyroscopeInterval(2);
      */
     extension.setGyroscopeInterval = function (updateIntervalInSeconds) {
-        if (Cocoon.Motion.nativeAvailable) {
+        if (Cocoon.Motion.nativeAvailable()) {
             return window.ext.IDTK_APP.makeCall("setGyroscopeUpdateIntervalInSeconds", updateIntervalInSeconds);
         }
     };
@@ -59,7 +61,7 @@ Cocoon.define("Cocoon.Motion" , function(extension){
      * console.log(Cocoon.Motion.getGyroscopeInterval());
      */
     extension.getGyroscopeInterval = function () {
-        if (Cocoon.Motion.nativeAvailable) {
+        if (Cocoon.Motion.nativeAvailable()) {
             window.ext.IDTK_APP.makeCall("getGyroscopeUpdateIntervalInSeconds");
         }
     };

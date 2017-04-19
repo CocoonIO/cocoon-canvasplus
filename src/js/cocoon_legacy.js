@@ -1,53 +1,53 @@
 /*jshint loopfunc: true */
 
- /**
- * @fileOverview
- * <h3>Canvas+ internal Webview </h3>
- * <p>Canvas+ allows accessing a full DOM environment via Webview. Thus, there are two environments that live together: Canvas+ and WebView. Although both are two different JavaScript environments, Cocoon allows to render a transparent Webview on top of the Canvas+ OpenGL ES rendering context and it also provides a bidirectional communication channel between them. In this way, the final visual result seems to integrate both environments seamlessly.</p>
- * <p>However, as Cordova only injects automatically the required clobbers in the main webview engine, it is neccesary to add manually the following files to the content that will be sent and displayed in Canvas+ internal Webview: </p>
- <ul>
-    <li><a href="https://github.com/ludei/cocoon-common/blob/master/src/js/cocoon.js" target="_blank">cocoon.js</a></li>
-    <li><a href="https://github.com/CocoonIO/cocoon-canvasplus/blob/master/dist/js/cocoon_canvasplus.js" target="_blank">cocoon_canvasplus.js</a></li>
- </ul>
- <br/>
- <h3>Documentation</h3>
- <p> Select the specific namespace below to open the relevant documentation section:</p>
- <ul>
-    <li><a href="http://ludei.github.io/cocoon-common/dist/doc/js/Cocoon.html">Cocoon</a></li>
-    <li><a href="Cocoon.App.html">App</a></li>
-    <li><a href="Cocoon.Device.html">Device</a></li>
-    <li><a href="Cocoon.Dialog.html">Dialog</a></li>
-    <li><a href="Cocoon.Motion.html">Motion</a></li>
-    <li><a href="Cocoon.Proxify.html">Proxify</a></li>
-    <li><a href="Cocoon.Touch.html">Touch</a></li>
-    <li><a href="Cocoon.Utils.html">Utils</a></li>
-    <li><a href="Cocoon.WebView.html">WebView</a></li>
-    <li><a href="Cocoon.Widget.html">Widget</a></li>
+/**
+* @fileOverview
+* <h3>Canvas+ internal Webview </h3>
+* <p>Canvas+ allows accessing a full DOM environment via Webview. Thus, there are two environments that live together: Canvas+ and WebView. Although both are two different JavaScript environments, Cocoon allows to render a transparent Webview on top of the Canvas+ OpenGL ES rendering context and it also provides a bidirectional communication channel between them. In this way, the final visual result seems to integrate both environments seamlessly.</p>
+* <p>However, as Cordova only injects automatically the required clobbers in the main webview engine, it is neccesary to add manually the following files to the content that will be sent and displayed in Canvas+ internal Webview: </p>
+<ul>
+   <li><a href="https://github.com/ludei/cocoon-common/blob/master/src/js/cocoon.js" target="_blank">cocoon.js</a></li>
+   <li><a href="https://github.com/CocoonIO/cocoon-canvasplus/blob/master/dist/js/cocoon_canvasplus.js" target="_blank">cocoon_canvasplus.js</a></li>
 </ul>
- * We hope you find everything you need to get going here, but if you stumble on any problems with the docs or the plugins, 
- * just drop us a line at our forums and we'll do our best to help you out.
- <h3>Tools</h3>
- <a href="https://forums.cocoon.io/"><img src="img/cocoon-tools-1.png" /></a>
- <a href="https://cocoon.io/doc"><img src="img/cocoon-tools-2.png" /></a>
- <a href="http://cocoon.io/"><img src="img/cocoon-tools-3.png" /></a>
- * @version 1.0
- */
+<br/>
+<h3>Documentation</h3>
+<p> Select the specific namespace below to open the relevant documentation section:</p>
+<ul>
+   <li><a href="http://ludei.github.io/cocoon-common/dist/doc/js/Cocoon.html">Cocoon</a></li>
+   <li><a href="Cocoon.App.html">App</a></li>
+   <li><a href="Cocoon.Device.html">Device</a></li>
+   <li><a href="Cocoon.Dialog.html">Dialog</a></li>
+   <li><a href="Cocoon.Motion.html">Motion</a></li>
+   <li><a href="Cocoon.Proxify.html">Proxify</a></li>
+   <li><a href="Cocoon.Touch.html">Touch</a></li>
+   <li><a href="Cocoon.Utils.html">Utils</a></li>
+   <li><a href="Cocoon.WebView.html">WebView</a></li>
+   <li><a href="Cocoon.Widget.html">Widget</a></li>
+</ul>
+* We hope you find everything you need to get going here, but if you stumble on any problems with the docs or the plugins, 
+* just drop us a line at our forums and we'll do our best to help you out.
+<h3>Tools</h3>
+<a href="https://forums.cocoon.io/"><img src="img/cocoon-tools-1.png" /></a>
+<a href="https://cocoon.io/doc"><img src="img/cocoon-tools-2.png" /></a>
+<a href="http://cocoon.io/"><img src="img/cocoon-tools-3.png" /></a>
+* @version 1.0
+*/
 
- /**
- * @fileOverview
- * <h1>Canvas+ API documentation</h1>
- * <p>Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project.</p> 
- * <h3>Important note</h3>
- * <p>Unlike old CocoonJS plugins, Cocoon Canvas+ plugins need to wait for Cordova <a href="https://cordova.apache.org/docs/en/4.0.0/cordova_events_events.md.html#deviceready">"deviceready" event</a> to start working.</p>
- * @example
- *   document.addEventListener("deviceready", onDeviceReady, false);
- *   function onDeviceReady() {
- *       // Cocoon Canvas+ code here
- *   }  
- */
+/**
+* @fileOverview
+* <h1>Canvas+ API documentation</h1>
+* <p>Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project.</p> 
+* <h3>Important note</h3>
+* <p>Unlike old CocoonJS plugins, Cocoon Canvas+ plugins need to wait for Cordova <a href="https://cordova.apache.org/docs/en/4.0.0/cordova_events_events.md.html#deviceready">"deviceready" event</a> to start working.</p>
+* @example
+*   document.addEventListener("deviceready", onDeviceReady, false);
+*   function onDeviceReady() {
+*       // Cocoon Canvas+ code here
+*   }  
+*/
 
 (function () {
-    
+
     /**
     * The "Cocoon" object holds all the Cocoon Canvas+ Extensions and other stuff needed.
     <p> For more information about this specific namespace, please, visit the following link: </p>
@@ -58,7 +58,7 @@
     if (!Cocoon && window.cordova && typeof require !== 'undefined') {
         require('cocoon-plugin-common.Cocoon');
     }
-    
+
     /**
      * Is the native environment available? true if so.
      * @property {bool} version
@@ -68,7 +68,9 @@
      * if(Cocoon.nativeAvailable) { ... do native stuff here ... }
      */
 
-    Cocoon.nativeAvailable = (!!window.ext);
+    Cocoon.nativeAvailable = function () {
+        return (!!window.ext);
+    };
 
     /**
     * This utility function copies the properties from one object to a new object array, the result object array can be used as arguments when calling Cocoon.callNative()
@@ -78,13 +80,13 @@
     * @param {function} obj The base object that contains all properties defined.
     * @param {function} copy The object that user has defined.
     */
-    Cocoon.clone = function(obj,copy){
+    Cocoon.clone = function (obj, copy) {
         if (null === obj || "object" !== typeof obj) return obj;
         var arr = [];
         for (var attr in obj) {
-            if ( copy.hasOwnProperty(attr) ) { 
+            if (copy.hasOwnProperty(attr)) {
                 arr.push(copy[attr]);
-            }else{
+            } else {
                 arr.push(obj[attr]);
             }
         }
@@ -108,8 +110,8 @@
     * @param {boolean} [async] A flag to indicate if the makeCall (false or undefined) or the makeCallAsync function should be used to perform the native call.
     * @returns Whatever the native function call returns.
     */
-    Cocoon.callNative = function(nativeExtensionObjectName, nativeFunctionName, args, async) {
-        if (Cocoon.nativeAvailable) {
+    Cocoon.callNative = function (nativeExtensionObjectName, nativeFunctionName, args, async) {
+        if (Cocoon.nativeAvailable()) {
             var argumentsArray = Array.prototype.slice.call(args);
             argumentsArray.unshift(nativeFunctionName);
             var nativeExtensionObject = ext[nativeExtensionObjectName];
@@ -120,7 +122,7 @@
                 try {
                     finalRet = JSON.parse(ret);
                 }
-                catch(error) {
+                catch (error) {
                     console.log(error);
                 }
             }
@@ -140,11 +142,10 @@
     * For example:
     * var body = Cocoon.getObjectFromPath(window, "document.body");
     */
-    Cocoon.getObjectFromPath = function(baseObject, objectPath) {
+    Cocoon.getObjectFromPath = function (baseObject, objectPath) {
         var parts = objectPath.split('.');
         var obj = baseObject;
-        for (var i = 0, len = parts.length; i < len; ++i) 
-        {
+        for (var i = 0, len = parts.length; i < len; ++i) {
             obj[parts[i]] = obj[parts[i]] || undefined;
             obj = obj[parts[i]];
         }
@@ -167,7 +168,7 @@
     * @private
     * @static
     */
-    Cocoon.EventHandler = function(nativeExtensionObjectName, CocoonExtensionObjectName, nativeEventName, chainFunction) {
+    Cocoon.EventHandler = function (nativeExtensionObjectName, CocoonExtensionObjectName, nativeEventName, chainFunction) {
         this.listeners = [];
         this.listenersOnce = [];
         this.chainFunction = chainFunction;
@@ -179,10 +180,10 @@
         * @private
         * @static
         */
-        this.addEventListener = function(listener) {
+        this.addEventListener = function (listener) {
             if (chainFunction) {
-                var f = function() {
-                    chainFunction.call(this, arguments.callee.sourceListener, Array.prototype.slice.call(arguments)); 
+                var f = function () {
+                    chainFunction.call(this, arguments.callee.sourceListener, Array.prototype.slice.call(arguments));
                 };
                 listener.CocoonEventHandlerChainFunction = f;
                 f.sourceListener = listener;
@@ -208,10 +209,9 @@
         * @static
         */
 
-        this.addEventListenerOnce = function(listener)
-        {
+        this.addEventListenerOnce = function (listener) {
             if (chainFunction) {
-                var f = function() { chainFunction(arguments.callee.sourceListener,Array.prototype.slice.call(arguments)); };
+                var f = function () { chainFunction(arguments.callee.sourceListener, Array.prototype.slice.call(arguments)); };
                 f.sourceListener = listener;
                 listener = f;
             }
@@ -220,11 +220,9 @@
             if (CocoonExtensionObject.nativeAvailable) {
                 ext[nativeExtensionObjectName].addEventListenerOnce(nativeEventName, listener);
             }
-            else
-            {
+            else {
                 var indexOfListener = this.listeners.indexOf(listener);
-                if (indexOfListener < 0)
-                {
+                if (indexOfListener < 0) {
                     this.listenersOnce.push(listener);
                 }
             }
@@ -281,18 +279,18 @@
         * @static
         */
 
-        this.notifyEventListeners = function() {
+        this.notifyEventListeners = function () {
             var CocoonExtensionObject = Cocoon.getObjectFromPath(Cocoon, CocoonExtensionObjectName);
             if (CocoonExtensionObject && CocoonExtensionObject.nativeAvailable) {
                 ext[nativeExtensionObjectName].notifyEventListeners(nativeEventName);
             } else {
 
-                var argumentsArray= Array.prototype.slice.call(arguments);
-                var listeners =     Array.prototype.slice.call(this.listeners);
+                var argumentsArray = Array.prototype.slice.call(arguments);
+                var listeners = Array.prototype.slice.call(this.listeners);
                 var listenersOnce = Array.prototype.slice.call(this.listenersOnce);
                 var _this = this;
                 // Notify listeners after a while ;) === do not block this thread.
-                setTimeout(function() {
+                setTimeout(function () {
                     for (var i = 0; i < listeners.length; i++) {
                         listeners[i].apply(_this, argumentsArray);
                     }
@@ -301,7 +299,7 @@
                     }
                 }, 0);
 
-                _this.listenersOnce= [];
+                _this.listenersOnce = [];
             }
         };
         return this;
@@ -320,11 +318,11 @@
     * @private
     * @constructs createSignal
     */
-    Cocoon.createSignal = function(){
+    Cocoon.createSignal = function () {
         /** @lends Cocoon.Signal.prototype */
         this.handle = null;
         this.signals = {};
-        
+
         /**
         * Registers a new Signal.
         * @param {string} namespace The name of the signal which will be emitted.
@@ -334,25 +332,25 @@
         * @example
         * signal.register("banner.ready", new Cocoon.EventHandler);
         */
-        this.register = function(namespace, handle){
+        this.register = function (namespace, handle) {
 
-            if( (!namespace) && (!handle)) throw new Error("Can't create signal " + (namespace || ""));
+            if ((!namespace) && (!handle)) throw new Error("Can't create signal " + (namespace || ""));
 
-            if(handle.addEventListener){
+            if (handle.addEventListener) {
                 this.signals[namespace] = handle;
                 return true;
             }
 
-            if(!handle.addEventListener){
+            if (!handle.addEventListener) {
                 this.signals[namespace] = {};
                 for (var prop in handle) {
-                    if(handle.hasOwnProperty(prop)){
+                    if (handle.hasOwnProperty(prop)) {
                         this.signals[namespace][prop] = handle[prop];
                     }
                 }
                 return true;
             }
-            
+
             throw new Error("Can't create handler for " + namespace + " signal.");
         };
 
@@ -366,59 +364,59 @@
         * @example
         * Cocoon.namespace.on("event",function(){});
         */
-        this.expose = function(){
-            return function(signal, callback, params){
+        this.expose = function () {
+            return function (signal, callback, params) {
                 var once = false;
 
-                if(arguments.length === 1){
+                if (arguments.length === 1) {
                     var that = this;
-                    var fnc = function(signal){
+                    var fnc = function (signal) {
                         this.signal = signal;
                     };
 
-                    fnc.prototype.remove = function(functionListener){
+                    fnc.prototype.remove = function (functionListener) {
                         var handle = that.signals[this.signal];
-                        if(handle && handle.removeEventListener) {
-                            handle.removeEventListener.apply(that,[functionListener]);
+                        if (handle && handle.removeEventListener) {
+                            handle.removeEventListener.apply(that, [functionListener]);
                             that.signals[this.signal] = undefined;
                         }
                     };
                     return new fnc(signal);
                 }
 
-                if((params) && (params.once)){
+                if ((params) && (params.once)) {
                     once = true;
                 }
 
-                if(!this.signals[signal]) throw new Error("The signal " + signal + " does not exists.");
+                if (!this.signals[signal]) throw new Error("The signal " + signal + " does not exists.");
                 var handle = this.signals[signal];
-                if(handle.addEventListener){
-                    if(once){
-                        handle.addEventListenerOnce(function(){
-                            callback.apply( this || window , arguments);
+                if (handle.addEventListener) {
+                    if (once) {
+                        handle.addEventListenerOnce(function () {
+                            callback.apply(this || window, arguments);
                         });
-                    }else{
-                        handle.addEventListener(function(){
-                            callback.apply( this || window , arguments);
+                    } else {
+                        handle.addEventListener(function () {
+                            callback.apply(this || window, arguments);
                         });
                     }
                 }
 
-                if(!this.signals[signal].addEventListener){
+                if (!this.signals[signal].addEventListener) {
                     for (var prop in this.signals[signal]) {
 
-                        if(!this.signals[signal].hasOwnProperty(prop)) continue;
+                        if (!this.signals[signal].hasOwnProperty(prop)) continue;
 
                         handle = this.signals[signal][prop];
 
-                        if(once){
-                            handle.addEventListenerOnce(function(){
-                                this.clbk[this.name].apply( this || window , arguments);
-                            }.bind({ name : prop , clbk : callback }));
-                        }else{
-                            handle.addEventListener(function(){
-                                this.clbk[this.name].apply( this || window , arguments);
-                            }.bind({ name : prop , clbk : callback }));
+                        if (once) {
+                            handle.addEventListenerOnce(function () {
+                                this.clbk[this.name].apply(this || window, arguments);
+                            }.bind({ name: prop, clbk: callback }));
+                        } else {
+                            handle.addEventListener(function () {
+                                this.clbk[this.name].apply(this || window, arguments);
+                            }.bind({ name: prop, clbk: callback }));
                         }
 
                     }
@@ -427,7 +425,7 @@
             }.bind(this);
         };
     };
-    
+
     //properties for old legacy code compatibility
     window.CocoonJS = window.Cocoon;
     window.c2cocoonjs = true;

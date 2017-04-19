@@ -12,7 +12,7 @@ Cocoon.define("Cocoon.Widget" , function(extension){
     */
     extension.WebDialog = function() {
         
-        if (Cocoon.App.nativeAvailable) {
+        if (Cocoon.App.nativeAvailable()) {
             this.webDialogID = window.ext.IDTK_APP.makeCall("createWebDialog");
         }
         else {
@@ -65,7 +65,7 @@ Cocoon.define("Cocoon.Widget" , function(extension){
                 if (callback)
                     callback();
             };
-            if (Cocoon.App.nativeAvailable) {
+            if (Cocoon.App.nativeAvailable()) {
                 Cocoon.Touch.disable();
                 return window.ext.IDTK_APP.makeCallAsync("showWebDialog", this.webDialogID, url, this.closeCallback);
             }
@@ -89,7 +89,7 @@ Cocoon.define("Cocoon.Widget" , function(extension){
         * }, 15000);
         */
         close: function() {
-            if (Cocoon.App.nativeAvailable) {
+            if (Cocoon.App.nativeAvailable()) {
                 return window.ext.IDTK_APP.makeCallAsync("closeWebDialog", this.webDialogID);
             }
             else {
@@ -114,7 +114,7 @@ Cocoon.define("Cocoon.Widget" , function(extension){
         * dialog.eval("alert('Michael Jackson is the king of pop')");
         */
         eval: function(js) {
-            if (Cocoon.App.nativeAvailable) {
+            if (Cocoon.App.nativeAvailable()) {
                 return window.ext.IDTK_APP.makeCallAsync("evalWebDialog", this.webDialogID, js);
             }
             else {

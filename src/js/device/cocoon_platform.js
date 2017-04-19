@@ -1,4 +1,4 @@
-Cocoon.define("Cocoon.App" , function(extension){
+Cocoon.define("Cocoon.App", function (extension) {
 
     function checkEmulatedWebViewReady() {
         var emulatedWB = Cocoon.App.EmulatedWebView;
@@ -6,21 +6,21 @@ Cocoon.define("Cocoon.App" , function(extension){
             return; //ready
         }
 
-        emulatedWB = document.createElement('div'); 
-        emulatedWB.setAttribute('id', 'CocoonJS_App_ForCocoonJS_WebViewDiv'); 
-        emulatedWB.style.width = 0; 
-        emulatedWB.style.height = 0; 
-        emulatedWB.style.position = "absolute"; 
-        emulatedWB.style.left = 0; 
+        emulatedWB = document.createElement('div');
+        emulatedWB.setAttribute('id', 'CocoonJS_App_ForCocoonJS_WebViewDiv');
+        emulatedWB.style.width = 0;
+        emulatedWB.style.height = 0;
+        emulatedWB.style.position = "absolute";
+        emulatedWB.style.left = 0;
         emulatedWB.style.top = 0;
         emulatedWB.style.backgroundColor = 'transparent';
-        emulatedWB.style.border = "0px solid #000"; 
+        emulatedWB.style.border = "0px solid #000";
 
         var frame = document.createElement("IFRAME");
         frame.setAttribute('id', 'CocoonJS_App_ForCocoonJS_WebViewIFrame');
         frame.setAttribute('name', 'CocoonJS_App_ForCocoonJS_WebViewIFrame');
-        frame.style.width = 0; 
-        frame.style.height = 0; 
+        frame.style.width = 0;
+        frame.style.height = 0;
         frame.frameBorder = 0;
         frame.allowtransparency = true;
 
@@ -28,7 +28,7 @@ Cocoon.define("Cocoon.App" , function(extension){
         Cocoon.App.EmulatedWebView = emulatedWB;
         Cocoon.App.EmulatedWebViewIFrame = frame;
 
-        if(!document.body) {
+        if (!document.body) {
             document.body = document.createElement("body");
         }
         document.body.appendChild(Cocoon.App.EmulatedWebView);
@@ -42,10 +42,8 @@ Cocoon.define("Cocoon.App" , function(extension){
      * @example
      * Cocoon.App.pause();
      */
-    extension.pause = function()
-    {
-        if (Cocoon.App.nativeAvailable)
-        {
+    extension.pause = function () {
+        if (Cocoon.App.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "pause", arguments);
         }
     };
@@ -57,10 +55,8 @@ Cocoon.define("Cocoon.App" , function(extension){
      * Cocoon.App.resume();
      */
 
-    extension.resume = function()
-    {
-        if (Cocoon.App.nativeAvailable)
-        {
+    extension.resume = function () {
+        if (Cocoon.App.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "resume", arguments);
         }
     };
@@ -83,36 +79,30 @@ Cocoon.define("Cocoon.App" , function(extension){
     * });
     * Cocoon.App.loadInTheWebView("wv.html");
     */
-    extension.loadInTheWebView = function(path, storageType)
-    {
-        if (navigator.isCocoonJS && Cocoon.App.nativeAvailable)
-        {
+    extension.loadInTheWebView = function (path, storageType) {
+        if (navigator.isCocoonJS && Cocoon.App.nativeAvailable()) {
             Cocoon.callNative("IDTK_APP", "loadInTheWebView", arguments);
         }
-        else
-        {
+        else {
             var xhr = new XMLHttpRequest();
 
-            xhr.onreadystatechange = function(event) {
-                if (xhr.readyState === 4)
-                {
-                    if ((xhr.status >= 200 && xhr.status <=299) || xhr.status === 0)
-                    {
+            xhr.onreadystatechange = function (event) {
+                if (xhr.readyState === 4) {
+                    if ((xhr.status >= 200 && xhr.status <= 299) || xhr.status === 0) {
 
                         checkEmulatedWebViewReady();
-                        var callback= function(event){
+                        var callback = function (event) {
                             Cocoon.App.onLoadInTheWebViewSucceed.notifyEventListeners(path);
                             Cocoon.App.EmulatedWebViewIFrame.removeEventListener("load", callback);
                         };
 
                         Cocoon.App.EmulatedWebViewIFrame.addEventListener(
-                            "load", 
+                            "load",
                             callback
                         );
-                        Cocoon.App.EmulatedWebViewIFrame.contentWindow.location.href= path;
+                        Cocoon.App.EmulatedWebViewIFrame.contentWindow.location.href = path;
                     }
-                    else
-                    {
+                    else {
                         this.onreadystatechange = null;
                         Cocoon.App.onLoadInTheWebViewFailed.notifyEventListeners(path);
                     }
@@ -130,14 +120,11 @@ Cocoon.define("Cocoon.App" , function(extension){
      * @example
      * Cocoon.App.reloadWebView();
      */
-    extension.reloadWebView = function()
-    {
-        if (Cocoon.App.nativeAvailable && navigator.isCocoonJS)
-        {
+    extension.reloadWebView = function () {
+        if (Cocoon.App.nativeAvailable() && navigator.isCocoonJS) {
             Cocoon.callNative("IDTK_APP", "reloadWebView", arguments);
         }
-        else
-        {
+        else {
             checkEmulatedWebViewReady();
             Cocoon.App.EmulatedWebViewIFrame.contentWindow.location.reload();
         }
@@ -154,21 +141,18 @@ Cocoon.define("Cocoon.App" , function(extension){
     * @example
     * Cocoon.App.showTheWebView(0 , 0 , window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
     */
-    extension.showTheWebView = function(x, y, width, height)
-    {
-        if (Cocoon.App.nativeAvailable && navigator.isCocoonJS)
-        {
+    extension.showTheWebView = function (x, y, width, height) {
+        if (Cocoon.App.nativeAvailable() && navigator.isCocoonJS) {
             Cocoon.callNative("IDTK_APP", "showTheWebView", arguments);
         }
-        else
-        {
+        else {
             checkEmulatedWebViewReady();
-            Cocoon.App.EmulatedWebViewIFrame.style.width = (width ? width/window.devicePixelRatio : window.innerWidth)+'px';
-            Cocoon.App.EmulatedWebViewIFrame.style.height = (height ? height/window.devicePixelRatio : window.innerHeight)+'px';
-            Cocoon.App.EmulatedWebView.style.left = (x ? x : 0)+'px';
-            Cocoon.App.EmulatedWebView.style.top = (y ? y : 0)+'px';
-            Cocoon.App.EmulatedWebView.style.width = (width ? width/window.devicePixelRatio : window.innerWidth)+'px';
-            Cocoon.App.EmulatedWebView.style.height = (height ? height/window.devicePixelRatio : window.innerHeight)+'px';
+            Cocoon.App.EmulatedWebViewIFrame.style.width = (width ? width / window.devicePixelRatio : window.innerWidth) + 'px';
+            Cocoon.App.EmulatedWebViewIFrame.style.height = (height ? height / window.devicePixelRatio : window.innerHeight) + 'px';
+            Cocoon.App.EmulatedWebView.style.left = (x ? x : 0) + 'px';
+            Cocoon.App.EmulatedWebView.style.top = (y ? y : 0) + 'px';
+            Cocoon.App.EmulatedWebView.style.width = (width ? width / window.devicePixelRatio : window.innerWidth) + 'px';
+            Cocoon.App.EmulatedWebView.style.height = (height ? height / window.devicePixelRatio : window.innerHeight) + 'px';
             Cocoon.App.EmulatedWebView.style.display = "block";
 
         }
@@ -181,8 +165,8 @@ Cocoon.define("Cocoon.App" , function(extension){
     * @example
     * Cocoon.App.hideTheWebView();
     */
-    extension.hideTheWebView = function() {
-        if (Cocoon.App.nativeAvailable && navigator.isCocoonJS) {
+    extension.hideTheWebView = function () {
+        if (Cocoon.App.nativeAvailable() && navigator.isCocoonJS) {
             var javaScriptCodeToForward = "ext.IDTK_APP.makeCall('hide');";
             return Cocoon.App.forwardAsync(javaScriptCodeToForward);
         }
@@ -197,7 +181,7 @@ Cocoon.define("Cocoon.App" , function(extension){
     * @function forwardedEventFromTheWebView
     * @memberOf Cocoon.App
     */
-    extension.forwardedEventFromTheWebView = function(eventName, eventDataString) {
+    extension.forwardedEventFromTheWebView = function (eventName, eventDataString) {
         var eventData = JSON.parse(eventDataString);
         eventData.target = window;
         var event = new Event(eventName);
@@ -220,10 +204,10 @@ Cocoon.define("Cocoon.App" , function(extension){
     var signal = new Cocoon.createSignal();
 
     signal.register("load", {
-        success : extension.onLoadInTheWebViewSucceed,
-        error : extension.onLoadInTheWebViewFailed
+        success: extension.onLoadInTheWebViewSucceed,
+        error: extension.onLoadInTheWebViewFailed
     });
-    
+
     extension.WebView = Cocoon.WebView || {};
     extension.WebView.on = signal.expose();
 

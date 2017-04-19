@@ -2,9 +2,9 @@
 * The "Cocoon.Touch" object holds some functions to handle the touch events in both surfaces ( Cocoon & WebView )
 * @namespace Cocoon.Touch
 */
-Cocoon.define("Cocoon.Touch" , function(extension){
+Cocoon.define("Cocoon.Touch", function (extension) {
 
-    extension.addADivToDisableInput = function() {
+    extension.addADivToDisableInput = function () {
         var div = document.createElement("div");
         div.id = "CocoonJSInputBlockingDiv";
         div.style.left = 0;
@@ -13,12 +13,12 @@ Cocoon.define("Cocoon.Touch" , function(extension){
         div.style.height = "100%";
         div.style.position = "absolute";
         div.style.backgroundColor = 'transparent';
-        div.style.border = "0px solid #000"; 
+        div.style.border = "0px solid #000";
         div.style.zIndex = 999999999;
         document.body.appendChild(div);
     };
 
-    extension.removeTheDivToEnableInput = function() {
+    extension.removeTheDivToEnableInput = function () {
         var div = document.getElementById("CocoonJSInputBlockingDiv");
         if (div) document.body.removeChild(div);
     };
@@ -31,7 +31,7 @@ Cocoon.define("Cocoon.Touch" , function(extension){
      * Cocoon.Touch.disable();
      */
     extension.disable = function () {
-        if (Cocoon.nativeAvailable) {
+        if (Cocoon.nativeAvailable()) {
             window.ext.IDTK_APP.makeCall("disableTouchLayer", "CocoonJSView");
         }
         else if (!navigator.isCocoonJS) {
@@ -50,7 +50,7 @@ Cocoon.define("Cocoon.Touch" , function(extension){
      * Cocoon.Touch.enable();
      */
     extension.enable = function () {
-        if (Cocoon.nativeAvailable) {
+        if (Cocoon.nativeAvailable()) {
             window.ext.IDTK_APP.makeCall("enableTouchLayer", "CocoonJSView");
         }
         else if (!navigator.isCocoonJS) {
@@ -70,7 +70,7 @@ Cocoon.define("Cocoon.Touch" , function(extension){
      * Cocoon.Touch.disableInWebView();
      */
     extension.disableInWebView = function () {
-        if (Cocoon.nativeAvailable) {
+        if (Cocoon.nativeAvailable()) {
             window.ext.IDTK_APP.makeCall("disableTouchLayer", "WebView");
         }
         else if (!navigator.isCocoonJS) {
@@ -91,7 +91,7 @@ Cocoon.define("Cocoon.Touch" , function(extension){
      * Cocoon.Touch.enableInWebView();
      */
     extension.enableInWebView = function () {
-        if (Cocoon.nativeAvailable) {
+        if (Cocoon.nativeAvailable()) {
             window.ext.IDTK_APP.makeCall("enableTouchLayer", "WebView");
         }
         else if (!navigator.isCocoonJS) {
@@ -103,7 +103,7 @@ Cocoon.define("Cocoon.Touch" , function(extension){
             }
         }
     };
-    
+
     return extension;
 
 });
