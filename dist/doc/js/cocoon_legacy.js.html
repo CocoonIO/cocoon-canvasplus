@@ -180,19 +180,19 @@
 */
 
 /**
-* @fileOverview
-* &lt;h1>Canvas+ API documentation&lt;/h1>
-* &lt;p>Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project.&lt;/p> 
-* &lt;h3>Important note&lt;/h3>
-* &lt;p>Unlike old CocoonJS plugins, Cocoon Canvas+ plugins need to wait for Cordova &lt;a href="https://cordova.apache.org/docs/en/4.0.0/cordova_events_events.md.html#deviceready">"deviceready" event&lt;/a> to start working.&lt;/p>
-* @example
-*   document.addEventListener("deviceready", onDeviceReady, false);
-*   function onDeviceReady() {
-*       // Cocoon Canvas+ code here
-*   }  
-*/
+ * @fileOverview
+ * &lt;h1>Canvas+ API documentation&lt;/h1>
+ * &lt;p>Cocoon Canvas+ are multiplatform Javascript utilities that work in Canvas+. These plugins are included in Canvas+ core, so it is not required to install anything else at the cloud. The required files, if so, will be injected automatically in your project.&lt;/p> 
+ * &lt;h3>Important note&lt;/h3>
+ * &lt;p>Unlike old CocoonJS plugins, Cocoon Canvas+ plugins need to wait for Cordova &lt;a href="https://cordova.apache.org/docs/en/4.0.0/cordova_events_events.md.html#deviceready">"deviceready" event&lt;/a> to start working.&lt;/p>
+ * @example
+ *   document.addEventListener("deviceready", onDeviceReady, false);
+ *   function onDeviceReady() {
+ *       // Cocoon Canvas+ code here
+ *   }  
+ */
 
-(function () {
+(function() {
 
     /**
     * The "Cocoon" object holds all the Cocoon Canvas+ Extensions and other stuff needed.
@@ -211,22 +211,22 @@
      * @memberof Cocoon
      * @private
      * @example
-     * if(Cocoon.nativeAvailable) { ... do native stuff here ... }
+     * if(Cocoon.nativeAvailable()) { ... do native stuff here ... }
      */
 
-    Cocoon.nativeAvailable = function () {
+    Cocoon.nativeAvailable = function() {
         return (!!window.ext);
     };
 
     /**
-    * This utility function copies the properties from one object to a new object array, the result object array can be used as arguments when calling Cocoon.callNative()
-    * @memberof Cocoon
-    * @static
-    * @private
-    * @param {function} obj The base object that contains all properties defined.
-    * @param {function} copy The object that user has defined.
-    */
-    Cocoon.clone = function (obj, copy) {
+     * This utility function copies the properties from one object to a new object array, the result object array can be used as arguments when calling Cocoon.callNative()
+     * @memberof Cocoon
+     * @static
+     * @private
+     * @param {function} obj The base object that contains all properties defined.
+     * @param {function} copy The object that user has defined.
+     */
+    Cocoon.clone = function(obj, copy) {
         if (null === obj || "object" !== typeof obj) return obj;
         var arr = [];
         for (var attr in obj) {
@@ -240,23 +240,23 @@
     };
 
     /**
-    * IMPORTANT: This function should only be used by Ludei.
-    * This function allows a call to the native extension object function reusing the same arguments object.
-    * Why is interesting to use this function instead of calling the native object's function directly?
-    * As the Cocoon object functions expicitly receive parameters, if they are not present and the native call is direcly mapped,
-    * undefined arguments are passed to the native side. Some native functions do not check the parameters validation
-    * correctly (just check the number of parameters passed).
-    * Another solution instead of using this function call is to correctly check if the parameters are valid (not undefined) to make the
-    * call, but it takes more work than using this approach.
-    * @static
-    * @private
-    * @param {string} nativeExtensionObjectName The name of the native extension object name. The object that is a member of the 'ext' object.
-    * @param {string} nativeFunctionName The name of the function to be called inside the native extension object.
-    * @param {object} arguments The arguments object of the Cocoon extension object function. It contains all the arguments passed to the Cocoon extension object function and these are the ones that will be passed to the native call too.
-    * @param {boolean} [async] A flag to indicate if the makeCall (false or undefined) or the makeCallAsync function should be used to perform the native call.
-    * @returns Whatever the native function call returns.
-    */
-    Cocoon.callNative = function (nativeExtensionObjectName, nativeFunctionName, args, async) {
+     * IMPORTANT: This function should only be used by Ludei.
+     * This function allows a call to the native extension object function reusing the same arguments object.
+     * Why is interesting to use this function instead of calling the native object's function directly?
+     * As the Cocoon object functions expicitly receive parameters, if they are not present and the native call is direcly mapped,
+     * undefined arguments are passed to the native side. Some native functions do not check the parameters validation
+     * correctly (just check the number of parameters passed).
+     * Another solution instead of using this function call is to correctly check if the parameters are valid (not undefined) to make the
+     * call, but it takes more work than using this approach.
+     * @static
+     * @private
+     * @param {string} nativeExtensionObjectName The name of the native extension object name. The object that is a member of the 'ext' object.
+     * @param {string} nativeFunctionName The name of the function to be called inside the native extension object.
+     * @param {object} arguments The arguments object of the Cocoon extension object function. It contains all the arguments passed to the Cocoon extension object function and these are the ones that will be passed to the native call too.
+     * @param {boolean} [async] A flag to indicate if the makeCall (false or undefined) or the makeCallAsync function should be used to perform the native call.
+     * @returns Whatever the native function call returns.
+     */
+    Cocoon.callNative = function(nativeExtensionObjectName, nativeFunctionName, args, async) {
         if (Cocoon.nativeAvailable()) {
             var argumentsArray = Array.prototype.slice.call(args);
             argumentsArray.unshift(nativeFunctionName);
@@ -267,8 +267,7 @@
             if (typeof ret === "string") {
                 try {
                     finalRet = JSON.parse(ret);
-                }
-                catch (error) {
+                } catch (error) {
                     console.log(error);
                 }
             }
@@ -277,18 +276,18 @@
     };
 
     /**
-    * Returns an object retrieved from a path specified by a dot specified text path starting from a given base object.
-    * It could be useful to find the reference of an object from a defined base object. For example the base object could be window and the
-    * path could be "Cocoon.App" or "document.body".
-    * @static
-    * @param {Object} baseObject The object to start from to find the object using the given text path.
-    * @param {string} objectPath The path in the form of a text using the dot notation. i.e. "document.body"
-    * @private
-    * @memberof Cocoon
-    * For example:
-    * var body = Cocoon.getObjectFromPath(window, "document.body");
-    */
-    Cocoon.getObjectFromPath = function (baseObject, objectPath) {
+     * Returns an object retrieved from a path specified by a dot specified text path starting from a given base object.
+     * It could be useful to find the reference of an object from a defined base object. For example the base object could be window and the
+     * path could be "Cocoon.App" or "document.body".
+     * @static
+     * @param {Object} baseObject The object to start from to find the object using the given text path.
+     * @param {string} objectPath The path in the form of a text using the dot notation. i.e. "document.body"
+     * @private
+     * @memberof Cocoon
+     * For example:
+     * var body = Cocoon.getObjectFromPath(window, "document.body");
+     */
+    Cocoon.getObjectFromPath = function(baseObject, objectPath) {
         var parts = objectPath.split('.');
         var obj = baseObject;
         for (var i = 0, len = parts.length; i &lt; len; ++i) {
@@ -299,36 +298,36 @@
     };
 
     /**
-    * A class that represents objects to handle events. Event handlers have always the same structure:
-    * Mainly they provide the addEventListener and removeEventListener functions.
-    * Both functions receive a callback function that will be added or removed. All the added callback
-    * functions will be called when the event takes place.
-    * Additionally they also allow the addEventListenerOnce and notifyEventListeners functions.
-    * @constructor
-    * @param {string} nativeExtensionObjectName The name of the native extension object (inside the ext object) to be used.
-    * @param {string} CocoonExtensionObjectName The name of the sugarized extension object.
-    * @param {string} nativeEventName The name of the native event inside the ext object.
-    * @param {number} [chainFunction] An optional function used to preprocess the listener callbacks. This function, if provided,
-    * will be called before any of the other listeners.
-    * @memberof Cocoon
-    * @private
-    * @static
-    */
-    Cocoon.EventHandler = function (nativeExtensionObjectName, CocoonExtensionObjectName, nativeEventName, chainFunction) {
+     * A class that represents objects to handle events. Event handlers have always the same structure:
+     * Mainly they provide the addEventListener and removeEventListener functions.
+     * Both functions receive a callback function that will be added or removed. All the added callback
+     * functions will be called when the event takes place.
+     * Additionally they also allow the addEventListenerOnce and notifyEventListeners functions.
+     * @constructor
+     * @param {string} nativeExtensionObjectName The name of the native extension object (inside the ext object) to be used.
+     * @param {string} CocoonExtensionObjectName The name of the sugarized extension object.
+     * @param {string} nativeEventName The name of the native event inside the ext object.
+     * @param {number} [chainFunction] An optional function used to preprocess the listener callbacks. This function, if provided,
+     * will be called before any of the other listeners.
+     * @memberof Cocoon
+     * @private
+     * @static
+     */
+    Cocoon.EventHandler = function(nativeExtensionObjectName, CocoonExtensionObjectName, nativeEventName, chainFunction) {
         this.listeners = [];
         this.listenersOnce = [];
         this.chainFunction = chainFunction;
 
         /**
-        * Adds a callback function so it can be called when the event takes place.
-        * @param {function} listener The callback function to be added to the event handler object. See the referenced Listener function documentation for more detail in each event handler object's documentation.
-        * @memberof Cocoon.EventHandler
-        * @private
-        * @static
-        */
-        this.addEventListener = function (listener) {
+         * Adds a callback function so it can be called when the event takes place.
+         * @param {function} listener The callback function to be added to the event handler object. See the referenced Listener function documentation for more detail in each event handler object's documentation.
+         * @memberof Cocoon.EventHandler
+         * @private
+         * @static
+         */
+        this.addEventListener = function(listener) {
             if (chainFunction) {
-                var f = function () {
+                var f = function() {
                     chainFunction.call(this, arguments.callee.sourceListener, Array.prototype.slice.call(arguments));
                 };
                 listener.CocoonEventHandlerChainFunction = f;
@@ -337,10 +336,9 @@
             }
 
             var CocoonExtensionObject = Cocoon.getObjectFromPath(Cocoon, CocoonExtensionObjectName);
-            if (CocoonExtensionObject &amp;&amp; CocoonExtensionObject.nativeAvailable) {
+            if (CocoonExtensionObject &amp;&amp; CocoonExtensionObject.nativeAvailable()) {
                 ext[nativeExtensionObjectName].addEventListener(nativeEventName, listener);
-            }
-            else {
+            } else {
                 var indexOfListener = this.listeners.indexOf(listener);
                 if (indexOfListener &lt; 0) {
                     this.listeners.push(listener);
@@ -348,25 +346,24 @@
             }
         };
         /**
-        * Adds a callback function that will be called only one time.
-        * @param {function} listener The callback function to be added to the event handler object. See the referenced Listener function documentation for more detail in each event handler object's documentation.
-        * @memberof Cocoon.EventHandler
-        * @private
-        * @static
-        */
+         * Adds a callback function that will be called only one time.
+         * @param {function} listener The callback function to be added to the event handler object. See the referenced Listener function documentation for more detail in each event handler object's documentation.
+         * @memberof Cocoon.EventHandler
+         * @private
+         * @static
+         */
 
-        this.addEventListenerOnce = function (listener) {
+        this.addEventListenerOnce = function(listener) {
             if (chainFunction) {
-                var f = function () { chainFunction(arguments.callee.sourceListener, Array.prototype.slice.call(arguments)); };
+                var f = function() { chainFunction(arguments.callee.sourceListener, Array.prototype.slice.call(arguments)); };
                 f.sourceListener = listener;
                 listener = f;
             }
 
             var CocoonExtensionObject = Cocoon.getObjectFromPath(Cocoon, CocoonExtensionObjectName);
-            if (CocoonExtensionObject.nativeAvailable) {
+            if (CocoonExtensionObject.nativeAvailable()) {
                 ext[nativeExtensionObjectName].addEventListenerOnce(nativeEventName, listener);
-            }
-            else {
+            } else {
                 var indexOfListener = this.listeners.indexOf(listener);
                 if (indexOfListener &lt; 0) {
                     this.listenersOnce.push(listener);
@@ -375,13 +372,13 @@
         };
 
         /**
-        * Removes a callback function that was added to the event handler so it won't be called when the event takes place.
-        * @param {function} listener The callback function to be removed from the event handler object. See the referenced Listener function documentation for more detail in each event handler object's documentation.
-        * @memberof Cocoon.EventHandler
-        * @private
-        * @static
-        */
-        this.removeEventListener = function (listener) {
+         * Removes a callback function that was added to the event handler so it won't be called when the event takes place.
+         * @param {function} listener The callback function to be removed from the event handler object. See the referenced Listener function documentation for more detail in each event handler object's documentation.
+         * @memberof Cocoon.EventHandler
+         * @private
+         * @static
+         */
+        this.removeEventListener = function(listener) {
 
             if (chainFunction) {
                 listener = listener.CocoonEventHandlerChainFunction;
@@ -389,10 +386,9 @@
             }
 
             var CocoonExtensionObject = Cocoon.getObjectFromPath(Cocoon, CocoonExtensionObjectName);
-            if (CocoonExtensionObject.nativeAvailable) {
+            if (CocoonExtensionObject.nativeAvailable()) {
                 ext[nativeExtensionObjectName].removeEventListener(nativeEventName, listener);
-            }
-            else {
+            } else {
                 var indexOfListener = this.listeners.indexOf(listener);
                 if (indexOfListener >= 0) {
                     this.listeners.splice(indexOfListener, 1);
@@ -400,7 +396,7 @@
             }
         };
 
-        this.removeEventListenerOnce = function (listener) {
+        this.removeEventListenerOnce = function(listener) {
 
             if (chainFunction) {
                 listener = listener.CocoonEventHandlerChainFunction;
@@ -408,10 +404,9 @@
             }
 
             var CocoonExtensionObject = Cocoon.getObjectFromPath(Cocoon, CocoonExtensionObjectName);
-            if (CocoonExtensionObject.nativeAvailable) {
+            if (CocoonExtensionObject.nativeAvailable()) {
                 ext[nativeExtensionObjectName].removeEventListenerOnce(nativeEventName, listener);
-            }
-            else {
+            } else {
                 var indexOfListener = this.listenersOnce.indexOf(listener);
                 if (indexOfListener >= 0) {
                     this.listenersOnce.splice(indexOfListener, 1);
@@ -420,14 +415,14 @@
         };
 
         /**
-        * @memberof Cocoon.EventHandler
-        * @private
-        * @static
-        */
+         * @memberof Cocoon.EventHandler
+         * @private
+         * @static
+         */
 
-        this.notifyEventListeners = function () {
+        this.notifyEventListeners = function() {
             var CocoonExtensionObject = Cocoon.getObjectFromPath(Cocoon, CocoonExtensionObjectName);
-            if (CocoonExtensionObject &amp;&amp; CocoonExtensionObject.nativeAvailable) {
+            if (CocoonExtensionObject &amp;&amp; CocoonExtensionObject.nativeAvailable()) {
                 ext[nativeExtensionObjectName].notifyEventListeners(nativeEventName);
             } else {
 
@@ -436,7 +431,7 @@
                 var listenersOnce = Array.prototype.slice.call(this.listenersOnce);
                 var _this = this;
                 // Notify listeners after a while ;) === do not block this thread.
-                setTimeout(function () {
+                setTimeout(function() {
                     for (var i = 0; i &lt; listeners.length; i++) {
                         listeners[i].apply(_this, argumentsArray);
                     }
@@ -452,33 +447,33 @@
     };
 
     /**
-    * This namespace is used to create an Event Emitter/Dispatcher that works together.
-    * with the Cocoon.EventHandler.
-    * @namespace Cocoon.Signal
-    * @private
-    */
+     * This namespace is used to create an Event Emitter/Dispatcher that works together.
+     * with the Cocoon.EventHandler.
+     * @namespace Cocoon.Signal
+     * @private
+     */
 
     /**
-    * This constructor creates a new Signal that holds and emits different events that are specified inside each extension.
-    * @memberof Cocoon.Signal
-    * @private
-    * @constructs createSignal
-    */
-    Cocoon.createSignal = function () {
+     * This constructor creates a new Signal that holds and emits different events that are specified inside each extension.
+     * @memberof Cocoon.Signal
+     * @private
+     * @constructs createSignal
+     */
+    Cocoon.createSignal = function() {
         /** @lends Cocoon.Signal.prototype */
         this.handle = null;
         this.signals = {};
 
         /**
-        * Registers a new Signal.
-        * @param {string} namespace The name of the signal which will be emitted.
-        * @param {object} handle The Cocoon.EventHandler that will handle the signals.
-        * @function register
-        * @private
-        * @example
-        * signal.register("banner.ready", new Cocoon.EventHandler);
-        */
-        this.register = function (namespace, handle) {
+         * Registers a new Signal.
+         * @param {string} namespace The name of the signal which will be emitted.
+         * @param {object} handle The Cocoon.EventHandler that will handle the signals.
+         * @function register
+         * @private
+         * @example
+         * signal.register("banner.ready", new Cocoon.EventHandler);
+         */
+        this.register = function(namespace, handle) {
 
             if ((!namespace) &amp;&amp; (!handle)) throw new Error("Can't create signal " + (namespace || ""));
 
@@ -501,26 +496,26 @@
         };
 
         /**
-        * Exposes the already defined signals, and can be use to atach a callback to a Cocoon.EventHandler event.
-        * @param {string} signal The name of the signal which will be emitted.
-        * @param {object} callback The Cocoon.EventHandler that will handle the signals.
-        * @param {object} params Optional parameters, example { once : true }
-        * @function expose
-        * @private
-        * @example
-        * Cocoon.namespace.on("event",function(){});
-        */
-        this.expose = function () {
-            return function (signal, callback, params) {
+         * Exposes the already defined signals, and can be use to atach a callback to a Cocoon.EventHandler event.
+         * @param {string} signal The name of the signal which will be emitted.
+         * @param {object} callback The Cocoon.EventHandler that will handle the signals.
+         * @param {object} params Optional parameters, example { once : true }
+         * @function expose
+         * @private
+         * @example
+         * Cocoon.namespace.on("event",function(){});
+         */
+        this.expose = function() {
+            return function(signal, callback, params) {
                 var once = false;
 
                 if (arguments.length === 1) {
                     var that = this;
-                    var fnc = function (signal) {
+                    var fnc = function(signal) {
                         this.signal = signal;
                     };
 
-                    fnc.prototype.remove = function (functionListener) {
+                    fnc.prototype.remove = function(functionListener) {
                         var handle = that.signals[this.signal];
                         if (handle &amp;&amp; handle.removeEventListener) {
                             handle.removeEventListener.apply(that, [functionListener]);
@@ -538,11 +533,11 @@
                 var handle = this.signals[signal];
                 if (handle.addEventListener) {
                     if (once) {
-                        handle.addEventListenerOnce(function () {
+                        handle.addEventListenerOnce(function() {
                             callback.apply(this || window, arguments);
                         });
                     } else {
-                        handle.addEventListener(function () {
+                        handle.addEventListener(function() {
                             callback.apply(this || window, arguments);
                         });
                     }
@@ -556,11 +551,11 @@
                         handle = this.signals[signal][prop];
 
                         if (once) {
-                            handle.addEventListenerOnce(function () {
+                            handle.addEventListenerOnce(function() {
                                 this.clbk[this.name].apply(this || window, arguments);
                             }.bind({ name: prop, clbk: callback }));
                         } else {
-                            handle.addEventListener(function () {
+                            handle.addEventListener(function() {
                                 this.clbk[this.name].apply(this || window, arguments);
                             }.bind({ name: prop, clbk: callback }));
                         }
