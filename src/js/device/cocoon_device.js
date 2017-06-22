@@ -1,9 +1,9 @@
-Cocoon.define("Cocoon.Device" , function(extension){
+Cocoon.define("Cocoon.Device", function(extension) {
     "use strict";
     /**
-    * All functions related to the device.
-    * @namespace Cocoon.Device
-    */
+     * All functions related to the device.
+     * @namespace Cocoon.Device
+     */
 
     /**
      * An object that defines the getDeviceInfo returned information.
@@ -23,27 +23,27 @@ Cocoon.define("Cocoon.Device" , function(extension){
      * @property {string} Cocoon.Device.DeviceInfo.openudid The OpenUDID generated Id: https://github.com/ylechelle/OpenUDID
      */
     extension.DeviceInfo = {
-        os:         null,
-        version:    null,
-        dpi:        null,
-        brand:      null,
-        model:      null,
-        imei:       null,
+        os: null,
+        version: null,
+        dpi: null,
+        brand: null,
+        model: null,
+        imei: null,
         platformId: null,
-        odin:       null,
-        openudid:   null
+        odin: null,
+        openudid: null
     };
 
     /**
-    * Returns the device UUID.
-    * @function getDeviceId
-    * @memberof Cocoon.Device
-    * @return {string} The device UUID
-    * @example
-    * console.log(Cocoon.Device.getDeviceId());
-    */
+     * Returns the device UUID.
+     * @function getDeviceId
+     * @memberof Cocoon.Device
+     * @return {string} The device UUID
+     * @example
+     * console.log(Cocoon.Device.getDeviceId());
+     */
     extension.getDeviceId = function() {
-        if (Cocoon.nativeAvailable) {
+        if (Cocoon.nativeAvailable()) {
             return window.ext.IDTK_APP.makeCall("getDeviceId");
         }
     };
@@ -57,38 +57,37 @@ Cocoon.define("Cocoon.Device" , function(extension){
      * console.log( JSON.stringify(Cocoon.Device.getDeviceInfo()) );
      */
     extension.getDeviceInfo = function() {
-        if (Cocoon.nativeAvailable) {
+        if (Cocoon.nativeAvailable()) {
             return window.ext.IDTK_APP.makeCall("getDeviceInfo");
         }
     };
 
     /**
-    * Retrieves the preferred orientation that has been set in the system.
-    * @function getOrientation
-    * @memberof Cocoon.Device
-    * @return {number} The preferred orientation in the system as a combination of the possible {@link Cocoon.Device.Orientations}.
-    * @example
-    * console.log(Cocoon.Device.getOrientation());
-    */
+     * Retrieves the preferred orientation that has been set in the system.
+     * @function getOrientation
+     * @memberof Cocoon.Device
+     * @return {number} The preferred orientation in the system as a combination of the possible {@link Cocoon.Device.Orientations}.
+     * @example
+     * console.log(Cocoon.Device.getOrientation());
+     */
     extension.getOrientation = function() {
-        if (Cocoon.nativeAvailable) {
+        if (Cocoon.nativeAvailable()) {
             return window.ext.IDTK_APP.makeCall("getPreferredOrientation");
-        }
-        else {
+        } else {
             return 0;
         }
     };
 
     /**
-    * Sets the preferred orientation in the system.
-    * @function setOrientation
-    * @memberof Cocoon.Device
-    * @param {number} preferredOrientation The preferred orientation to be set. A combination of the possible {@link Cocoon.Device.Orientations}.
-    * @example
-    * Cocoon.Device.setOrientation(Cocoon.Device.Orientations.PORTRAIT);
-    */
+     * Sets the preferred orientation in the system.
+     * @function setOrientation
+     * @memberof Cocoon.Device
+     * @param {number} preferredOrientation The preferred orientation to be set. A combination of the possible {@link Cocoon.Device.Orientations}.
+     * @example
+     * Cocoon.Device.setOrientation(Cocoon.Device.Orientations.PORTRAIT);
+     */
     extension.setOrientation = function(preferredOrientation) {
-        if (Cocoon.nativeAvailable) {
+        if (Cocoon.nativeAvailable()) {
             window.ext.IDTK_APP.makeCall("setPreferredOrientation", preferredOrientation);
         }
     };
@@ -106,12 +105,12 @@ Cocoon.define("Cocoon.Device" , function(extension){
      * @property {string} Cocoon.Device.Orientations.BOTH - Both
      */
     extension.Orientations = {
-        PORTRAIT : 1,
-        PORTRAIT_UPSIDE_DOWN : 2,
-        LANDSCAPE_LEFT : 4,
-        LANDSCAPE_RIGHT : 8,
-        LANDSCAPE : 4 | 8,
-        BOTH : 1 | 2 | 4 | 8
+        PORTRAIT: 1,
+        PORTRAIT_UPSIDE_DOWN: 2,
+        LANDSCAPE_LEFT: 4,
+        LANDSCAPE_RIGHT: 8,
+        LANDSCAPE: 4 | 8,
+        BOTH: 1 | 2 | 4 | 8
     };
 
     /**
@@ -125,8 +124,8 @@ Cocoon.define("Cocoon.Device" , function(extension){
      * @example
      * Cocoon.Device.autoLock(false);
      */
-    extension.autoLock = function (enabled) {
-        if (Cocoon.nativeAvailable) {
+    extension.autoLock = function(enabled) {
+        if (Cocoon.nativeAvailable()) {
             return Cocoon.callNative("IDTK_APP", "setAutoLockEnabled", arguments);
         }
     };

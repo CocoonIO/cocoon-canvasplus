@@ -1,25 +1,25 @@
 {
-  "name": "cocoon-canvasplus",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/CocoonIO/cocoon-canvasplus"
-  },
-  "author": "ludei",
-  "license": "MPL 2.0",
-  "devDependencies": {
-    "gulp": "^3.8.10",
-    "gulp-concat": "^2.5.2",
-    "gulp-jsdoc": "^0.1.4",
-    "gulp-jshint": "^1.9.0",
-    "gulp-uglify": "^1.1.0"
-  }
+    "name": "cocoon-canvasplus",
+    "version": "1.0.1",
+    "description": "",
+    "main": "index.js",
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/CocoonIO/cocoon-canvasplus"
+    },
+    "author": "ludei",
+    "license": "MPL 2.0",
+    "devDependencies": {
+        "gulp": "^3.8.10",
+        "gulp-concat": "^2.5.2",
+        "gulp-jsdoc": "^0.1.4",
+        "gulp-jshint": "^1.9.0",
+        "gulp-uglify": "^1.1.0"
+    }
 }
