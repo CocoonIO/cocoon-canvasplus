@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cocoon-plugin-canvasplus-common" version="1.1.0">
+        id="cocoon-plugin-canvasplus-common" version="1.2.0">
     <name>Cocoon Canvas+ Common Utils</name>
     <description>Common utils for Cocoon Canvas+</description>
     <license>MPL 2.0</license>
